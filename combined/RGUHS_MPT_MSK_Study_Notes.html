@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RGUHS MPT (MSK) Prioritised Study Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf8f3; --surface:#ffffff; --surface2:#f3efe6; --border:rgba(30,58,95,.12);
+  --text:#1f2a37; --text-dim:#6b7280; --navy:#1e3a5f; --navy-dim:#2d4d77;
+  --gold:#b8860b; --gold-bg:rgba(212,167,58,.14); --terra:#b45309; --terra-bg:rgba(180,83,9,.08);
+  --serif:'Instrument Serif',Georgia,serif; --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;
+  background-image:radial-gradient(rgba(30,58,95,.045) 1px,transparent 1px);background-size:26px 26px}
+.wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:210px 1fr;gap:0 44px;padding:0 28px}
+.main{min-width:0;padding-bottom:90px}
+/* TOC */
+.toc{position:sticky;top:0;align-self:start;grid-row:1/-1;max-height:100dvh;overflow-y:auto;padding:26px 0}
+.toc::-webkit-scrollbar{width:3px}.toc::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.toc-title{font-family:var(--mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);padding-bottom:10px;margin-bottom:8px;border-bottom:1px solid var(--border)}
+.toc a{display:block;font-size:11.5px;color:var(--text-dim);text-decoration:none;padding:4px 9px;border-radius:5px;border-left:2px solid transparent;transition:all .15s;line-height:1.35;margin-bottom:1px}
+.toc a:hover{color:var(--text);background:var(--surface2)}
+.toc a.active{color:var(--navy);border-left-color:var(--gold);background:var(--gold-bg)}
+.toc a.toc-paper{font-weight:600;color:var(--navy);margin-top:12px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.5px}
+.toc a:not(.toc-paper):not([href="#how"]):not([href="#method"]):not([href="#matrix"]):not([href="#refs"]){padding-left:18px}
+@media (max-width:1000px){
+  .wrap{grid-template-columns:1fr}
+  .toc{position:sticky;top:0;z-index:200;max-height:none;display:flex;gap:4px;align-items:center;overflow-x:auto;background:var(--bg);border-bottom:1px solid var(--border);padding:10px 0;grid-row:auto}
+  .toc::-webkit-scrollbar{display:none}.toc-title{display:none}
+  .toc a{white-space:nowrap;flex-shrink:0;border-left:none;border-bottom:2px solid transparent;border-radius:4px 4px 0 0;padding:6px 10px;font-size:10.5px}
+  .toc a.active{border-left:none;border-bottom-color:var(--gold);background:var(--surface)}
+  .toc a.toc-paper{margin-top:0}
+  .sec-head,.topic{scroll-margin-top:52px}
+}
+/* hero */
+.hero{padding:64px 0 40px;border-bottom:3px double var(--border)}
+.hero .kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+.hero h1{font-family:var(--serif);font-size:clamp(38px,5vw,58px);font-weight:400;line-height:1.06;color:var(--navy);letter-spacing:-.5px;max-width:820px}
+.hero p.lead{margin-top:18px;font-size:16.5px;color:var(--text-dim);max-width:680px}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 20px;min-width:120px}
+.stat b{display:block;font-family:var(--serif);font-size:30px;color:var(--navy);line-height:1}
+.stat span{font-size:11px;color:var(--text-dim);letter-spacing:.4px}
+/* sections */
+.sec-head{display:flex;gap:18px;align-items:baseline;padding:54px 0 10px;scroll-margin-top:20px}
+.sec-num{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;padding-top:8px}
+.sec-head h2{font-family:var(--serif);font-size:34px;font-weight:400;color:var(--navy);line-height:1.15}
+.sec-sub{font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:.5px;margin-top:4px}
+/* topic cards */
+.topic{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:26px 30px;margin-top:22px;overflow-wrap:break-word}
+.topic-top{border-left:4px solid var(--gold);box-shadow:0 2px 14px rgba(30,58,95,.07)}
+.t-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.t-head h3{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--navy);line-height:1.2;max-width:560px}
+.t-note{font-size:13px;color:var(--terra);font-style:italic;margin:-4px 0 10px}
+.t-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stars{color:var(--gold);font-size:19px;letter-spacing:2px;white-space:nowrap}
+.stars .dim{color:rgba(184,134,11,.28)}
+.stars-sm{color:var(--gold);font-size:13px;letter-spacing:1px;white-space:nowrap}
+.stars-sm .dim{color:rgba(184,134,11,.28)}
+.rbc{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);background:var(--surface2);padding:3px 9px;border-radius:20px;white-space:nowrap}
+.topic ul{list-style:none;margin-top:4px}
+.topic li{padding:6px 0 6px 22px;position:relative;border-bottom:1px dashed rgba(30,58,95,.07)}
+.topic li:last-child{border-bottom:none}
+.topic li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--navy);opacity:.35}
+.topic li.strong,.topic li.bmnemonic{background:var(--gold-bg);border-radius:8px;padding-left:24px;margin:4px 0}
+.topic li.bmnemonic::before{background:var(--gold);opacity:1}
+.topic li.strong{background:var(--terra-bg)}
+.topic li.strong::before{background:var(--terra);opacity:1}
+.exam-para{margin-top:18px;background:var(--surface2);border-radius:10px;padding:16px 20px}
+.ep-label{display:block;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+.exam-para p{font-size:14.5px;color:var(--text);line-height:1.7}
+/* method + table */
+.m-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin-top:18px}
+.m-card h3{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--navy);margin-bottom:8px}
+.m-card p{color:var(--text);margin-top:8px}
+.m-formula{font-family:var(--mono);background:var(--surface2);border-radius:8px;padding:16px 16px;margin:14px 0;font-size:13.5px;color:var(--navy)}
+.tbl-wrap{overflow-x:auto;margin-top:18px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{position:sticky;top:0;background:var(--navy);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 14px;text-align:left;white-space:nowrap}
+thead th.c{text-align:center}
+tbody td{padding:9px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:nth-child(even){background:rgba(30,58,95,.025)}
+tbody tr:hover{background:var(--gold-bg)}
+td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
+td.paper-badge{font-family:var(--mono);font-size:11px;color:var(--terra);white-space:nowrap}
+/* references */
+.refs{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin-top:18px}
+.refs h3{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--navy);margin-bottom:10px}
+.refs ul{list-style:none}
+.refs li{padding:5px 0 5px 20px;position:relative;font-size:13.5px;color:var(--text-dim)}
+.refs li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.callout{background:var(--terra-bg);border-left:3px solid var(--terra);border-radius:0 8px 8px 0;padding:14px 18px;margin-top:18px;font-size:14px}
+.callout b{color:var(--terra)}
+@media print{.toc{display:none}.wrap{grid-template-columns:1fr}body{background:#fff}.topic{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" id="toc"><div class="toc-title">Contents</div>
+<a href="#how">How to use</a><a href="#method">Rating method</a><a href="#matrix">Priority matrix</a><a href="#p2" class="toc-paper">Paper II &middot; Fundamental Principles of Musculos</a><a href="#basic-concepts-of-musculoskeletal-system-213">Basic Concepts of Musculoskeletal System</a><a href="#basic-concepts-of-anthropometry-112">Basic Concepts of Anthropometry</a><a href="#basic-concepts-of-biomechanics-415">Basic Concepts of Biomechanics</a><a href="#biomechanics-of-movement-across-the-life-202">Biomechanics of Movement across the Life Spa</a><a href="#physiological-basis-of-human-movement-213">Physiological Basis of Human Movement</a><a href="#mechanics-and-pathomechanics-of-joints-325">Mechanics and Pathomechanics of Joints</a><a href="#posture-213">Posture</a><a href="#gait-and-function-314">Gait and Function</a><a href="#pain-325">Pain</a><a href="#electro-physics-325">Electro Physics</a><a href="#p3" class="toc-paper">Paper III &middot; Physical and Functional Diagnosis</a><a href="#introduction-to-assessment-basic-assessm-314">Introduction to Assessment, Basic Assessment</a><a href="#screening-the-head-neck-and-back-shoulde-224">Screening the Head, Neck and Back; Shoulder </a><a href="#direct-access-primary-care-autonomous-pr-112">Direct Access, Primary Care, Autonomous Prac</a><a href="#physiotherapy-diagnosis-special-tests-me-325">Physiotherapy Diagnosis, Special Tests, Medi</a><a href="#assessment-of-fractures-orthotics-splint-224">Assessment of Fractures, Orthotics/Splints, </a><a href="#functional-assessment-outcome-measures-e-325">Functional Assessment, Outcome Measures, Erg</a><a href="#p4" class="toc-paper">Paper IV &middot; Physiotherapy Interventions</a><a href="#interventions-for-physiologic-impairment-213">Interventions for Physiologic Impairments du</a><a href="#management-of-pain-314">Management of Pain</a><a href="#methods-of-musculoskeletal-rehabilitatio-325">Methods of Musculoskeletal Rehabilitation</a><a href="#advanced-techniques-in-musculoskeletal-r-224">Advanced Techniques in Musculoskeletal Rehab</a><a href="#electro-modalities-in-musculoskeletal-re-314">Electro Modalities in Musculoskeletal Rehabi</a><a href="#ergonomics-213">Ergonomics</a><a href="#trauma-rehabilitation-224">Trauma Rehabilitation</a>
+<a href="#refs">Sources & verification</a>
+</nav>
+<div class="main">
+
+<div class="hero">
+  <div class="kicker">RGUHS &middot; MPT Musculoskeletal &middot; Final University Theory Examination</div>
+  <h1>Prioritised Study Notes for the Musculoskeletal Specialty Papers</h1>
+  <p class="lead">Every topic of the RGUHS MPT (Musculoskeletal Sciences) syllabus, rated one to five stars by how often it repeats across the syllabus and how heavily the university blueprint weights it &mdash; then written up as exam-ready notes with mnemonics.</p>
+  <div class="stats">
+    <div class="stat"><b>23</b><span>syllabus topics</span></div>
+    <div class="stat"><b>3</b><span>specialty papers (II&ndash;IV)</span></div>
+    <div class="stat"><b>10</b><span>questions per paper</span></div>
+    <div class="stat"><b>7</b><span>five-star priorities</span></div>
+  </div>
+</div>
+
+<div class="sec-head" id="how"><span class="sec-num">Start here</span><div><h2>How to use these notes</h2></div></div>
+<div class="m-card">
+<p>Each topic opens with <strong>bullet notes</strong> (definitions, classifications, values, lists), followed by an <strong>Examiner&rsquo;s view</strong> paragraph on how the topic is asked and what a full-marks answer needs. Gold-tinted bullets are <strong>mnemonics and memory aids</strong>; terracotta-tinted bullets carry <strong>must-not-miss exam warnings or high-yield lists</strong>.</p>
+<p>The star rating tells you where your revision hours go: revise all five- and four-star topics to mastery, read three-star topics once carefully, and skim two-star topics only if time remains. Combined scores (R, B, C) beside each title show the reasoning: <strong>R</strong> = repetition score, <strong>B</strong> = blueprint questions, <strong>C</strong> = combined score.</p>
+<div class="callout"><b>A note on mnemonics.</b> Most mnemonics here are established teaching aids (OPQRST, SnNout/SpPin, I-II for pain / III-IV for stiffness, RULA/REBA). A few &mdash; OVER, TMDP, FAR-VP, HIP, the Sinister Six, 1-2-3&nbsp;F-R-E &mdash; are study aids coined for these notes: reliable for recall, but do not cite them as textbook eponyms in a viva.</div>
+</div>
+
+<div class="sec-head" id="method"><span class="sec-num">Method</span><div><h2>How the star ratings were computed</h2></div></div>
+<div class="m-card">
+<h3>Filter 1 &mdash; Repetition (R)</h3>
+<p>R counts the distinct syllabus units across the three MSK specialty papers in which the topic&rsquo;s core concept explicitly recurs (in a unit title or its sub-items). A concept the examiners meet everywhere &mdash; pain, biomechanics, electrotherapy &mdash; is a concept they can ask about from any angle. Range: 1&ndash;4.</p>
+<h3>Filter 2 &mdash; Blueprint importance (B)</h3>
+<p>B is the number of questions the RGUHS topic-wise weightage (2021-22 batch onwards, revised ordinance) allots to the topic in the final theory examination &mdash; ten questions per paper. Range: 0&ndash;2 (or the sum across papers where a topic spans two papers).</p>
+<h3>Combined score and stars</h3>
+<div class="m-formula">C = R + B &nbsp;&rarr;&nbsp; C&ge;5: ★★★★★ &nbsp;|&nbsp; C=4: ★★★★☆ &nbsp;|&nbsp; C=3: ★★★☆☆ &nbsp;|&nbsp; C=2: ★★☆☆☆ &nbsp;|&nbsp; C&le;1: ★☆☆☆☆</div>
+<p>Where a topic spans several papers (pain, electrotherapy, ergonomics), R and B are counted across all its appearances. The blueprint lists Paper III as seven &ldquo;parts&rdquo; (1&ndash;2 questions each, ten per paper) while the syllabus prints six numbered units; the parts map onto those units, with the heaviest weight (2 questions each) falling on physiotherapy diagnosis/special tests and on the assessment-of-conditions unit.</p>
+</div>
+
+<div class="sec-head" id="matrix"><span class="sec-num">Matrix</span><div><h2>Priority matrix &mdash; all 23 topics</h2></div></div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Paper</th><th>Topic</th><th class="c">R</th><th class="c">B</th><th class="c">C</th><th>Rating</th></tr></thead>
+<tbody>
+<tr><td>II</td><td>Basic Concepts of Biomechanics</td><td class='num'>4</td><td class='num'>1</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr>
+<tr><td>II</td><td>Pain</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr>
+<tr><td>II</td><td>Electro Physics</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr>
+<tr><td>II</td><td>Mechanics & Pathomechanics of Joints</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr>
+<tr><td>II</td><td>Gait and Function</td><td class='num'>3</td><td class='num'>1</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr>
+<tr><td>II</td><td>Basic Concepts of Musculoskeletal System</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr>
+<tr><td>II</td><td>Physiological Basis of Human Movement</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr>
+<tr><td>II</td><td>Posture</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr>
+<tr><td>II</td><td>Anthropometry</td><td class='num'>1</td><td class='num'>1</td><td class='num'><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr>
+<tr><td>II</td><td>Biomechanics across the Life Span</td><td class='num'>2</td><td class='num'>0</td><td class='num'><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr>
+<tr><td>III</td><td>Physiotherapy Diagnosis, Special Tests, Imaging, Electrodiagnosis</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr>
+<tr><td>III</td><td>Functional Assessment, Outcome Measures, Ergonomic Risk, ICF</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr>
+<tr><td>III</td><td>Screening: Head/Neck/Back, UE, SI/Pelvis, Lower Quadrant, Chest/Ribs</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr>
+<tr><td>III</td><td>Assessment of Fractures, Orthotics, Hand, Amputations, Degenerative, Paediatric</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr>
+<tr><td>III</td><td>Introduction & Basic Assessment Methods</td><td class='num'>3</td><td class='num'>1</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr>
+<tr><td>III</td><td>Direct Access, Primary Care, Autonomous Practice</td><td class='num'>1</td><td class='num'>1</td><td class='num'><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr>
+<tr><td>IV</td><td>Methods of Musculoskeletal Rehabilitation</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr>
+<tr><td>IV</td><td>Management of Pain</td><td class='num'>3</td><td class='num'>1</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr>
+<tr><td>IV</td><td>Advanced Techniques (Manual Therapy & Myofascial Concepts)</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr>
+<tr><td>IV</td><td>Electro Modalities in Musculoskeletal Rehabilitation</td><td class='num'>3</td><td class='num'>1</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr>
+<tr><td>IV</td><td>Trauma Rehabilitation</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr>
+<tr><td>IV</td><td>Interventions for Physiologic Impairments</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr>
+<tr><td>IV</td><td>Ergonomics</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-head" id="p2"><span class="sec-num">Paper II</span><div><h2>Fundamental Principles of Musculoskeletal Physiotherapy</h2><p class="sec-sub">RGUHS MPT (Musculoskeletal) &middot; 10 blueprint questions</p></div></div>
+<article class="topic" id="basic-concepts-of-musculoskeletal-system-213">
+<header class="t-head"><h3>Basic Concepts of Musculoskeletal System</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
+<ul>
+<li class="">Four tissue systems of the MSK system: skeletal (bones), articular (joints, cartilage), muscular, and neuromuscular (nerves supplying muscle).</li>
+<li class="bmnemonic">Bone functions — mnemonic <strong>"SPMCH"</strong>: <strong>S</strong>upport, <strong>P</strong>rotection, <strong>M</strong>ovement (levers), <strong>C</strong>alcium/mineral storage, <strong>H</strong>aematopoiesis.</li>
+<li class="">206 bones: axial skeleton (80 — skull, vertebral column, rib cage) + appendicular (126 — limbs and girdles).</li>
+<li class="">Bone classification (shape): long, short, flat, irregular, sesamoid; microstructure: cortical (compact, ~80% of bone mass) vs cancellous (trabecular, metabolically active).</li>
+<li class="">Wolff's law: bone is laid down where needed and resorbed where not needed — bone remodels along lines of stress. Converse: disuse/immobilisation causes osteoporosis.</li>
+<li class="">Joint classification — structural: fibrous, cartilaginous, synovial; functional: synarthrosis (immovable), amphiarthrosis (slightly movable), diarthrosis (freely movable).</li>
+<li class="">Synovial joint components: articular (hyaline) cartilage, capsule, synovial membrane, and accessory structures (labrum, menisci, discs, fat pads, bursae).</li>
+<li class="">Cartilage types: hyaline (articular), fibro (menisci, TMJ disc), elastic (ear, epiglottis). Articular cartilage is avascular, aneural, aneural nutrition by synovial diffusion.</li>
+<li class="">Muscle fibre types: Type I (slow oxidative, endurance, red), Type IIa (fast oxidative-glycolytic), Type IIx (fast glycolytic, fatigable).</li>
+<li class="">Neuromuscular basis: motor unit (anterior horn cell + axon + fibres), muscle spindle (length/velocity), Golgi tendon organ (tension), alpha-gamma co-activation, stretch reflex.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This unit is the vocabulary of the whole course. Examiners commonly ask for the functional classification of joints, types of cartilage and their clinical relevance (e.g., why articular cartilage heals poorly), Wolff's law applied to fracture healing and immobilisation, and muscle fibre types with training implications. Expect a short-note rather than a long essay from this unit.</p></div>
+</article>
+<article class="topic" id="basic-concepts-of-anthropometry-112">
+<header class="t-head"><h3>Basic Concepts of Anthropometry</h3><div class="t-meta"><span class="stars">★★<span class="dim">☆☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 1 · B 1 · C 2</span></div></header>
+<ul>
+<li class="">Definition: the science of systematic measurement of the human body — size, shape, composition and proportions.</li>
+<li class="">Tools: stadiometer (height), anthropometer, spreading and sliding calipers, skinfold calipers, measuring tape, weighing scale.</li>
+<li class="">Body size measures: height, weight, BMI (kg/m²), segmental lengths, girths; body shape: somatotypes — endomorph, mesomorph, ectomorph.</li>
+<li class="bmnemonic">Body composition methods — mnemonic <strong>"D-H-BS" (Most to least accurate)</strong>: <strong>D</strong>EXA (or multicomponent models), <strong>H</strong>ydrodensitometry (underwater weighing), <strong>B</strong>ioelectrical impedance, <strong>S</strong>kinfolds (BIA and skinfolds are roughly comparable).</li>
+<li class="">MSK applications: limb length measurement (direct — tape between bony landmarks; indirect — blocks under the short limb to level the pelvis), girth for muscle atrophy, waist-hip ratio.</li>
+<li class="">Human variation: intra-individual (bilateral), inter-individual, population-level; relevance to ergonomic fit and prosthetic/orthotic sizing.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>A low-yield unit that usually appears as a short note. Learn the definition, the measurement tools, and the body composition techniques in order of accuracy. Its clinical hook in MSK practice is limb-length discrepancy assessment and its effect on pelvic alignment and gait.</p></div>
+</article>
+<article class="topic topic-top" id="basic-concepts-of-biomechanics-415">
+<header class="t-head"><h3>Basic Concepts of Biomechanics</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 4 · B 1 · C 5</span></div></header>
+<ul>
+<li class="">Kinematics = description of motion (displacement, velocity, acceleration) without reference to forces; Kinetics = study of the forces that cause motion.</li>
+<li class="">Force is a vector: magnitude, direction, point of application, line of action.</li>
+<li class="">Newton's laws: (1) inertia, (2) F = ma, (3) action-reaction (basis of the ground reaction force).</li>
+<li class="">Moment of force (torque) = Force x perpendicular distance from the axis (unit Nm). A force couple = two equal, opposite, non-collinear parallel forces producing pure rotation.</li>
+<li class="">Equilibrium: static and dynamic; first condition (sum of forces = 0), second condition (sum of moments = 0). Centre of gravity and base of support determine stability.</li>
+<li class="bmnemonic">Lever classes — mnemonic <strong>"1-2-3 = F-R-E"</strong> (the middle element in each class): 1st class <strong>F</strong>ulcrum in the middle (atlanto-occipital joint, seesaw); 2nd class <strong>R</strong>esistance in the middle (ankle plantarflexors during heel raise — mechanical advantage &gt; 1); 3rd class <strong>E</strong>ffort in the middle (most human joints, e.g., elbow flexion — mechanical advantage &lt; 1, built for speed and range).</li>
+<li class="">Degrees of freedom: number of independent planes of motion (e.g., knee — 2 DoF; shoulder — 3 DoF).</li>
+<li class="">Energetics: work (J), power (W), efficiency (muscular efficiency ~20-25%); most economical walking speed is around 80 m/min (about 4.8 km/h); metabolic energy consumption measured via oxygen uptake.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This is the highest-priority foundation topic — its concepts reappear in joint mechanics, gait, posture and rehabilitation methods, which is why it earns five stars on repetition plus one blueprint question. Classic exam asks: define and classify levers with one example of each; differentiate kinematics from kinetics with gait examples; define moment with a clinical example (e.g., patellofemoral joint reaction force rises as the knee flexes because the moment arm of body weight increases).</p></div>
+</article>
+<article class="topic" id="biomechanics-of-movement-across-the-life-202">
+<header class="t-head"><h3>Biomechanics of Movement across the Life Span</h3><div class="t-meta"><span class="stars">★★<span class="dim">☆☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 0 · C 2</span></div></header>
+<p class="t-note">study together with Gait</p>
+<ul>
+<li class="">MSK growth and development: endochondral ossification, epiphyseal growth plates (vulnerable in paediatric trauma — Salter-Harris classification), bone modelling/remodelling.</li>
+<li class="">Maturation of mobility and gait in children: independent walking at ~12 months; early gait = wide base, high cadence, short stride, arms held high without reciprocal swing, flat-footed strike, absent heel-toe pattern; most kinematics are adult-like by 3-4 years, with full maturation (velocity, stride length, energy cost) by about 7-8 years.</li>
+<li class="">Gait changes in older adults: slower speed, shorter step length, reduced cadence, reduced push-off (ankle power), increased double-limb support time, stooped posture; a wider base of support is classically described (textbook convention — empirical evidence is mixed).</li>
+<li class="">Biomechanics of ageing: sarcopenia, decreased bone mineral density, joint stiffness, slower reaction time, reduced balance reserve.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>The blueprint does not allot this topic a dedicated question (it is examined through the Gait topic in the same paper), so read it jointly with Gait and Function. The exam angle is always a comparison: gait of a toddler versus a healthy elderly subject, or growth-plate injury and its consequences. Do not spend disproportionate time here.</p></div>
+</article>
+<article class="topic" id="physiological-basis-of-human-movement-213">
+<header class="t-head"><h3>Physiological Basis of Human Movement</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
+<ul>
+<li class="bmnemonic">Exercise metabolism — three energy systems, mnemonic <strong>"Seconds, Minutes, Hours"</strong>: phosphagen/ATP-PC system (0-10 seconds, anaerobic), anaerobic glycolysis (up to ~2 minutes, lactate), oxidative/aerobic system (sustained activity).</li>
+<li class="">Oxygen supply during exercise: Fick principle — VO2 = cardiac output x arteriovenous O2 difference; VO2max as the index of aerobic capacity.</li>
+<li class="">Energy cost of activity: METs; 1 MET = 3.5 ml O2/kg/min. Examples: sitting 1-2, slow walking 2-3, brisk walking 3-4, climbing stairs 4-5+... (learn 5-6 common values).</li>
+<li class="">Measurement of exercise capacity: graded exercise tests (GXT), submaximal tests (e.g., 6-minute walk test, shuttle walk), RPE — Borg 6-20 and 0-10 scales.</li>
+<li class="">Adaptations: cardiovascular (increased stroke volume, decreased resting HR), muscular (hypertrophy, fibre transition, mitochondrial density), neural (early strength gains are neural).</li>
+<li class="">Application in MSK disease: disuse atrophy, deconditioning, chronic pain-related inactivity; exercise as medicine.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Answer format for a long question: define each energy system with its substrate, duration and example sport/activity; then Fick's principle; then METs with clinical application to activity prescription in MSK rehabilitation. This unit links directly to exercise testing in Paper III and endurance interventions in Paper IV.</p></div>
+</article>
+<article class="topic topic-top" id="mechanics-and-pathomechanics-of-joints-325">
+<header class="t-head"><h3>Mechanics and Pathomechanics of Joints</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
+<ul>
+<li class="">Osteokinematics = angular movements of bones (flexion/extension, abduction/adduction, rotation); Arthrokinematics = joint surface motions — roll, glide (slide), spin.</li>
+<li class="bmnemonic">Concave-convex rule — mnemonic <strong>"Convex-Contrary, Concave-Concordant"</strong>: a convex surface moving on a fixed concave surface glides OPPOSITE to the direction of roll (e.g., humeral head in shoulder abduction); a concave surface moving on a fixed convex surface glides in the SAME direction as the roll (e.g., tibia on femur in open-chain knee extension).</li>
+<li class="">Close-packed position (maximal congruency, taut capsule and ligaments) vs loose/open-packed (resting) position — learn for major joints: knee — full extension is close-packed; shoulder — full abduction with external rotation is close-packed (a commonly quoted loose-packed position is 55° abduction with 30° horizontal adduction).</li>
+<li class="">Upper limb: shoulder complex — scapulohumeral rhythm 2:1 (glenohumeral to scapular motion averaged over the full arc of elevation 0-180°; the first ~30° is a variable "setting phase" dominated by glenohumeral motion), rotator cuff force couple (deltoid vs supraspinatus/infraspinatus/teres minor/subscapularis), and impingement pathomechanics; elbow carrying angle (valgus ~11° men, ~13° women); forearm pronation-supination (axis through radial head to ulnar styloid); wrist and hand joint architecture.</li>
+<li class="">Lower limb: femoral neck anteversion (adult average ~10-12°, range 8-15°), Q-angle and patellofemoral stress; knee screw-home mechanism (terminal extension locks the knee with tibial external rotation — "locked and screwed"); arches of the foot (medial longitudinal, transverse) and windlass mechanism.</li>
+<li class="">Spine: coupled movements (side-flexion with rotation — the direction of the coupled rotation differs by region and spine position — learn the classic coupled patterns), segmental motion of the lumbar spine, neutral spine concept.</li>
+<li class="">TMJ: opening combines pure rotation (to ~20-25 mm) followed by translation (to ~35-55 mm) with the mandibular midline staying central; deviation of the midline on opening is a sign of dysfunction (typically disc displacement with reduction).</li>
+<li class="">Skeletal tissue mechanics: stress-strain curve (toe, elastic/linear, plastic, failure regions), viscoelastic behaviour (creep, stress relaxation, hysteresis), anisotropy.</li>
+<li class="">Soft tissue mechanics: ligament/tendon behaviour, immobilisation weakens connective tissue; creep under sustained load.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Carrying two blueprint questions and one of the largest topic loads in the paper, this is guaranteed marks territory. Examiners love the concave-convex rule with named examples, close-packed positions, scapulohumeral rhythm, and the screw-home mechanism. Practice drawing the stress-strain curve and labelling its regions — a frequent diagram question.</p></div>
+</article>
+<article class="topic" id="posture-213">
+<header class="t-head"><h3>Posture</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
+<ul>
+<li class="">Definition: the relative alignment of body segments at a given time; ideal static posture = minimal muscle work and minimal joint stress with the line of gravity passing through key landmarks.</li>
+<li class="">Plumb line alignment (lateral): external auditory meatus — acromion — greater trochanter — just anterior to knee joint axis — just anterior to lateral malleolus.</li>
+<li class="bmnemonic">Postural control — mnemonic <strong>"VVS"</strong>: <strong>V</strong>ision, <strong>V</strong>estibular, <strong>S</strong>omatosensory (proprioceptive) inputs integrated by the CNS; sensorimotor strategies: ankle strategy, hip strategy, stepping strategy; anticipatory (feed-forward) vs reactive (feedback) postural adjustments.</li>
+<li class="">Analysis: static observation (anterior, posterior, lateral), plumb line, postural grids, goniometry for fixed deviations, functional tests.</li>
+<li class="">Postural deformities: forward head posture, kyphosis, lordosis, scoliosis (screen with the Adams forward bend test; structural vs functional), pelvic tilt abnormalities, genu valgum/varum, pes planus/cavus.</li>
+<li class="">Distinguish structural (fixed, bony) from functional (flexible, postural/habitual) deformities — determines treatment.</li>
+<li class="">McKenzie postural syndrome: sustained end-range loading causes pain in the absence of pathology; corrected by posture and regular movement.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Expect either a short note on postural control mechanisms or an essay on postural assessment and common deformities. The plumb-line landmarks, the three sensory inputs, and the structural-versus-functional distinction are the marks. Relate posture to sitting ergonomics (Paper IV) and to gait (same paper).</p></div>
+</article>
+<article class="topic" id="gait-and-function-314">
+<header class="t-head"><h3>Gait and Function</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 1 · C 4</span></div></header>
+<ul>
+<li class="">Gait cycle (Rancho Los Amigos terminology): stance 60%, swing 40%. Eight phases — stance: initial contact, loading response, mid-stance, terminal stance, pre-swing; swing: initial, mid-, terminal swing.</li>
+<li class="bmnemonic">Mnemonic for the eight phases in order: <strong>"In Loading, My Terms Precede Initials Mid-Travel"</strong> (Initial contact, Loading response, Mid-stance, Terminal stance, Pre-swing, Initial swing, Mid-swing, Terminal swing).</li>
+<li class="">Six determinants of gait (Saunders, Inman, Eberhart) reduce the vertical/lateral excursion of the centre of mass: (1) pelvic rotation, (2) pelvic tilt (list), (3) knee flexion in stance, (4) foot and ankle mechanisms, (5) knee mechanisms... — learn as: pelvic rotation, pelvic tilt, knee flexion in stance, foot mechanism, ankle mechanism, pelvic lateral displacement.</li>
+<li class="">Muscle function by phase: tibialis anterior (eccentric in loading response), quadriceps (loading response, pre-swing), gluteus medius/minimus (mid-stance — pelvic control), gluteus maximus (initial contact/loading), hamstrings (decelerate swing at terminal swing), gastrocnemius-soleus (terminal stance — A2 push-off).</li>
+<li class="">Pathological gaits (learn at least six with cause): Trendelenburg (weak hip abductors — contralateral pelvic drop); antalgic (short stance on painful limb); high-stepping/steppage (foot drop — tibialis anterior weakness); hemiplegic (circumduction, equinus); parkinsonian (festinating, stooped, reduced arm swing); ataxic (broad-based, irregular); gluteus maximus gait (thrusting trunk backwards).</li>
+<li class="">Energy expenditure: walking is most economical near 80 m/min; lower-limb amputation raises the oxygen cost per metre by roughly 40-100% depending on level and cause (classic Waters et al. data: traumatic transfemoral ~+41%, vascular transfemoral ~+102%, traumatic transtibial ~+12%).</li>
+<li class="">Kinetic and kinematic analysis of functional tasks: sit-to-stand (momentum strategy, arm use), reaching, lifting, stair ascent/descent.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This is one of the most reliable exam topics across the whole course — definitions of the gait cycle and its phases, the determinants, and named pathological gaits with their lesions. The diagram of the gait cycle with muscle activity must be practised until it can be drawn from memory. Combine your reading with the life-span biomechanics topic.</p></div>
+</article>
+<article class="topic topic-top" id="pain-325">
+<header class="t-head"><h3>Pain</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
+<ul>
+<li class="">IASP definition (2020): "An unpleasant sensory and emotional experience associated with, or resembling that associated with, actual or potential tissue damage."</li>
+<li class="bmnemonic">Four neurophysiological processes — mnemonic <strong>"TTMP"</strong>: <strong>T</strong>ransduction (nociceptor activation), <strong>T</strong>ransmission (A-delta and C fibres — spinothalamic tract), <strong>M</strong>odulation (descending inhibition — gate control, endogenous opioids), <strong>P</strong>erception (cortical limbic experience).</li>
+<li class="">Nociceptor fibres: A-delta (fast, sharp, well localised — neospinothalamic) and C (slow, dull, burning — paleospinothalamic).</li>
+<li class="">Theories of pain: Specificity theory (von Frey), Pattern theory (Goldscheider/Wedel... historically Wedell/Melzack), Gate Control theory (Melzack and Wall, 1965) — the theory that revolutionised pain science: substantia gelatinosa gate; large-diameter fibres close the gate, small-fibre activity opens it.</li>
+<li class="">Acute vs chronic pain: timeline (&gt;3 months), chronic pain is a disease of the nervous system — peripheral and central sensitisation (allodynia, hyperalgesia); chronic pain has lost its warning function.</li>
+<li class="">Assessment in different populations: VAS (0-10 cm), Numerical Rating Scale, McGill Pain Questionnaire (sensory, affective, evaluative dimensions), body pain diagram, Faces scale (children), observational tools for non-communicative patients (e.g., PAINAD for dementia).</li>
+<li class="">Specific states and syndromes: neuropathic pain (DN4 screening), radicular pain, complex regional pain syndrome, myofascial pain syndrome (trigger points) vs fibromyalgia, phantom limb pain.</li>
+<li class="">Evidence-based advances: biopsychosocial model, Pain Neuroscience Education, fear-avoidance model (Vlaeyen), central sensitisation inventory.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Pain recurs across all three MSK papers — physiology here, red-flag/referred pain screening in Paper III, and multimodal management in Paper IV — which is why it carries a maximum combined rating. Standard long-answer structure: definition, pain pathways (with a labelled diagram of the gate control theory), theories, acute-versus-chronic differences in a table, assessment tools, and a conclusion on the biopsychosocial model. The gate control theory with its clinical applications (rubbing an injury, TENS) is the single most repeated question.</p></div>
+</article>
+<article class="topic topic-top" id="electro-physics-325">
+<header class="t-head"><h3>Electro Physics</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
+<ul>
+<li class="">Basic concepts: types of current (direct, alternating, pulsed), key parameters — frequency (Hz), intensity/amplitude (mA), pulse duration/phase (microseconds or ms), duty cycle (on:off time), waveform.</li>
+<li class="">Alterations in skeletal muscle performance: disuse atrophy; electrical stimulation of muscle (NMES) as an adjunct to voluntary exercise — strength, endurance, and torque parameters (Russian currents: 2500 Hz burst-modulated... commonly 50 bps for strengthening).</li>
+<li class="">Soft tissue repair phases: inflammation, proliferation, remodelling — each with its electro/physical modality of choice.</li>
+<li class="bmnemonic">Biophysical effects of heat — modes of transfer, mnemonic <strong>"CCCR"</strong>: <strong>C</strong>onduction (hot pack, wax), <strong>C</strong>onvection (whirlpool, fluidotherapy), <strong>C</strong>onversion (ultrasound, diathermy — energy converted to heat in tissues), <strong>R</strong>adiation (infrared lamp).</li>
+<li class="">Physiological effects of heat: vasodilation, increased metabolism, altered nerve conduction velocity (pain relief), increased collagen extensibility (with stretch); of cold: vasoconstriction, decreased metabolism (limits secondary injury in acute inflammation... reduces swelling), decreased nerve conduction, pain relief.</li>
+<li class="">Clinical decision-making in modality selection: goal (pain, healing, strength?), tissue depth, stage of healing, contraindications/precautions, patient preference, evidence.</li>
+<li class="">Alternative modalities for pain and tissue healing: low-level laser therapy (photobiomodulation), extracorporeal shockwave therapy, magnetic therapy.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This unit secures its top rating by spanning the entire syllabus — the same physics returns in electrodiagnosis (Paper III) and electro modalities in rehabilitation (Paper IV). Exam favourites: parameter definitions, physiological effects of heat and cold, and the decision-making rationale for choosing a modality. Learn contraindications cold (pacemakers, malignancy over the area, impaired sensation, pregnancy over the abdomen/pelvis, acute recent bleeding).</p></div>
+</article><div class="sec-head" id="p3"><span class="sec-num">Paper III</span><div><h2>Physical and Functional Diagnosis in Musculoskeletal Disorders</h2><p class="sec-sub">RGUHS MPT (Musculoskeletal) &middot; 10 blueprint questions</p></div></div>
+<article class="topic" id="introduction-to-assessment-basic-assessm-314">
+<header class="t-head"><h3>Introduction to Assessment, Basic Assessment Methods, Physical Assessment as Screening</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 1 · C 4</span></div></header>
+<ul>
+<li class="">Components of the musculoskeletal assessment, in order: history/subjective examination → observation/inspection → palpation → physical examination (ROM, strength, special tests) → functional assessment → reassessment.</li>
+<li class="bmnemonic">History-taking mnemonic <strong>"OPQRST"</strong>: <strong>O</strong>nset, <strong>P</strong>rovocation/palliation, <strong>Q</strong>uality, <strong>R</strong>egion and radiation, <strong>S</strong>everity, <strong>T</strong>iming (24-hour and irritability behaviour).</li>
+<li class="">Irritability triad: severity of pain, frequency, and duration/aggravation-ease — sets the pace of physical examination.</li>
+<li class="">Basic assessment methods: observation (posture, gait, deformity, swelling, muscle wasting, skin), palpation (temperature, tone, tenderness — bony and soft tissue landmarks), joint scan / quick regional screen.</li>
+<li class="">Physical assessment as a screening tool: the examination rules IN/OUT the region and detects signs of systemic disease masquerading as MSK pain (see red flags).</li>
+<li class="">Documentation: measurement (goniometry, MMT grading, tape) and repeated objective baselines for outcome tracking.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>The assessment framework in this unit is the skeleton for the entire paper, and its concepts recur in every later unit, so it earns a four-star rating. Exam answers should demonstrate a logical, reproducible sequence rather than a memorised list — examiners reward clinical reasoning (why you ask each question and what each finding would change). The subjective examination and irritability concept is a favourite short note.</p></div>
+</article>
+<article class="topic" id="screening-the-head-neck-and-back-shoulde-224">
+<header class="t-head"><h3>Screening the Head, Neck and Back; Shoulder and Upper Extremity; Sacrum, Sacroiliac and Pelvis; Lower Quadrant; Chest and Ribs</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 2 · C 4</span></div></header>
+<ul>
+<li class="">Screening = looking beyond the presenting region for referred symptoms, systemic disease, and neighbouring-joint contributions (e.g., cervical screening in every shoulder presentation).</li>
+<li class="">Regional screens: active ROM of the whole quadrant plus a scan of adjacent regions before local examination.</li>
+<li class="">Head/neck/back: cervical myelopathy signs, vertebrobasilar insufficiency, upper/lower cervical patterns.</li>
+<li class="">Chest and ribs: costovertebral joint dysfunction, rib springing; thoracic screening in arm pain (T4 syndrome).</li>
+<li class="">Referred pain patterns to know: diaphragm/irritation → shoulder tip (C4); heart → left arm, jaw; gallbladder → right scapula; kidney → groin/flank; hip joint → groin and knee (obturator nerve); spleen/pancreas patterns.</li>
+<li class="bmnemonic">Medical screening — red flags. Mnemonic <strong>"The Sinister Six"</strong> (an informal teaching shorthand, not a textbook eponym — the content is standard red-flag teaching): <strong>C</strong>ancer (night pain, weight loss, no relief with rest), <strong>C</strong>auda equina (saddle anaesthesia, bladder/bowel change), <strong>C</strong>rack/fracture (significant trauma, osteoporosis), <strong>C</strong>ontrol loss (progressive neurological deficit), sepsis/<strong>I</strong>nfection (fever, IV drug use), <strong>I</strong>nflammatory disorder (morning stiffness &gt; 30-60 min, age &lt; 40).</li>
+<li class="">Yellow flags (psychosocial risk of chronicity): fear-avoidance beliefs, low mood, poor coping, compensation concerns.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Two blueprint questions come from this cluster of screening topics, and its logic underpins safe autonomous practice. Answers should combine the regional screen sequence with referred pain patterns and the red flags list. Learn the classic referred-pain pairs (diaphragm to shoulder tip, hip to knee, heart to left arm) — these make neat one-mark questions.</p></div>
+</article>
+<article class="topic" id="direct-access-primary-care-autonomous-pr-112">
+<header class="t-head"><h3>Direct Access, Primary Care, Autonomous Practice, Decision-Making</h3><div class="t-meta"><span class="stars">★★<span class="dim">☆☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 1 · B 1 · C 2</span></div></header>
+<ul>
+<li class="">Direct access: the physiotherapist as the first point of contact, without a physician referral; Indian legal context — the National Commission for Allied and Healthcare Professions (NCAHP) Act 2021 recognises independent physiotherapy practice.</li>
+<li class="">Primary care physiotherapy: triage, screening for red flags, referral to appropriate specialists when findings fall outside the physiotherapy scope.</li>
+<li class="">Autonomous practice: responsibility for examination, diagnosis (within PT scope), treatment and referral decisions.</li>
+<li class="">Decision-making models: hypothetico-deductive reasoning (cue acquisition → hypothesis generation → cue interpretation → hypothesis evaluation); pattern recognition of experts; forward vs backward chaining.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>A short low-weight topic best prepared as a definition list with the Indian legal reference. The exam question, if it comes, asks for the competencies required of a physiotherapist working in a direct-access setting — screening, differential diagnosis and referral pathways — rather than for theory.</p></div>
+</article>
+<article class="topic topic-top" id="physiotherapy-diagnosis-special-tests-me-325">
+<header class="t-head"><h3>Physiotherapy Diagnosis, Special Tests, Medical Screening, Imaging, Electrodiagnosis, Exercise Testing</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
+<ul>
+<li class="">Physiotherapy diagnosis: a label describing movement/system dysfunction (ICF-based), e.g., "pain and restricted shoulder rotation with impaired scapular control", vs a medical diagnosis (pathology-based); both complement each other.</li>
+<li class="">Special tests — evaluate with diagnostic accuracy: sensitivity (SnNout: a highly Sensitive test when Negative rules OUT), specificity (SpPin: a highly Specific test when Positive rules IN), likelihood ratios.</li>
+<li class="">High-value tests to know (with accuracy): knee — Lachman (most sensitive for ACL), McMurray (menisci); shoulder — Hawkins-Kennedy and Neer (impingement), empty can (supraspinatus); low back — straight leg raise (neural tension/disc), slump; SI joint — Laslett's cluster (distraction, compression, thigh thrust, sacral thrust, Gaenslen — 3+ positive); hip — FABER, Thomas; cervical — Spurling's.</li>
+<li class="">Medical screening for referred pain — red flags as in the screening unit.</li>
+<li class="">Diagnostic imaging: X-ray (first-line for fracture, alignment; Ottawa knee/ankle rules guide when to image), CT (fine bone detail), MRI (soft tissue: disc, ligament, tumour), diagnostic ultrasound (dynamic tendon/muscle imaging). A test result must be interpreted alongside prevalence — imaging findings are common in asymptomatic people.</li>
+<li class="">Electrophysiology/electrodiagnosis: nerve conduction studies (demarcate demyelination — slowed conduction velocity vs axonopathy — reduced amplitude) and needle EMG (denervation findings at rest: fibrillations, positive sharp waves; chronic: large polyphasic units); best timed 3+ weeks after injury; helps localise the lesion and grade severity/prognosis.</li>
+<li class="">Exercise testing in MSK: submaximal aerobic tests, 6-minute walk test, functional capacity tests; safety criteria for stopping (Borg RPE, symptoms).</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>With two blueprint questions and repeated appearance of its concepts across the paper, this is the highest-yield topic of Paper III. The examiner's staple: "How do you evaluate a special test?" — answer with sensitivity, specificity and likelihood ratios plus a named example. For electrodiagnosis, be ready to state what EMG and NCS each measure and when after injury they become informative. The SnNout/SpPin mnemonics themselves earn marks.</p></div>
+</article>
+<article class="topic" id="assessment-of-fractures-orthotics-splint-224">
+<header class="t-head"><h3>Assessment of Fractures, Orthotics/Splints, Hand Injuries, Amputations, Degenerative Conditions, Paediatric Orthopaedics</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 2 · C 4</span></div></header>
+<ul>
+<li class="">Fracture assessment: history (mechanism — direct/indirect/traumatic vs stress), deformity, crepitus, abnormal movement; assessment of the injured limb pre-operatively (neurovascular status, skin, compartment check) and post-operatively (healing stage, ROM, strength, function).</li>
+<li class="bmnemonic">Fracture healing phases — mnemonic <strong>"IRHR"</strong>: <strong>I</strong>nflammation (haematoma, days), soft/Reparative callus (weeks), <strong>H</strong>ard callus, <strong>R</strong>emodelling (months to years). Clinical union: pain-free stress, no tenderness, no mobility at the fracture site.</li>
+<li class="">Orthotics/splints — functions: immobilise, protect, mobilise (allowed motion), correct (serial), support/assist; static vs dynamic splints; assessment of fit, skin, and function under the splint.</li>
+<li class="">Hand injury assessment: oedema (volumetry, figure-of-eight), scar and sensibility — Semmes-Weinstein monofilaments (pressure thresholds) and static/moving two-point discrimination; ROM (total active motion), grip and pinch dynamometry, dexterity (nine-hole peg test, Purdue pegboard).</li>
+<li class="">Amputation assessment: level (transradial, transhumeral, transfemoral, transtibial...), residual limb condition (shape, skin, sensation, contractures), strength, pre-prosthetic and prosthetic assessment; lower-limb mobility classification — Medicare K-levels K0-K4 (K1 = household ambulator; K2 = limited community ambulator who can manage low-level environmental barriers such as curbs and uneven surfaces; K3 = community ambulator with variable cadence who negotiates most environmental barriers; K4 = exceeds basic community demands — e.g., active adults, athletes).</li>
+<li class="">Degenerative conditions: osteoarthritis — crepitus, bony enlargement (Heberden's nodes — DIP; Bouchard's — PIP), varus thrust knee (medial tibiofemoral); rheumatoid arthritis — symmetric synovitis, ulnar deviation, swan-neck/boutonniere deformities, morning stiffness.</li>
+<li class="">Paediatric: developmental dysplasia of the hip (Ortolani — reduction, Barlow — dislocation provocative; Pavlik harness), congenital muscular torticollis (head tilt, contralateral rotation, sternocleidomastoid tightness), congenital talipes equinovarus (Pirani scoring), genu varum/valgum by age, flat foot and arch development.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Two questions come from this large cluster. Long answers here are best structured condition-by-condition: definition → assessment findings → objective measures → functional impact. The fracture-healing timeline with its rehabilitation staging, the hand assessment battery, K-levels, and the named paediatric tests (Ortolani, Barlow, Pirani) are all frequently asked short notes.</p></div>
+</article>
+<article class="topic topic-top" id="functional-assessment-outcome-measures-e-325">
+<header class="t-head"><h3>Functional Assessment, Outcome Measures, Ergonomic Risk Assessment, ICF</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
+<ul>
+<li class="">Functional assessment: performance-based measures (what the patient DOES — timed up and go, 6MWT, sit-to-stand) vs self-report measures (what the patient SAYS — questionnaires).</li>
+<li class="">Region-specific scales to know with their purpose: upper limb — DASH (disabilities of the arm, shoulder and hand; quickDASH 11 items), SPADI; lower limb — Oxford hip/knee scores, WOMAC, LEFS; low back — Oswestry Disability Index, Quebec Back Pain Disability Scale; spine/general — SF-36, PSFS (patient-specific functional scale — individualised and highly responsive, typically more so than generic and region-specific measures).</li>
+<li class="bmnemonic">Psychometric properties: <strong>R</strong>eliability (agreement between repeated measures), <strong>V</strong>alidity (measures what it claims), <strong>R</strong>esponsiveness (detects clinically important change — supported by MCID, minimal clinically important difference), plus interpretability (MDC — minimal detectable change). Mnemonic: <strong>"RVR-M"</strong> — Reliability, Validity, Responsiveness, Minimal important change.</li>
+<li class="">Selection of outcome measures: purpose, population, psychometrics, burden, and responsiveness to the patient's goals (COSMIN framework for quality appraisal).</li>
+<li class="bmnemonic">Ergonomic risk assessment tools: RULA (Rapid Upper Limb Assessment), REBA (Rapid Entire Body Assessment) — mnemonic <strong>"RULA = Upper limb, REBA = Entire body"</strong>; NIOSH lifting equation (recommended weight limit with the lifting index), OWAS, Quick Exposure Check.</li>
+<li class="">ICF model (WHO): health condition → body functions and structures (impairment) → activity (limitation) → participation (restriction), modified by environmental and personal factors; ICF-based physiotherapy diagnosis links treatment to activity/participation goals, not just impairments.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This topic carries two blueprint questions and its concepts (outcome measurement, ICF) recur throughout Paper IV and vivas. The classic long answer is the ICF model with a fully worked clinical example — map a patient with knee OA onto all ICF components. Learn one scale per region with a rough MCID (e.g., WOMAC/Oxford change thresholds) and the RULA/REBA distinction.</p></div>
+</article><div class="sec-head" id="p4"><span class="sec-num">Paper IV</span><div><h2>Physiotherapy Interventions in Musculoskeletal Disorders</h2><p class="sec-sub">RGUHS MPT (Musculoskeletal) &middot; 10 blueprint questions</p></div></div>
+<article class="topic" id="interventions-for-physiologic-impairment-213">
+<header class="t-head"><h3>Interventions for Physiologic Impairments during Rehabilitation</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
+<ul>
+<li class="bmnemonic">Impaired muscle performance (strength, power, endurance): progressive resistance exercise; principles — mnemonic <strong>"OVER"</strong> (a coined study aid): <strong>O</strong>verload, <strong>V</strong>ariety, <strong>E</strong>xercise specificity, <strong>R</strong>eversibility (detraining); plus FITT (Frequency, Intensity, Time, Type) for prescription.</li>
+<li class="">Strength gains early in training are neural (motor unit recruitment, rate coding) before hypertrophy (visible after ~6-8 weeks).</li>
+<li class="">Impaired endurance: aerobic reconditioning with FITT; deconditioning and disuse atrophy in MSK patients; peripheral vs central fatigue.</li>
+<li class="">Impaired mobility: stretching types (static, dynamic, ballistic, PNF contract-relax); stretch-induced gains combine elastic (transient) and plastic (long-term, with sustained low-load) changes; contracture management.</li>
+<li class="">Impaired neuromuscular control: proprioceptive training, perturbation training, balance progressions, PNF, task-specific repetition.</li>
+<li class="">Training dosage: repetition maximum zones (e.g., high-load low-repetition for strength vs low-load high-repetition for endurance).</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>One blueprint question, but its physiology links back to Paper II and vivas. The examiner's favourite comparison is strength versus endurance training adaptations, and static versus PNF stretching. Structure answers: impairment → physiological basis → intervention → progression parameter.</p></div>
+</article>
+<article class="topic" id="management-of-pain-314">
+<header class="t-head"><h3>Management of Pain</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 1 · C 4</span></div></header>
+<ul>
+<li class="">Pharmacological management: non-opioids — paracetamol; NSAIDs (COX inhibition — gastrointestinal and renal adverse effects); opioids for acute severe pain, short term; adjuvants — antidepressants (TCAs, duloxetine for neuropathic and fibromyalgia pain), anticonvulsants (pregabalin, gabapentin for neuropathic pain), muscle relaxants; local anaesthetics (blocks, topical).</li>
+<li class="">WHO analgesic ladder principle: "by the mouth, by the clock, by the ladder" — non-opioid → weak opioid → strong opioid, with adjuvants at every step. (Updating footnote: WHO's 2018 cancer-pain guidance treats the classic ladder only as a general guide and no longer mandates the weak-opioid step — but the classic ladder remains the expected exam answer.)</li>
+<li class="">Electrotherapy in pain: TENS — conventional/high-frequency low-intensity (gate control — acute pain) vs acupuncture-like/low-frequency high-intensity (opioid-mediated — chronic pain); IFT; shortwave diathermy for deep heating; dosage placement and timing.</li>
+<li class="">Educational and behavioural strategies: Pain Neuroscience Education (explain pain — reduces threat value), graded activity and graded exposure (fear-avoidance model of Vlaeyen), cognitive behavioural therapy, self-management and pacing.</li>
+<li class="">Adjuvant therapies: dry needling, acupuncture, heat/cryotherapy, relaxation, sleep hygiene.</li>
+<li class="bmnemonic">Mnemonic for the multimodal plan — <strong>"E-E-P"</strong>: <strong>E</strong>ducation first, <strong>E</strong>xercise/graded activity, <strong>P</strong>hysical agents as adjuncts.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Pain management recovers its exam weight across papers, and this unit pairs with the Pain topic of Paper II for a full-marks long answer: pharmacology classes with examples, electrotherapy parameter logic, and behavioural strategies with the biopsychosocial model as the conclusion. TENS parameters for acute versus chronic pain is the single most repeated question.</p></div>
+</article>
+<article class="topic topic-top" id="methods-of-musculoskeletal-rehabilitatio-325">
+<header class="t-head"><h3>Methods of Musculoskeletal Rehabilitation</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
+<ul>
+<li class="">Biomechanical concepts of intervention: open versus closed kinetic chain (OKC vs CKC — CKC = distal segment fixed, axial loading, co-contraction, more functional; e.g., leg press vs knee extension after ACL reconstruction), lever and pulley applications, external loading.</li>
+<li class="">Functional concepts: task-specific and context-specific training; transfer of training; motor relearning.</li>
+<li class="">Postural stability and balance: static/dynamic balance systems (vision, vestibular, somatosensory); progressions — stable to unstable surface, bipedal to unipedal, eyes-open to eyes-closed, dual-task; balance training reduces falls risk in the elderly.</li>
+<li class="bmnemonic">Core stability: the deep cylinder — mnemonic <strong>"TMDP: Train My Deep Power"</strong> (a coined study aid): <strong>T</strong>ransversus abdominis, <strong>M</strong>ultifidus, <strong>D</strong>iaphragm, <strong>P</strong>elvic floor; evidence supports motor-control (activation) training for low back pain, with outcomes broadly comparable to well-designed general exercise (at most a modest short-term pain advantage) — the practical value lies in the graded progression: activation → endurance → strength → functional integration.</li>
+<li class="">Functional training and physical activity promotion: WHO guideline of 150-300 minutes of moderate aerobic activity per week plus muscle-strengthening on 2+ days; "exercise is medicine".</li>
+<li class="">Education and behavioural methods: adherence strategies, goal-setting (SMART), self-efficacy building, motivational interviewing.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Carrying two blueprint questions and connecting to posture, gait and impairment interventions, this is the heart of Paper IV. Long answers revolve around core stability (definition, muscles, evidence, progressions), CKC versus OKC rehabilitation, and balance retraining. Use clinical examples (ACL rehabilitation, chronic low back pain) to demonstrate application, which is what separates a distinction answer from a pass.</p></div>
+</article>
+<article class="topic" id="advanced-techniques-in-musculoskeletal-r-224">
+<header class="t-head"><h3>Advanced Techniques in Musculoskeletal Rehabilitation</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 2 · C 4</span></div></header>
+<ul>
+<li class="bmnemonic">Manual therapy schools of thought — the classic comparison table: <strong>Maitland</strong> (graded oscillations I-IV, plus Grade V — a small-amplitude high-velocity thrust at end range, i.e., manipulation; mnemonic "<strong>I-II for pain, III-IV for stiffness</strong>"), <strong>Kaltenborn</strong> (sustained translatory glides I-III; Grade III distraction), <strong>Mulligan</strong> (Mobilisation With Movement — a sustained manual glide applied during pain-free active movement, with the required response summarised by the acronyms <strong>PILL</strong> — Pain-free, Instant result, Long-Lasting — and <strong>CROCKS</strong> for technique parameters; theoretical basis is the concept of positional faults), <strong>Cyriax</strong> (end-range capsular assessment, deep transverse friction massage, manipulation), <strong>McKenzie</strong> (Mechanical Diagnosis and Therapy — centralisation/directional preference; syndromes: postural, dysfunction, derangement, OTHER).</li>
+<li class="">Grading logic: low-amplitude grades (I-II) work within the pain-free zone for pain relief; high-amplitude grades (III-IV) stretch the capsular resistance for mobility.</li>
+<li class="">Myofascial concepts: myofascial trigger points (taut band, local twitch response, referred pain pattern), myofascial release, muscle energy techniques (post-isometric relaxation, reciprocal inhibition).</li>
+<li class="">Neurological concepts applied in MSK: PNF patterns and techniques in orthopaedic rehabilitation, motor control retraining, neuromobilisation.</li>
+<li class="">External applications: taping — rigid/McConnell (corrective) vs elastic/Kinesio (facilitate/inhibit/lymphatic); orthoses and braces; traction.</li>
+<li class="">Cognitive behavioural methods: activity pacing, fear-avoidance management, cognitive restructuring, behavioural goal-setting, relaxation.</li>
+<li class="">Adjuvant physical methods: dry needling, cupping, instrument-assisted soft tissue mobilisation (these are passive hands-on interventions, not behavioural methods).</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Two questions come from this unit, and "compare the different schools of manual therapy" is a perennial essay. Learn each school on four parameters — assessment philosophy, technique, dosage, and indication — and know the McKenzie syndromes with centralisation, since those terms define a viva's depth. Keep the evidence caveat ready: effects of manual therapy are largely neurophysiological (pain modulation) with modest structural claims.</p></div>
+</article>
+<article class="topic" id="electro-modalities-in-musculoskeletal-re-314">
+<header class="t-head"><h3>Electro Modalities in Musculoskeletal Rehabilitation</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 1 · C 4</span></div></header>
+<ul>
+<li class="">Physical agents: superficial heat (hot packs, paraffin wax — hands; infrared) and deep heat (therapeutic ultrasound 1 vs 3 MHz, shortwave diathermy — continuous vs pulsed); cold (ice massage, cryotherapy bags, cold immersion).</li>
+<li class="">Electric currents for tissue healing and muscle: NMES for muscle performance, FES for functional tasks, Russian current (2500 Hz burst modulated at 50 bps) for strengthening, high-voltage pulsed current for acute pain/oedema, microcurrent (microamperage) proposed for tissue repair, IFT for pain and oedema with vector effects.</li>
+<li class="">Dosage logic: acute conditions prefer low intensity, short duration, frequent sessions; chronic soft tissue responds to deeper or higher-dose energy; ultrasound dosing by tissue depth and stage of healing (non-thermal at low intensity for proliferation; higher thermal doses with stretch for chronic extensibility).</li>
+<li class="">Electromagnetic agents: low-level laser therapy (photobiomodulation — wavelength in nm, energy density in J/cm²), extracorporeal shockwave therapy (radial vs focused) for tendinopathies and calcific deposits, magnetotherapy.</li>
+<li class="">Evidence-based electrotherapy: use modalities as adjuncts to active rehabilitation, not stand-alone treatments; document measurable goals; discontinue when the modality no longer changes the target impairment. Current evidence is genuinely supportive for shockwave in tendinopathy (notably calcific tendinopathy of the shoulder and plantar fasciopathy) and NMES as an adjunct to strength training; the evidence for TENS in chronic pain is rated very low quality by Cochrane overviews — frame it as an option to trial with individual response assessment, not an established cure.</li>
+<li class="">Contraindications/precautions (learn as a list): pacemakers/implanted electronics, malignancy over the region, impaired sensation/circulation, active bleeding, pregnancy over abdomen/pelvis, eyes and gonads for electromagnetic agents. Precautions: avoid heat over acute inflammation or recent haemarthrosis; avoid ultrasound over the epiphyses of immature bone and over altered tissue (e.g., cement areas with implants).</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>The same physics learned in Paper II returns as clinical application here, so revise both together — that pairing is why the topic keeps its four stars. Exam favourites: selecting a current for a given goal with parameters, heat versus cold by healing stage, and contraindications. Quote the evidence position honestly: shockwave has good support in tendinopathy and NMES works as an adjunct to strength training, while the chronic-pain TENS evidence is of very low quality — a candid answer here earns more credit than an exaggerated one.</p></div>
+</article>
+<article class="topic" id="ergonomics-213">
+<header class="t-head"><h3>Ergonomics</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
+<ul>
+<li class="bmnemonic">Work-related musculoskeletal disorders (WMSD) risk factors — mnemonic <strong>"FAR-VP"</strong> (a coined study aid): <strong>F</strong>orce, <strong>A</strong>wkward posture, <strong>R</strong>epetition, <strong>V</strong>ibration, (static) <strong>P</strong>osture/low-load duration; plus contact stress and cold.</li>
+<li class="">Ergonomic interventions: engineering controls (workstation redesign, tool redesign), administrative controls (job rotation, breaks, training), worker-focused (posture education, exercises).</li>
+<li class="">Work hardening vs work conditioning — the classic distinction: work conditioning is a physiotherapy-led, single-discipline programme of conditioning and job simulation (typically 2-4 hours/day, 2-4+ weeks); work hardening is a multidisciplinary, highly structured programme using real/simulated work tasks (4-8 hours/day) addressing physical, functional, behavioural and vocational needs.</li>
+<li class="">Role of assistive devices in the workplace and current designs in assistive technology (ergonomic keyboards, lifts, seating, tele-workstation setups).</li>
+<li class="">Assessment linkage: RULA/REBA/NIOSh from Paper III identify the risk; this unit supplies the intervention.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>One blueprint question, usually a short note. The marks are in the risk-factor list and the work-conditioning-versus-work-hardening distinction. Add the post-COVID home-workstation angle for a contemporary conclusion — evaluators reward applied relevance.</p></div>
+</article>
+<article class="topic" id="trauma-rehabilitation-224">
+<header class="t-head"><h3>Trauma Rehabilitation</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 2 · C 4</span></div></header>
+<ul>
+<li class="">Trauma rehabilitation spans fracture rehabilitation, soft tissue injury management and post-traumatic reconstruction.</li>
+<li class="">Fracture rehabilitation staging follows healing (see Paper III assessment): phase 1 — control oedema and pain, maintain uninvolved-joint mobility, isometrics within immobilisation; phase 2 — gentle protected mobilisation of adjacent joints as healing permits; phase 3 — progressive strengthening, mobility and functional reloading; phase 4 — return to work/sport.</li>
+<li class="">Weight-bearing status vocabulary: non, toe-touch, partial, weight-bearing-as-tolerated, full — dictated by fixation stability and the surgeon's protocol.</li>
+<li class="bmnemonic">Classic protocol examples: distal radius (Colles') fracture — oedema control, tendon gliding, early finger/shoulder mobility; hip fracture and post-hip-arthroplasty — precautions by approach: mnemonic <strong>"HIP"</strong> (posterior approach): no Hip flexion beyond 90°, no Internal rotation, no crossing/adduction Past midline; tibial plateau/shaft — graded axial loading, bone-healing considerations; spinal fractures — extension-based log-rolling and mobilisation.</li>
+<li class="">Soft tissue injuries: ligament sprains graded I (stretch), II (partial), III (complete); management by grade — protected functional rehabilitation rather than prolonged immobilisation for most grade I-II.</li>
+<li class="">Complications to screen and manage: stiffness/arthrofibrosis, complex regional pain syndrome (early recognition — disproportionate pain, trophic changes), disuse atrophy, DVT (early mobilisation, ankle pumps, prophylaxis awareness), malunion/nonunion.</li>
+<li class="">Post-traumatic deconditioning requires the endurance and strength progression from the impairments unit.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Two blueprint questions come from trauma rehabilitation, and it is the paper's most clinically loaded unit. Long answers should be staged by healing phase with named protocol examples; the Colles' fracture and post-arthroplasty precautions are the two most repeated questions. Always mention red flags like CRPS and DVT — safety awareness earns marks.</p></div>
+</article>
+
+<div class="sec-head" id="refs"><span class="sec-num">Sources</span><div><h2>Sources & verification</h2></div></div>
+<div class="refs">
+<h3>Prepared from</h3>
+<ul>
+<li>RGUHS MPT syllabus (2020), Musculoskeletal Sciences specialty &mdash; Papers II, III and IV.</li>
+<li>RGUHS estimated topic-wise weightage for the MPT question paper, applicable to the revised ordinance (2021-22 admitted batch onwards).</li>
+<li>Donatelli RA, Wooden MJ. <em>Orthopaedic Physical Therapy</em>. Elsevier.</li>
+<li>Giangarra CE, Manske RC. <em>Clinical Orthopaedic Rehabilitation: A Team Approach</em>, 4th ed. Elsevier, 2017.</li>
+<li>Dutton M. <em>Orthopaedic Examination, Evaluation, and Intervention</em>, 2nd ed. McGraw-Hill, 2008.</li>
+<li>Starkey C. <em>Therapeutic Modalities</em>, 4th ed. FA Davis, 2013.</li>
+<li>DeLisa JA. <em>Physical Medicine and Rehabilitation</em>.</li>
+<li>Additional syllabus references: Magee (<em>Orthopedic Physical Assessment</em>), Nordin & Frankel (<em>Basic Biomechanics of the Musculoskeletal System</em>), Levangie & Norkin (<em>Joint Structure and Function</em>), Kisner & Colby (<em>Therapeutic Exercise</em>), Hoppenfeld (<em>Treatment and Rehabilitation of Fractures</em>), and Physio-Pedia for current evidence summaries.</li>
+</ul>
+<h3>Verification</h3>
+<p>Every factual claim in these notes was checked by three independent verification passes (one per paper) and consolidated by a final cross-verification pass. Nineteen corrections were applied before publication &mdash; including the body-composition accuracy hierarchy, the scapulohumeral rhythm scope, TMJ opening mechanics, amputee energy-cost figures (Waters et al.), femoral anteversion ranges, the Medicare K-level descriptors, the Mulligan Concept acronyms (PILL and CROCKS, replacing an incorrect term), Maitland Grade V, and a candid statement of the current TENS evidence. Clinical values should still be cross-checked against your college&rsquo;s prescribed edition before the examination.</p>
+</div>
+
+</div>
+</div>
+<script>
+(function(){
+  const toc=document.getElementById('toc');if(!toc)return;
+  const links=toc.querySelectorAll('a');const sections=[];
+  links.forEach(link=>{const id=link.getAttribute('href').slice(1);const el=document.getElementById(id);
+    if(el)sections.push({id,el,link});});
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(l=>l.classList.remove('active'));
+      const match=sections.find(s=>s.el===entry.target);
+      if(match){match.link.classList.add('active');
+        if(window.innerWidth<=1000){match.link.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}}}});
+  },{rootMargin:'-10% 0px -80% 0px'});
+  sections.forEach(s=>observer.observe(s.el));
+  links.forEach(link=>{link.addEventListener('click',e=>{e.preventDefault();
+    const el=document.getElementById(link.getAttribute('href').slice(1));
+    if(el){el.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+el.id);}});});
+})();
+</script>
+</body>
+</html>

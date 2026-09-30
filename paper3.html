@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper 3 — RGUHS MPT Study Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf8f3; --surface:#ffffff; --surface2:#f3efe6; --border:rgba(30,58,95,.12);
+  --text:#1f2a37; --text-dim:#6b7280; --navy:#1e3a5f; --terra:#b45309; --terra-bg:rgba(180,83,9,.08);
+  --gold:#b8860b; --gold-bg:rgba(212,167,58,.14);
+  --serif:'Instrument Serif',Georgia,serif; --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;
+  background-image:radial-gradient(rgba(30,58,95,.045) 1px,transparent 1px);background-size:26px 26px}
+a{color:var(--navy)}
+/* top nav */
+.pnav{position:sticky;top:0;z-index:300;background:rgba(250,248,243,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+.pnav-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:4px;padding:10px 28px;flex-wrap:wrap}
+.pnav-in .brand{font-family:var(--serif);font-size:19px;color:var(--navy);margin-right:auto;text-decoration:none}
+.pnav-in .brand:hover{color:var(--gold)}
+.pnav-in a.tab{font-family:var(--mono);font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--text-dim);text-decoration:none;padding:6px 12px;border-radius:20px;border:1px solid transparent}
+.pnav-in a.tab:hover{color:var(--navy);background:var(--surface2)}
+.pnav-in a.tab.on{color:var(--navy);border-color:var(--gold);background:var(--gold-bg);font-weight:700}
+/* home */
+.home{max-width:1080px;margin:0 auto;padding:70px 28px 90px}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+.home h1{font-family:var(--serif);font-size:clamp(36px,5vw,54px);font-weight:400;line-height:1.07;color:var(--navy);letter-spacing:-.5px}
+.home .lead{margin-top:18px;font-size:16.5px;color:var(--text-dim);max-width:700px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.legend span{font-family:var(--mono);font-size:11px;color:var(--text-dim);background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 12px}
+.paper-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-top:44px}
+.pcard{display:block;text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 28px;transition:transform .15s,box-shadow .15s;color:var(--text)}
+.pcard:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(30,58,95,.12)}
+.pcard .ptag{font-family:var(--mono);font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--terra)}
+.pcard h2{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--navy);margin:6px 0 8px;line-height:1.15}
+.pcard p{font-size:13.5px;color:var(--text-dim);line-height:1.55}
+.pcard .pstats{display:flex;gap:14px;margin:16px 0 6px;font-family:var(--mono);font-size:11px;color:var(--text-dim)}
+.pcard .pstats b{color:var(--navy);font-size:15px;font-family:var(--serif)}
+.pcard .open{font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-top:12px;display:inline-block}
+.tops{margin-top:14px;border-top:1px dashed var(--border);padding-top:12px}
+.tops .row{display:flex;justify-content:space-between;gap:10px;align-items:baseline;padding:3px 0;font-size:12.5px}
+.tops .row span:first-child{color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.homefoot{margin-top:48px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 26px;font-size:13.5px;color:var(--text-dim)}
+.homefoot h3{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--navy);margin-bottom:6px}
+.stars{color:var(--gold);letter-spacing:2px;white-space:nowrap}
+.stars .dim,.stars-sm .dim{color:rgba(184,134,11,.28)}
+.stars-sm{color:var(--gold);font-size:12.5px;letter-spacing:1px;white-space:nowrap}
+/* paper pages */
+.wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:210px 1fr;gap:0 44px;padding:0 28px}
+.main{min-width:0;padding-bottom:90px}
+.toc{position:sticky;top:52px;align-self:start;grid-row:1/-1;max-height:calc(100dvh - 70px);overflow-y:auto;padding:26px 0}
+.toc::-webkit-scrollbar{width:3px}.toc::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.toc-title{font-family:var(--mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);padding-bottom:10px;margin-bottom:8px;border-bottom:1px solid var(--border)}
+.toc a{display:block;font-size:11.5px;color:var(--text-dim);text-decoration:none;padding:4px 9px;border-radius:5px;border-left:2px solid transparent;transition:all .15s;line-height:1.35;margin-bottom:1px}
+.toc a:hover{color:var(--text);background:var(--surface2)}
+.toc a.active{color:var(--navy);border-left-color:var(--gold);background:var(--gold-bg)}
+.toc a.tsub{padding-left:20px}
+.hero{padding:54px 0 34px;border-bottom:3px double var(--border)}
+.hero .kicker{margin-bottom:10px}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,4vw,46px);font-weight:400;line-height:1.08;color:var(--navy);letter-spacing:-.5px;max-width:820px}
+.hero p.lead{margin-top:14px;font-size:15.5px;color:var(--text-dim);max-width:680px}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 18px}
+.stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--navy);line-height:1}
+.stat span{font-size:10.5px;color:var(--text-dim);letter-spacing:.4px}
+.sec-head{display:flex;gap:18px;align-items:baseline;padding:48px 0 8px;scroll-margin-top:70px}
+.sec-head h2{font-family:var(--serif);font-size:30px;font-weight:400;color:var(--navy);line-height:1.15}
+.topic{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:26px 30px;margin-top:20px;overflow-wrap:break-word}
+.topic-top{border-left:4px solid var(--gold);box-shadow:0 2px 14px rgba(30,58,95,.07)}
+.t-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.t-head h3{font-family:var(--serif);font-size:23px;font-weight:400;color:var(--navy);line-height:1.2;max-width:560px}
+.t-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.t-meta .stars{font-size:18px}
+.rbc{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);background:var(--surface2);padding:3px 9px;border-radius:20px;white-space:nowrap}
+.t-note{font-size:13px;color:var(--terra);font-style:italic;margin:-4px 0 10px}
+.topic ul{list-style:none;margin-top:4px}
+.topic li{padding:6px 0 6px 22px;position:relative;border-bottom:1px dashed rgba(30,58,95,.07)}
+.topic li:last-child{border-bottom:none}
+.topic li::before{content:"";position:absolute;left:2px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--navy);opacity:.35}
+.topic li.bmnemonic{background:var(--gold-bg);border-radius:8px;padding-left:24px;margin:4px 0}
+.topic li.bmnemonic::before{background:var(--gold);opacity:1}
+.exam-para{margin-top:18px;background:var(--surface2);border-radius:10px;padding:16px 20px}
+.ep-label{display:block;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+.exam-para p{font-size:14.5px;line-height:1.7}
+.tbl-wrap{overflow-x:auto;margin-top:18px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:var(--navy);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 14px;text-align:left;white-space:nowrap}
+thead th.c{text-align:center}
+tbody td{padding:9px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:nth-child(even){background:rgba(30,58,95,.025)}
+tbody tr:hover{background:var(--gold-bg)}
+td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
+.refs{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin-top:18px}
+.refs h3{font-family:var(--serif);font-size:21px;font-weight:400;color:var(--navy);margin-bottom:10px}
+.refs p{font-size:13.5px;color:var(--text-dim);margin-top:8px;line-height:1.7}
+@media (max-width:1000px){
+  .wrap{grid-template-columns:1fr}
+  .toc{position:sticky;top:44px;z-index:200;max-height:none;display:flex;gap:4px;align-items:center;overflow-x:auto;background:var(--bg);border-bottom:1px solid var(--border);padding:10px 0;grid-row:auto}
+  .toc::-webkit-scrollbar{display:none}.toc-title{display:none}
+  .toc a{white-space:nowrap;flex-shrink:0;border-left:none;border-bottom:2px solid transparent;border-radius:4px 4px 0 0;padding:6px 10px;font-size:10.5px}
+  .toc a.tsub{padding-left:10px}
+  .toc a.active{border-left:none;border-bottom-color:var(--gold);background:var(--surface)}
+  .sec-head,.topic{scroll-margin-top:96px}
+}
+@media print{.toc,.pnav{display:none}.wrap{grid-template-columns:1fr}body{background:#fff}.topic{break-inside:avoid}}
+</style>
+</head>
+<body>
+<nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT &middot; Study Notes</a><a class="tab" href="paper1.html">Paper 1</a><a class="tab" href="paper2.html">Paper 2</a><a class="tab on" href="paper3.html">Paper 3</a><a class="tab" href="paper4.html">Paper 4</a></div></nav>
+<div class="wrap">
+<nav class="toc" id="toc"><div class="toc-title">Paper 3 contents</div>
+<a href="#prio">Priority table</a>
+<a href="#introduction-to-assessment-basic-assessm-314" class="tsub">Introduction to Assessment, Basic Assessment</a>
+<a href="#screening-the-head-neck-and-back-shoulde-224" class="tsub">Screening the Head, Neck and Back; Shoulder </a>
+<a href="#direct-access-primary-care-autonomous-pr-112" class="tsub">Direct Access, Primary Care, Autonomous Prac</a>
+<a href="#physiotherapy-diagnosis-special-tests-me-325" class="tsub">Physiotherapy Diagnosis, Special Tests, Medi</a>
+<a href="#assessment-of-fractures-orthotics-splint-224" class="tsub">Assessment of Fractures, Orthotics/Splints, </a>
+<a href="#functional-assessment-outcome-measures-e-325" class="tsub">Functional Assessment, Outcome Measures, Erg</a>
+</nav>
+<div class="main">
+<div class="hero">
+  <div class="kicker">Paper 3 &middot; MPT Musculoskeletal &middot; 10 blueprint questions</div>
+  <h1>Physical and Functional Diagnosis in Musculoskeletal Disorders</h1>
+  <p class="lead">Assessment, screening, special tests, imaging, and the assessment of fractures, hands, amputations and paediatric conditions.</p>
+  <div class="stats">
+    <div class="stat"><b>6</b><span>syllabus topics</span></div>
+    <div class="stat"><b>2</b><span>five-star priorities</span></div>
+    <div class="stat"><b>10</b><span>questions in the exam</span></div>
+  </div>
+</div>
+<div class="sec-head" id="prio"><h2>Priority table</h2></div>
+<div class="tbl-wrap"><table>
+<thead><tr><th>#</th><th>Topic</th><th class="c">R</th><th class="c">B</th><th class="c">C</th><th>Rating</th></tr></thead>
+<tbody><tr><td>4</td><td>Physiotherapy Diagnosis, Special Tests, Medical Screening, Imaging, Electrodiagnosis, Exercise Testing</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>6</td><td>Functional Assessment, Outcome Measures, Ergonomic Risk Assessment, ICF</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>1</td><td>Introduction to Assessment, Basic Assessment Methods, Physical Assessment as Screening</td><td class='num'>3</td><td class='num'>1</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>2</td><td>Screening the Head, Neck and Back; Shoulder and Upper Extremity; Sacrum, Sacroiliac and Pelvis; Lower Quadrant; Chest and Ribs</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>5</td><td>Assessment of Fractures, Orthotics/Splints, Hand Injuries, Amputations, Degenerative Conditions, Paediatric Orthopaedics</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>3</td><td>Direct Access, Primary Care, Autonomous Practice, Decision-Making</td><td class='num'>1</td><td class='num'>1</td><td class='num'><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr></tbody></table></div>
+<div class="sec-head"><h2>Topic notes</h2></div>
+<article class="topic" id="introduction-to-assessment-basic-assessm-314">
+<header class="t-head"><h3>1. Introduction to Assessment, Basic Assessment Methods, Physical Assessment as Screening</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 1 · C 4</span></div></header>
+<ul>
+<li class="">Components of the musculoskeletal assessment, in order: history/subjective examination → observation/inspection → palpation → physical examination (ROM, strength, special tests) → functional assessment → reassessment.</li>
+<li class="bmnemonic">History-taking mnemonic <strong>"OPQRST"</strong>: <strong>O</strong>nset, <strong>P</strong>rovocation/palliation, <strong>Q</strong>uality, <strong>R</strong>egion and radiation, <strong>S</strong>everity, <strong>T</strong>iming (24-hour and irritability behaviour).</li>
+<li class="">Irritability triad: severity of pain, frequency, and duration/aggravation-ease — sets the pace of physical examination.</li>
+<li class="">Basic assessment methods: observation (posture, gait, deformity, swelling, muscle wasting, skin), palpation (temperature, tone, tenderness — bony and soft tissue landmarks), joint scan / quick regional screen.</li>
+<li class="">Physical assessment as a screening tool: the examination rules IN/OUT the region and detects signs of systemic disease masquerading as MSK pain (see red flags).</li>
+<li class="">Documentation: measurement (goniometry, MMT grading, tape) and repeated objective baselines for outcome tracking.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>The assessment framework in this unit is the skeleton for the entire paper, and its concepts recur in every later unit, so it earns a four-star rating. Exam answers should demonstrate a logical, reproducible sequence rather than a memorised list — examiners reward clinical reasoning (why you ask each question and what each finding would change). The subjective examination and irritability concept is a favourite short note.</p></div>
+</article>
+<article class="topic" id="screening-the-head-neck-and-back-shoulde-224">
+<header class="t-head"><h3>2. Screening the Head, Neck and Back; Shoulder and Upper Extremity; Sacrum, Sacroiliac and Pelvis; Lower Quadrant; Chest and Ribs</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 2 · C 4</span></div></header>
+<ul>
+<li class="">Screening = looking beyond the presenting region for referred symptoms, systemic disease, and neighbouring-joint contributions (e.g., cervical screening in every shoulder presentation).</li>
+<li class="">Regional screens: active ROM of the whole quadrant plus a scan of adjacent regions before local examination.</li>
+<li class="">Head/neck/back: cervical myelopathy signs, vertebrobasilar insufficiency, upper/lower cervical patterns.</li>
+<li class="">Chest and ribs: costovertebral joint dysfunction, rib springing; thoracic screening in arm pain (T4 syndrome).</li>
+<li class="">Referred pain patterns to know: diaphragm/irritation → shoulder tip (C4); heart → left arm, jaw; gallbladder → right scapula; kidney → groin/flank; hip joint → groin and knee (obturator nerve); spleen/pancreas patterns.</li>
+<li class="bmnemonic">Medical screening — red flags. Mnemonic <strong>"The Sinister Six"</strong> (an informal teaching shorthand, not a textbook eponym — the content is standard red-flag teaching): <strong>C</strong>ancer (night pain, weight loss, no relief with rest), <strong>C</strong>auda equina (saddle anaesthesia, bladder/bowel change), <strong>C</strong>rack/fracture (significant trauma, osteoporosis), <strong>C</strong>ontrol loss (progressive neurological deficit), sepsis/<strong>I</strong>nfection (fever, IV drug use), <strong>I</strong>nflammatory disorder (morning stiffness &gt; 30-60 min, age &lt; 40).</li>
+<li class="">Yellow flags (psychosocial risk of chronicity): fear-avoidance beliefs, low mood, poor coping, compensation concerns.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Two blueprint questions come from this cluster of screening topics, and its logic underpins safe autonomous practice. Answers should combine the regional screen sequence with referred pain patterns and the red flags list. Learn the classic referred-pain pairs (diaphragm to shoulder tip, hip to knee, heart to left arm) — these make neat one-mark questions.</p></div>
+</article>
+<article class="topic" id="direct-access-primary-care-autonomous-pr-112">
+<header class="t-head"><h3>3. Direct Access, Primary Care, Autonomous Practice, Decision-Making</h3><div class="t-meta"><span class="stars">★★<span class="dim">☆☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 1 · B 1 · C 2</span></div></header>
+<ul>
+<li class="">Direct access: the physiotherapist as the first point of contact, without a physician referral; Indian legal context — the National Commission for Allied and Healthcare Professions (NCAHP) Act 2021 recognises independent physiotherapy practice.</li>
+<li class="">Primary care physiotherapy: triage, screening for red flags, referral to appropriate specialists when findings fall outside the physiotherapy scope.</li>
+<li class="">Autonomous practice: responsibility for examination, diagnosis (within PT scope), treatment and referral decisions.</li>
+<li class="">Decision-making models: hypothetico-deductive reasoning (cue acquisition → hypothesis generation → cue interpretation → hypothesis evaluation); pattern recognition of experts; forward vs backward chaining.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>A short low-weight topic best prepared as a definition list with the Indian legal reference. The exam question, if it comes, asks for the competencies required of a physiotherapist working in a direct-access setting — screening, differential diagnosis and referral pathways — rather than for theory.</p></div>
+</article>
+<article class="topic topic-top" id="physiotherapy-diagnosis-special-tests-me-325">
+<header class="t-head"><h3>4. Physiotherapy Diagnosis, Special Tests, Medical Screening, Imaging, Electrodiagnosis, Exercise Testing</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
+<ul>
+<li class="">Physiotherapy diagnosis: a label describing movement/system dysfunction (ICF-based), e.g., "pain and restricted shoulder rotation with impaired scapular control", vs a medical diagnosis (pathology-based); both complement each other.</li>
+<li class="">Special tests — evaluate with diagnostic accuracy: sensitivity (SnNout: a highly Sensitive test when Negative rules OUT), specificity (SpPin: a highly Specific test when Positive rules IN), likelihood ratios.</li>
+<li class="">High-value tests to know (with accuracy): knee — Lachman (most sensitive for ACL), McMurray (menisci); shoulder — Hawkins-Kennedy and Neer (impingement), empty can (supraspinatus); low back — straight leg raise (neural tension/disc), slump; SI joint — Laslett's cluster (distraction, compression, thigh thrust, sacral thrust, Gaenslen — 3+ positive); hip — FABER, Thomas; cervical — Spurling's.</li>
+<li class="">Medical screening for referred pain — red flags as in the screening unit.</li>
+<li class="">Diagnostic imaging: X-ray (first-line for fracture, alignment; Ottawa knee/ankle rules guide when to image), CT (fine bone detail), MRI (soft tissue: disc, ligament, tumour), diagnostic ultrasound (dynamic tendon/muscle imaging). A test result must be interpreted alongside prevalence — imaging findings are common in asymptomatic people.</li>
+<li class="">Electrophysiology/electrodiagnosis: nerve conduction studies (demarcate demyelination — slowed conduction velocity vs axonopathy — reduced amplitude) and needle EMG (denervation findings at rest: fibrillations, positive sharp waves; chronic: large polyphasic units); best timed 3+ weeks after injury; helps localise the lesion and grade severity/prognosis.</li>
+<li class="">Exercise testing in MSK: submaximal aerobic tests, 6-minute walk test, functional capacity tests; safety criteria for stopping (Borg RPE, symptoms).</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>With two blueprint questions and repeated appearance of its concepts across the paper, this is the highest-yield topic of Paper III. The examiner's staple: "How do you evaluate a special test?" — answer with sensitivity, specificity and likelihood ratios plus a named example. For electrodiagnosis, be ready to state what EMG and NCS each measure and when after injury they become informative. The SnNout/SpPin mnemonics themselves earn marks.</p></div>
+</article>
+<article class="topic" id="assessment-of-fractures-orthotics-splint-224">
+<header class="t-head"><h3>5. Assessment of Fractures, Orthotics/Splints, Hand Injuries, Amputations, Degenerative Conditions, Paediatric Orthopaedics</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 2 · C 4</span></div></header>
+<ul>
+<li class="">Fracture assessment: history (mechanism — direct/indirect/traumatic vs stress), deformity, crepitus, abnormal movement; assessment of the injured limb pre-operatively (neurovascular status, skin, compartment check) and post-operatively (healing stage, ROM, strength, function).</li>
+<li class="bmnemonic">Fracture healing phases — mnemonic <strong>"IRHR"</strong>: <strong>I</strong>nflammation (haematoma, days), soft/Reparative callus (weeks), <strong>H</strong>ard callus, <strong>R</strong>emodelling (months to years). Clinical union: pain-free stress, no tenderness, no mobility at the fracture site.</li>
+<li class="">Orthotics/splints — functions: immobilise, protect, mobilise (allowed motion), correct (serial), support/assist; static vs dynamic splints; assessment of fit, skin, and function under the splint.</li>
+<li class="">Hand injury assessment: oedema (volumetry, figure-of-eight), scar and sensibility — Semmes-Weinstein monofilaments (pressure thresholds) and static/moving two-point discrimination; ROM (total active motion), grip and pinch dynamometry, dexterity (nine-hole peg test, Purdue pegboard).</li>
+<li class="">Amputation assessment: level (transradial, transhumeral, transfemoral, transtibial...), residual limb condition (shape, skin, sensation, contractures), strength, pre-prosthetic and prosthetic assessment; lower-limb mobility classification — Medicare K-levels K0-K4 (K1 = household ambulator; K2 = limited community ambulator who can manage low-level environmental barriers such as curbs and uneven surfaces; K3 = community ambulator with variable cadence who negotiates most environmental barriers; K4 = exceeds basic community demands — e.g., active adults, athletes).</li>
+<li class="">Degenerative conditions: osteoarthritis — crepitus, bony enlargement (Heberden's nodes — DIP; Bouchard's — PIP), varus thrust knee (medial tibiofemoral); rheumatoid arthritis — symmetric synovitis, ulnar deviation, swan-neck/boutonniere deformities, morning stiffness.</li>
+<li class="">Paediatric: developmental dysplasia of the hip (Ortolani — reduction, Barlow — dislocation provocative; Pavlik harness), congenital muscular torticollis (head tilt, contralateral rotation, sternocleidomastoid tightness), congenital talipes equinovarus (Pirani scoring), genu varum/valgum by age, flat foot and arch development.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Two questions come from this large cluster. Long answers here are best structured condition-by-condition: definition → assessment findings → objective measures → functional impact. The fracture-healing timeline with its rehabilitation staging, the hand assessment battery, K-levels, and the named paediatric tests (Ortolani, Barlow, Pirani) are all frequently asked short notes.</p></div>
+</article>
+<article class="topic topic-top" id="functional-assessment-outcome-measures-e-325">
+<header class="t-head"><h3>6. Functional Assessment, Outcome Measures, Ergonomic Risk Assessment, ICF</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
+<ul>
+<li class="">Functional assessment: performance-based measures (what the patient DOES — timed up and go, 6MWT, sit-to-stand) vs self-report measures (what the patient SAYS — questionnaires).</li>
+<li class="">Region-specific scales to know with their purpose: upper limb — DASH (disabilities of the arm, shoulder and hand; quickDASH 11 items), SPADI; lower limb — Oxford hip/knee scores, WOMAC, LEFS; low back — Oswestry Disability Index, Quebec Back Pain Disability Scale; spine/general — SF-36, PSFS (patient-specific functional scale — individualised and highly responsive, typically more so than generic and region-specific measures).</li>
+<li class="bmnemonic">Psychometric properties: <strong>R</strong>eliability (agreement between repeated measures), <strong>V</strong>alidity (measures what it claims), <strong>R</strong>esponsiveness (detects clinically important change — supported by MCID, minimal clinically important difference), plus interpretability (MDC — minimal detectable change). Mnemonic: <strong>"RVR-M"</strong> — Reliability, Validity, Responsiveness, Minimal important change.</li>
+<li class="">Selection of outcome measures: purpose, population, psychometrics, burden, and responsiveness to the patient's goals (COSMIN framework for quality appraisal).</li>
+<li class="bmnemonic">Ergonomic risk assessment tools: RULA (Rapid Upper Limb Assessment), REBA (Rapid Entire Body Assessment) — mnemonic <strong>"RULA = Upper limb, REBA = Entire body"</strong>; NIOSH lifting equation (recommended weight limit with the lifting index), OWAS, Quick Exposure Check.</li>
+<li class="">ICF model (WHO): health condition → body functions and structures (impairment) → activity (limitation) → participation (restriction), modified by environmental and personal factors; ICF-based physiotherapy diagnosis links treatment to activity/participation goals, not just impairments.</li>
+</ul>
+<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This topic carries two blueprint questions and its concepts (outcome measurement, ICF) recur throughout Paper IV and vivas. The classic long answer is the ICF model with a fully worked clinical example — map a patient with knee OA onto all ICF components. Learn one scale per region with a rough MCID (e.g., WOMAC/Oxford change thresholds) and the RULA/REBA distinction.</p></div>
+</article>
+<div class="sec-head" id="refs"><h2>Sources & verification</h2></div>
+<div class="refs"><h3>Prepared from</h3><p>MPT syllabus (RGUHS 2020), topic-wise blueprint (2021-22 batch), Dutton — Orthopaedic Examination, Evaluation and Intervention; Magee — Orthopedic Physical Assessment (syllabus reference); Giangarra &amp; Manske — Clinical Orthopaedic Rehabilitation.</p>
+<h3 style="margin-top:16px">Verification</h3>
+<p>These notes were checked by independent verification passes and cross-verification before publication; clinical values should be cross-checked against your college&rsquo;s prescribed edition before the examination. Mnemonics flagged in the notes as &ldquo;coined study aids&rdquo; are original memory aids, not textbook eponyms.</p></div>
+</div>
+</div>
+<script>
+(function(){
+  const toc=document.getElementById('toc');if(!toc)return;
+  const links=toc.querySelectorAll('a');const sections=[];
+  links.forEach(link=>{const el=document.getElementById(link.getAttribute('href').slice(1));
+    if(el)sections.push({el,link});});
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(l=>l.classList.remove('active'));
+      const match=sections.find(s=>s.el===entry.target);
+      if(match){match.link.classList.add('active');
+        if(window.innerWidth<=1000){match.link.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}}}});
+  },{rootMargin:'-10% 0px -80% 0px'});
+  sections.forEach(s=>observer.observe(s.el));
+})();
+</script>
+</body>
+</html>
