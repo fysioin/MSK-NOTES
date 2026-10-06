@@ -108,6 +108,10 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 }
 @media print{.toc,.pnav{display:none}.wrap{grid-template-columns:1fr}body{background:#fff}.topic{break-inside:avoid}}
 </style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1e3a5f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
 <nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT &middot; Study Notes</a><a class="tab" href="paper1.html">Paper 1</a><a class="tab" href="paper2.html">Paper 2</a><a class="tab" href="paper3.html">Paper 3</a><a class="tab" href="paper4.html">Paper 4</a></div></nav>
@@ -159,5 +163,6 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
     <p style="margin-top:10px">30 topics &middot; 10 five-star priorities &middot; 4 papers &middot; 10 questions per paper</p>
   </div>
 </div>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
 </body>
 </html>

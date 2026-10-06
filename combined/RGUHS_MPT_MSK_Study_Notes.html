@@ -97,6 +97,10 @@ td.paper-badge{font-family:var(--mono);font-size:11px;color:var(--terra);white-s
 .callout b{color:var(--terra)}
 @media print{.toc{display:none}.wrap{grid-template-columns:1fr}body{background:#fff}.topic{break-inside:avoid}}
 </style>
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#1e3a5f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
 <div class="wrap">
@@ -498,5 +502,6 @@ td.paper-badge{font-family:var(--mono);font-size:11px;color:var(--terra);white-s
     if(el){el.scrollIntoView({behavior:'smooth',block:'start'});history.replaceState(null,'','#'+el.id);}});});
 })();
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('../sw.js').catch(function(){});});}</script>
 </body>
 </html>
