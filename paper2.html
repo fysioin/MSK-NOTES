@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Paper 2 — RGUHS MPT Study Notes</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#faf8f3; --surface:#ffffff; --surface2:#f3efe6; --border:rgba(30,58,95,.12);
@@ -108,42 +109,172 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 }
 @media print{.toc,.pnav{display:none}.wrap{grid-template-columns:1fr}body{background:#fff}.topic{break-inside:avoid}}
 </style>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1e3a5f">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-</head>
-<body>
-<nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT &middot; Study Notes</a><a class="tab" href="paper1.html">Paper 1</a><a class="tab on" href="paper2.html">Paper 2</a><a class="tab" href="paper3.html">Paper 3</a><a class="tab" href="paper4.html">Paper 4</a></div></nav>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#1e3a5f" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script id="rg-boot">(function(){try{var d=document.documentElement;
+if(localStorage.getItem('rguhs-theme')==='dark')d.classList.add('dark');
+if(localStorage.getItem('rguhs-fit')==='1')d.classList.add('fit');}catch(e){}})();</script><style id="rguhs-teal-theme">
+/* ===== RGUHS teal study theme (injected layer) ===== */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#1b1f24; --muted:#5b6472;
+  --line:#e4e7eb; --line-2:#d3d8de;
+  --accent:#0f766e; --accent-ink:#0b5f59; --accent-soft:#e8f3f1;
+  --term:#4a5560; --term-dot:#9aa3ad;
+  --paper:#f6f7f9; --paper2:#eef1f4; --surface:#ffffff; --surface2:#f2f4f7;
+  --surface-2:#f2f4f7; --border:#e4e7eb; --rule:#e4e7eb; --rule-strong:#d3d8de;
+  --text:#1b1f24; --text-dim:#5b6472; --ink-dim:#5b6472;
+  --navy:#0f766e; --terra:#0b5f59; --terra-bg:#e8f3f1; --gold:#0f766e; --gold-bg:#e8f3f1;
+  --accent2:#0b5f59; --accent-dim:#99f6e4; --accent2-dim:#99f6e4;
+  --blue:#0f766e; --bar:#ffffff;
+  --ui-bg:#ffffff; --ui-ink:#1b1f24; --ui-line:rgba(20,30,50,.16); --ui-hover:rgba(20,30,50,.07); --ui-on:#e8f3f1;
+}
+html.dark, html[data-theme="dark"]{
+  --bg:#101216; --panel:#171a1f; --ink:#e7e9ed; --muted:#98a1ac;
+  --line:#262a31; --line-2:#333842;
+  --accent:#5eead4; --accent-ink:#5eead4; --accent-soft:#16292a;
+  --term:#aab2bd; --term-dot:#5a6470;
+  --paper:#101216; --paper2:#171a1f; --surface:#171a1f; --surface2:#1d2126;
+  --surface-2:#1d2126; --border:#262a31; --rule:#262a31; --rule-strong:#333842;
+  --text:#e7e9ed; --text-dim:#98a1ac; --ink-dim:#98a1ac;
+  --navy:#5eead4; --terra:#5eead4; --terra-bg:#16292a; --gold:#5eead4; --gold-bg:#16292a;
+  --accent2:#5eead4; --accent-dim:#16292a; --accent2-dim:#16292a;
+  --blue:#5eead4; --bar:#171a1f;
+  --ui-bg:#1d2126; --ui-ink:#e7e9ed; --ui-line:rgba(255,255,255,.18); --ui-hover:rgba(255,255,255,.09); --ui-on:#16292a;
+}
+html,body{background:var(--bg)!important;color:var(--ink)!important;
+  font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif!important;font-size:17px;line-height:1.68;
+  -webkit-font-smoothing:antialiased;}
+body{background-image:none!important;}
+h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif!important;color:var(--ink)!important;letter-spacing:normal!important;}
+a{color:var(--accent)!important;}
+a:hover{color:var(--accent-ink)!important;}
+::selection{background:var(--accent-soft);}
+/* top bars / nav */
+.pnav,.top,.bar,.pnav-in,.rtools{background:var(--panel)!important;border-color:var(--line)!important;color:var(--ink)!important;}
+.bar,.top{position:sticky;top:52px;z-index:70;}
+.rtools{display:none!important;}
+.pnav-in a.tab.on{border-color:var(--accent)!important;background:var(--accent-soft)!important;color:var(--accent-ink)!important;}
+.brand,.brand b{color:var(--accent-ink)!important;}
+/* cards / panels */
+.topic,.pcard,.homefoot,.sec-head,.refs,.exam-para,.tbl-wrap,.fig,.stat,.card,
+main article,main section,.crumb,.legend span{
+  background:var(--panel)!important;border-color:var(--line)!important;color:var(--ink)!important;
+  box-shadow:none!important;}
+.topic-top{border-left-color:var(--accent)!important;}
+.exam-para,.stat,.legend span,.t-meta .rbc,.rbc{background:var(--accent-soft)!important;color:var(--accent-ink)!important;border-color:var(--line)!important;}
+.bmnemonic,.bmnemonic::before{background:var(--accent-soft)!important;}
+.stars,.stars-sm,.open,.pcard .open,.ep-label,.kicker,.ptag,.pcard .ptag{color:var(--accent)!important;}
+.stars .dim,.stars-sm .dim{color:var(--line-2)!important;}
+/* tables */
+table{border-collapse:collapse;}
+th{background:var(--accent-soft)!important;color:var(--accent-ink)!important;border-color:var(--line)!important;}
+td{border-color:var(--line)!important;}
+thead th{background:var(--accent)!important;color:#fff!important;}
+html.dark thead th{color:#06231f!important;}
+/* toolbar */
+.rg-toolbar{position:sticky;top:0;z-index:900;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  padding:9px 20px;background:var(--panel);border-bottom:1px solid var(--line);font-size:13.5px;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+.rg-toolbar .lbl{color:var(--muted);font-weight:600;}
+.rg-toolbar .sw{width:22px;height:22px;border-radius:50%;border:1px solid var(--line-2);cursor:pointer;padding:0;}
+.rg-toolbar .sw.yellow{background:#ffe680;} .rg-toolbar .sw.green{background:#a8e6a3;} .rg-toolbar .sw.pink{background:#ffb3d1;}
+.rg-toolbar .btn{border:1px solid var(--line-2);background:var(--panel);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;font:inherit;font-size:13px;}
+.rg-toolbar .btn:hover{background:var(--accent-soft);border-color:var(--accent);}
+.rg-toolbar .btn.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink);font-weight:600;}
+.rg-toolbar .sep{width:1px;height:20px;background:var(--line-2);}
+.rg-toolbar .hint{margin-left:auto;color:var(--muted);font-size:12.5px;}
+html.fit .wrap,html.fit main{max-width:100%!important;}
+/* term popups */
+.term{color:var(--term);border-bottom:1px dotted var(--term-dot);cursor:help;}
+.term:hover{background:var(--accent-soft);border-bottom-color:var(--accent);}
+html.no-notes .term{border-bottom:none;color:inherit;cursor:inherit;background:none;}
+#rg-popup{position:absolute;z-index:1200;max-width:330px;display:none;padding:11px 13px;border-radius:9px;
+  background:#1c1f24;color:#f1f3f6;font-size:14px;line-height:1.5;box-shadow:0 12px 30px rgba(0,0,0,.28);font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+html.dark #rg-popup{background:#2a2f36;color:#eef1f4;border:1px solid var(--line-2);}
+#rg-popup b{color:#fff;}
+mark.hl{border-radius:3px;padding:0 1px;color:inherit;}
+mark.hl.yellow{background:rgba(255,214,0,.38);}
+mark.hl.green{background:rgba(52,199,89,.32);}
+mark.hl.pink{background:rgba(255,90,150,.30);}
+/* glossary */
+.glossary{margin:26px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 18px;}
+.glossary summary{cursor:pointer;font-weight:700;padding:12px 0;}
+.gloss-hint{margin:0 0 8px;color:var(--muted);font-size:13.5px;}
+.glossary ul{font-size:14px;columns:2;column-gap:26px;}
+@media (max-width:680px){.glossary ul{columns:1;}}
+/* notes */
+.rg-fab{position:fixed;right:20px;bottom:20px;z-index:1100;display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:999px;padding:11px 17px;
+  font:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.22);font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+html.dark .rg-fab{color:#052622;}
+.rg-drawer{position:fixed;top:0;right:0;height:100%;width:min(430px,92vw);z-index:1300;background:var(--panel);
+  border-left:1px solid var(--line);box-shadow:-12px 0 34px rgba(0,0,0,.2);transform:translateX(102%);
+  transition:transform .22s ease;display:flex;flex-direction:column;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+.rg-drawer.open{transform:none;}
+.rg-drawer .dhead{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line);}
+.rg-drawer .dhead strong{font-size:16px;}
+.rg-drawer .dclose{border:1px solid var(--line-2);background:var(--panel);color:var(--ink);border-radius:8px;padding:4px 11px;font:inherit;font-size:13px;cursor:pointer;}
+.rg-drawer .dhint{margin:10px 18px 2px;color:var(--muted);font-size:12.5px;}
+.rg-drawer .dbody{overflow:auto;padding:6px 18px 28px;}
+.rg-notes{width:100%;min-height:220px;resize:vertical;padding:10px 11px;font:inherit;font-size:14.5px;line-height:1.55;
+  color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:8px;}
+.rg-notes:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft);}
+.rg-scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1250;opacity:0;pointer-events:none;transition:opacity .22s ease;}
+.rg-scrim.open{opacity:1;pointer-events:auto;}
+@media print{.rg-toolbar,#rg-popup,.rg-fab,.rg-drawer,.rg-scrim{display:none!important;}}
+</style></head>
+<body><div aria-label="Study tools" class="rg-toolbar" role="toolbar">
+<span class="lbl">Highlight</span>
+<button aria-label="Yellow highlighter" class="sw yellow" data-color="yellow" title="Yellow highlighter"></button>
+<button aria-label="Green highlighter" class="sw green" data-color="green" title="Green highlighter"></button>
+<button aria-label="Pink highlighter" class="sw pink" data-color="pink" title="Pink highlighter"></button>
+<button class="btn" id="rgErase">Erase</button>
+<button class="btn" id="rgClearAll">Clear all</button>
+<span class="sep"></span>
+<button class="btn active" id="rgToggleNotes">Term notes</button>
+<button class="btn" id="rgToggleTheme">Night mode</button>
+<button class="btn" id="rgToggleFit">Fit to screen</button>
+<span class="hint">Select text, then pick a colour. Notes save automatically.</span>
+</div>
+<div id="rg-popup"></div>
+<button aria-expanded="false" class="rg-fab" id="rgNotesFab">✎ Study Notes</button>
+<div class="rg-scrim" id="rgScrim"></div>
+<aside aria-label="Study notes" class="rg-drawer" id="rgDrawer">
+<div class="dhead"><strong>Study Notes</strong><button class="dclose" id="rgDrawerClose">Close</button></div>
+<p class="dhint">Your notes for this page — saved automatically in this browser.</p>
+<div class="dbody"><textarea class="rg-notes" id="rgPageNote" placeholder="Write your notes for this page..."></textarea></div>
+</aside>
+<nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT · Study Notes</a><a class="tab" href="paper1.html">Paper 1</a><a class="tab on" href="paper2.html">Paper 2</a><a class="tab" href="paper3.html">Paper 3</a><a class="tab" href="paper4.html">Paper 4</a></div></nav>
 <div class="wrap">
 <nav class="toc" id="toc"><div class="toc-title">Paper 2 contents</div>
 <a href="#prio">Priority table</a>
-<a href="#basic-concepts-of-musculoskeletal-system-213" class="tsub">Basic Concepts of Musculoskeletal System</a>
-<a href="#basic-concepts-of-anthropometry-112" class="tsub">Basic Concepts of Anthropometry</a>
-<a href="#basic-concepts-of-biomechanics-415" class="tsub">Basic Concepts of Biomechanics</a>
-<a href="#biomechanics-of-movement-across-the-life-202" class="tsub">Biomechanics of Movement across the Life Spa</a>
-<a href="#physiological-basis-of-human-movement-213" class="tsub">Physiological Basis of Human Movement</a>
-<a href="#mechanics-and-pathomechanics-of-joints-325" class="tsub">Mechanics and Pathomechanics of Joints</a>
-<a href="#posture-213" class="tsub">Posture</a>
-<a href="#gait-and-function-314" class="tsub">Gait and Function</a>
-<a href="#pain-325" class="tsub">Pain</a>
-<a href="#electro-physics-325" class="tsub">Electro Physics</a>
+<a class="tsub" href="#basic-concepts-of-musculoskeletal-system-213">Basic Concepts of Musculoskeletal System</a>
+<a class="tsub" href="#basic-concepts-of-anthropometry-112">Basic Concepts of Anthropometry</a>
+<a class="tsub" href="#basic-concepts-of-biomechanics-415">Basic Concepts of Biomechanics</a>
+<a class="tsub" href="#biomechanics-of-movement-across-the-life-202">Biomechanics of Movement across the Life Spa</a>
+<a class="tsub" href="#physiological-basis-of-human-movement-213">Physiological Basis of Human Movement</a>
+<a class="tsub" href="#mechanics-and-pathomechanics-of-joints-325">Mechanics and Pathomechanics of Joints</a>
+<a class="tsub" href="#posture-213">Posture</a>
+<a class="tsub" href="#gait-and-function-314">Gait and Function</a>
+<a class="tsub" href="#pain-325">Pain</a>
+<a class="tsub" href="#electro-physics-325">Electro Physics</a>
 </nav>
 <div class="main">
 <div class="hero">
-  <div class="kicker">Paper 2 &middot; MPT Musculoskeletal &middot; 10 blueprint questions</div>
-  <h1>Fundamental Principles of Musculoskeletal Physiotherapy</h1>
-  <p class="lead">The science base of the specialty — biomechanics, joint mechanics, posture, gait, pain and electro-physics.</p>
-  <div class="stats">
-    <div class="stat"><b>10</b><span>syllabus topics</span></div>
-    <div class="stat"><b>4</b><span>five-star priorities</span></div>
-    <div class="stat"><b>10</b><span>questions in the exam</span></div>
-  </div>
+<div class="kicker">Paper 2 · MPT Musculoskeletal · 10 blueprint questions</div>
+<h1>Fundamental Principles of Musculoskeletal Physiotherapy</h1>
+<p class="lead">The science base of the specialty — <span class="term" data-note="The study of the mechanical laws relating to the movement of living organisms." tabindex="0">biomechanics</span>, joint mechanics, posture, gait, pain and electro-physics.</p>
+<div class="stats">
+<div class="stat"><b>10</b><span>syllabus topics</span></div>
+<div class="stat"><b>4</b><span>five-star priorities</span></div>
+<div class="stat"><b>10</b><span>questions in the exam</span></div>
+</div>
 </div>
 <div class="sec-head" id="prio"><h2>Priority table</h2></div>
 <div class="tbl-wrap"><table>
 <thead><tr><th>#</th><th>Topic</th><th class="c">R</th><th class="c">B</th><th class="c">C</th><th>Rating</th></tr></thead>
-<tbody><tr><td>3</td><td>Basic Concepts of Biomechanics</td><td class='num'>4</td><td class='num'>1</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>6</td><td>Mechanics and Pathomechanics of Joints</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>9</td><td>Pain</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>10</td><td>Electro Physics</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>8</td><td>Gait and Function</td><td class='num'>3</td><td class='num'>1</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>1</td><td>Basic Concepts of Musculoskeletal System</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>5</td><td>Physiological Basis of Human Movement</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>7</td><td>Posture</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>2</td><td>Basic Concepts of Anthropometry</td><td class='num'>1</td><td class='num'>1</td><td class='num'><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr><tr><td>4</td><td>Biomechanics of Movement across the Life Span</td><td class='num'>2</td><td class='num'>0</td><td class='num'><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr></tbody></table></div>
+<tbody><tr><td>3</td><td>Basic Concepts of Biomechanics</td><td class="num">4</td><td class="num">1</td><td class="num"><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>6</td><td>Mechanics and Pathomechanics of Joints</td><td class="num">3</td><td class="num">2</td><td class="num"><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>9</td><td>Pain</td><td class="num">3</td><td class="num">2</td><td class="num"><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>10</td><td>Electro Physics</td><td class="num">3</td><td class="num">2</td><td class="num"><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>8</td><td><span class="term" data-note="The manner of walking." tabindex="0">Gait</span> and Function</td><td class="num">3</td><td class="num">1</td><td class="num"><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>1</td><td>Basic Concepts of Musculoskeletal System</td><td class="num">2</td><td class="num">1</td><td class="num"><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>5</td><td>Physiological Basis of Human Movement</td><td class="num">2</td><td class="num">1</td><td class="num"><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>7</td><td><span class="term" data-note="The position of the body and its parts relative to gravity." tabindex="0">Posture</span></td><td class="num">2</td><td class="num">1</td><td class="num"><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>2</td><td>Basic Concepts of Anthropometry</td><td class="num">1</td><td class="num">1</td><td class="num"><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr><tr><td>4</td><td>Biomechanics of Movement across the Life Span</td><td class="num">2</td><td class="num">0</td><td class="num"><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr></tbody></table></div>
 <div class="sec-head"><h2>Topic notes</h2></div>
 <article class="topic" id="basic-concepts-of-musculoskeletal-system-213">
 <header class="t-head"><h3>1. Basic Concepts of Musculoskeletal System</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
@@ -153,13 +284,13 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">206 bones: axial skeleton (80 — skull, vertebral column, rib cage) + appendicular (126 — limbs and girdles).</li>
 <li class="">Bone classification (shape): long, short, flat, irregular, sesamoid; microstructure: cortical (compact, ~80% of bone mass) vs cancellous (trabecular, metabolically active).</li>
 <li class="">Wolff's law: bone is laid down where needed and resorbed where not needed — bone remodels along lines of stress. Converse: disuse/immobilisation causes osteoporosis.</li>
-<li class="">Joint classification — structural: fibrous, cartilaginous, synovial; functional: synarthrosis (immovable), amphiarthrosis (slightly movable), diarthrosis (freely movable).</li>
-<li class="">Synovial joint components: articular (hyaline) cartilage, capsule, synovial membrane, and accessory structures (labrum, menisci, discs, fat pads, bursae).</li>
+<li class="">Joint classification — structural: fibrous, cartilaginous, <span class="term" data-note="Relating to the fluid-filled lining of a joint." tabindex="0">synovial</span>; functional: synarthrosis (immovable), amphiarthrosis (slightly movable), diarthrosis (freely movable).</li>
+<li class="">Synovial joint components: articular (hyaline) cartilage, <span class="term" data-note="The fibrous sleeve that surrounds and stabilises a joint." tabindex="0">capsule</span>, synovial membrane, and accessory structures (labrum, menisci, discs, fat pads, bursae).</li>
 <li class="">Cartilage types: hyaline (articular), fibro (menisci, TMJ disc), elastic (ear, epiglottis). Articular cartilage is avascular, aneural, aneural nutrition by synovial diffusion.</li>
 <li class="">Muscle fibre types: Type I (slow oxidative, endurance, red), Type IIa (fast oxidative-glycolytic), Type IIx (fast glycolytic, fatigable).</li>
-<li class="">Neuromuscular basis: motor unit (anterior horn cell + axon + fibres), muscle spindle (length/velocity), Golgi tendon organ (tension), alpha-gamma co-activation, stretch reflex.</li>
+<li class="">Neuromuscular basis: motor unit (anterior horn cell + axon + fibres), <span class="term" data-note="A stretch sensor inside muscle that helps control posture and movement." tabindex="0">muscle spindle</span> (length/velocity), <span class="term" data-note="A sensor in tendon that detects tension and helps regulate muscle force." tabindex="0">Golgi <span class="term" data-note="Strong fibrous tissue that attaches muscle to bone." tabindex="0">tendon</span> organ</span> (tension), alpha-gamma co-activation, stretch reflex.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This unit is the vocabulary of the whole course. Examiners commonly ask for the functional classification of joints, types of cartilage and their clinical relevance (e.g., why articular cartilage heals poorly), Wolff's law applied to fracture healing and immobilisation, and muscle fibre types with training implications. Expect a short-note rather than a long essay from this unit.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>This unit is the vocabulary of the whole course. Examiners commonly ask for the functional classification of joints, types of cartilage and their clinical relevance (e.g., why articular cartilage heals poorly), Wolff's law applied to fracture healing and immobilisation, and muscle fibre types with training implications. Expect a short-note rather than a long essay from this unit.</p></div>
 </article>
 <article class="topic" id="basic-concepts-of-anthropometry-112">
 <header class="t-head"><h3>2. Basic Concepts of Anthropometry</h3><div class="t-meta"><span class="stars">★★<span class="dim">☆☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 1 · B 1 · C 2</span></div></header>
@@ -168,10 +299,10 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Tools: stadiometer (height), anthropometer, spreading and sliding calipers, skinfold calipers, measuring tape, weighing scale.</li>
 <li class="">Body size measures: height, weight, BMI (kg/m²), segmental lengths, girths; body shape: somatotypes — endomorph, mesomorph, ectomorph.</li>
 <li class="bmnemonic">Body composition methods — mnemonic <strong>"D-H-BS" (Most to least accurate)</strong>: <strong>D</strong>EXA (or multicomponent models), <strong>H</strong>ydrodensitometry (underwater weighing), <strong>B</strong>ioelectrical impedance, <strong>S</strong>kinfolds (BIA and skinfolds are roughly comparable).</li>
-<li class="">MSK applications: limb length measurement (direct — tape between bony landmarks; indirect — blocks under the short limb to level the pelvis), girth for muscle atrophy, waist-hip ratio.</li>
+<li class="">MSK applications: limb length measurement (direct — tape between bony landmarks; indirect — blocks under the short limb to level the pelvis), girth for muscle <span class="term" data-note="Wasting or shrinking of muscle or tissue." tabindex="0">atrophy</span>, waist-hip ratio.</li>
 <li class="">Human variation: intra-individual (bilateral), inter-individual, population-level; relevance to ergonomic fit and prosthetic/orthotic sizing.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>A low-yield unit that usually appears as a short note. Learn the definition, the measurement tools, and the body composition techniques in order of accuracy. Its clinical hook in MSK practice is limb-length discrepancy assessment and its effect on pelvic alignment and gait.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>A low-yield unit that usually appears as a short note. Learn the definition, the measurement tools, and the body composition techniques in order of accuracy. Its clinical hook in MSK practice is limb-length discrepancy assessment and its effect on pelvic alignment and gait.</p></div>
 </article>
 <article class="topic topic-top" id="basic-concepts-of-biomechanics-415">
 <header class="t-head"><h3>3. Basic Concepts of Biomechanics</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 4 · B 1 · C 5</span></div></header>
@@ -179,13 +310,13 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Kinematics = description of motion (displacement, velocity, acceleration) without reference to forces; Kinetics = study of the forces that cause motion.</li>
 <li class="">Force is a vector: magnitude, direction, point of application, line of action.</li>
 <li class="">Newton's laws: (1) inertia, (2) F = ma, (3) action-reaction (basis of the ground reaction force).</li>
-<li class="">Moment of force (torque) = Force x perpendicular distance from the axis (unit Nm). A force couple = two equal, opposite, non-collinear parallel forces producing pure rotation.</li>
+<li class="">Moment of force (<span class="term" data-note="A turning force around an axis - the product of force and its moment arm." tabindex="0">torque</span>) = Force x perpendicular distance from the axis (unit Nm). A force couple = two equal, opposite, non-collinear parallel forces producing pure rotation.</li>
 <li class="">Equilibrium: static and dynamic; first condition (sum of forces = 0), second condition (sum of moments = 0). Centre of gravity and base of support determine stability.</li>
 <li class="bmnemonic">Lever classes — mnemonic <strong>"1-2-3 = F-R-E"</strong> (the middle element in each class): 1st class <strong>F</strong>ulcrum in the middle (atlanto-occipital joint, seesaw); 2nd class <strong>R</strong>esistance in the middle (ankle plantarflexors during heel raise — mechanical advantage &gt; 1); 3rd class <strong>E</strong>ffort in the middle (most human joints, e.g., elbow flexion — mechanical advantage &lt; 1, built for speed and range).</li>
 <li class="">Degrees of freedom: number of independent planes of motion (e.g., knee — 2 DoF; shoulder — 3 DoF).</li>
 <li class="">Energetics: work (J), power (W), efficiency (muscular efficiency ~20-25%); most economical walking speed is around 80 m/min (about 4.8 km/h); metabolic energy consumption measured via oxygen uptake.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This is the highest-priority foundation topic — its concepts reappear in joint mechanics, gait, posture and rehabilitation methods, which is why it earns five stars on repetition plus one blueprint question. Classic exam asks: define and classify levers with one example of each; differentiate kinematics from kinetics with gait examples; define moment with a clinical example (e.g., patellofemoral joint reaction force rises as the knee flexes because the moment arm of body weight increases).</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>This is the highest-priority foundation topic — its concepts reappear in joint mechanics, gait, posture and rehabilitation methods, which is why it earns five stars on repetition plus one blueprint question. Classic exam asks: define and classify levers with one example of each; differentiate kinematics from kinetics with gait examples; define moment with a clinical example (e.g., patellofemoral joint reaction force rises as the knee flexes because the <span class="term" data-note="The perpendicular distance from a force to the joint axis; a longer moment arm produces more torque." tabindex="0">moment arm</span> of body weight increases).</p></div>
 </article>
 <article class="topic" id="biomechanics-of-movement-across-the-life-202">
 <header class="t-head"><h3>4. Biomechanics of Movement across the Life Span</h3><div class="t-meta"><span class="stars">★★<span class="dim">☆☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 0 · C 2</span></div></header>
@@ -196,7 +327,7 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Gait changes in older adults: slower speed, shorter step length, reduced cadence, reduced push-off (ankle power), increased double-limb support time, stooped posture; a wider base of support is classically described (textbook convention — empirical evidence is mixed).</li>
 <li class="">Biomechanics of ageing: sarcopenia, decreased bone mineral density, joint stiffness, slower reaction time, reduced balance reserve.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>The blueprint does not allot this topic a dedicated question (it is examined through the Gait topic in the same paper), so read it jointly with Gait and Function. The exam angle is always a comparison: gait of a toddler versus a healthy elderly subject, or growth-plate injury and its consequences. Do not spend disproportionate time here.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>The blueprint does not allot this topic a dedicated question (it is examined through the Gait topic in the same paper), so read it jointly with Gait and Function. The exam angle is always a comparison: gait of a toddler versus a healthy elderly subject, or growth-plate injury and its consequences. Do not spend disproportionate time here.</p></div>
 </article>
 <article class="topic" id="physiological-basis-of-human-movement-213">
 <header class="t-head"><h3>5. Physiological Basis of Human Movement</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
@@ -205,38 +336,38 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Oxygen supply during exercise: Fick principle — VO2 = cardiac output x arteriovenous O2 difference; VO2max as the index of aerobic capacity.</li>
 <li class="">Energy cost of activity: METs; 1 MET = 3.5 ml O2/kg/min. Examples: sitting 1-2, slow walking 2-3, brisk walking 3-4, climbing stairs 4-5+... (learn 5-6 common values).</li>
 <li class="">Measurement of exercise capacity: graded exercise tests (GXT), submaximal tests (e.g., 6-minute walk test, shuttle walk), RPE — Borg 6-20 and 0-10 scales.</li>
-<li class="">Adaptations: cardiovascular (increased stroke volume, decreased resting HR), muscular (hypertrophy, fibre transition, mitochondrial density), neural (early strength gains are neural).</li>
+<li class="">Adaptations: cardiovascular (increased stroke volume, decreased resting HR), muscular (<span class="term" data-note="An increase in muscle or tissue size." tabindex="0">hypertrophy</span>, fibre transition, mitochondrial density), neural (early strength gains are neural).</li>
 <li class="">Application in MSK disease: disuse atrophy, deconditioning, chronic pain-related inactivity; exercise as medicine.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Answer format for a long question: define each energy system with its substrate, duration and example sport/activity; then Fick's principle; then METs with clinical application to activity prescription in MSK rehabilitation. This unit links directly to exercise testing in Paper III and endurance interventions in Paper IV.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Answer format for a long question: define each energy system with its substrate, duration and example sport/activity; then Fick's principle; then METs with clinical application to activity prescription in MSK rehabilitation. This unit links directly to exercise testing in Paper III and endurance interventions in Paper IV.</p></div>
 </article>
 <article class="topic topic-top" id="mechanics-and-pathomechanics-of-joints-325">
 <header class="t-head"><h3>6. Mechanics and Pathomechanics of Joints</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
 <ul>
-<li class="">Osteokinematics = angular movements of bones (flexion/extension, abduction/adduction, rotation); Arthrokinematics = joint surface motions — roll, glide (slide), spin.</li>
+<li class=""><span class="term" data-note="The visible movements of bones at a joint, such as flexion and extension." tabindex="0">Osteokinematics</span> = angular movements of bones (flexion/extension, abduction/adduction, rotation); <span class="term" data-note="The small gliding, rolling and spinning movements between joint surfaces." tabindex="0">Arthrokinematics</span> = joint surface motions — roll, glide (slide), spin.</li>
 <li class="bmnemonic">Concave-convex rule — mnemonic <strong>"Convex-Contrary, Concave-Concordant"</strong>: a convex surface moving on a fixed concave surface glides OPPOSITE to the direction of roll (e.g., humeral head in shoulder abduction); a concave surface moving on a fixed convex surface glides in the SAME direction as the roll (e.g., tibia on femur in open-chain knee extension).</li>
 <li class="">Close-packed position (maximal congruency, taut capsule and ligaments) vs loose/open-packed (resting) position — learn for major joints: knee — full extension is close-packed; shoulder — full abduction with external rotation is close-packed (a commonly quoted loose-packed position is 55° abduction with 30° horizontal adduction).</li>
 <li class="">Upper limb: shoulder complex — scapulohumeral rhythm 2:1 (glenohumeral to scapular motion averaged over the full arc of elevation 0-180°; the first ~30° is a variable "setting phase" dominated by glenohumeral motion), rotator cuff force couple (deltoid vs supraspinatus/infraspinatus/teres minor/subscapularis), and impingement pathomechanics; elbow carrying angle (valgus ~11° men, ~13° women); forearm pronation-supination (axis through radial head to ulnar styloid); wrist and hand joint architecture.</li>
 <li class="">Lower limb: femoral neck anteversion (adult average ~10-12°, range 8-15°), Q-angle and patellofemoral stress; knee screw-home mechanism (terminal extension locks the knee with tibial external rotation — "locked and screwed"); arches of the foot (medial longitudinal, transverse) and windlass mechanism.</li>
 <li class="">Spine: coupled movements (side-flexion with rotation — the direction of the coupled rotation differs by region and spine position — learn the classic coupled patterns), segmental motion of the lumbar spine, neutral spine concept.</li>
 <li class="">TMJ: opening combines pure rotation (to ~20-25 mm) followed by translation (to ~35-55 mm) with the mandibular midline staying central; deviation of the midline on opening is a sign of dysfunction (typically disc displacement with reduction).</li>
-<li class="">Skeletal tissue mechanics: stress-strain curve (toe, elastic/linear, plastic, failure regions), viscoelastic behaviour (creep, stress relaxation, hysteresis), anisotropy.</li>
-<li class="">Soft tissue mechanics: ligament/tendon behaviour, immobilisation weakens connective tissue; creep under sustained load.</li>
+<li class="">Skeletal tissue mechanics: <span class="term" data-note="A graph showing how much a tissue deforms (strain) as load (stress) is applied." tabindex="0">stress-strain curve</span> (toe, elastic/linear, plastic, failure regions), viscoelastic behaviour (creep, <span class="term" data-note="The fall in tissue tension when it is held at a fixed length over time." tabindex="0">stress relaxation</span>, hysteresis), anisotropy.</li>
+<li class="">Soft tissue mechanics: <span class="term" data-note="Strong fibrous tissue that connects bone to bone and stabilises a joint." tabindex="0">ligament</span>/tendon behaviour, immobilisation weakens connective tissue; <span class="term" data-note="Slow progressive lengthening of tissue under a constant sustained load over time." tabindex="0">creep</span> under sustained load.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Carrying two blueprint questions and one of the largest topic loads in the paper, this is guaranteed marks territory. Examiners love the concave-convex rule with named examples, close-packed positions, scapulohumeral rhythm, and the screw-home mechanism. Practice drawing the stress-strain curve and labelling its regions — a frequent diagram question.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Carrying two blueprint questions and one of the largest topic loads in the paper, this is guaranteed marks territory. Examiners love the concave-convex rule with named examples, close-packed positions, scapulohumeral rhythm, and the screw-home mechanism. Practice drawing the stress-strain curve and labelling its regions — a frequent diagram question.</p></div>
 </article>
 <article class="topic" id="posture-213">
 <header class="t-head"><h3>7. Posture</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
 <ul>
-<li class="">Definition: the relative alignment of body segments at a given time; ideal static posture = minimal muscle work and minimal joint stress with the line of gravity passing through key landmarks.</li>
+<li class="">Definition: the relative alignment of body segments at a given time; ideal static posture = minimal muscle work and minimal joint stress with the <span class="term" data-note="The imaginary vertical line through the body's centre of gravity, used to analyse posture." tabindex="0">line of gravity</span> passing through key landmarks.</li>
 <li class="">Plumb line alignment (lateral): external auditory meatus — acromion — greater trochanter — just anterior to knee joint axis — just anterior to lateral malleolus.</li>
-<li class="bmnemonic">Postural control — mnemonic <strong>"VVS"</strong>: <strong>V</strong>ision, <strong>V</strong>estibular, <strong>S</strong>omatosensory (proprioceptive) inputs integrated by the CNS; sensorimotor strategies: ankle strategy, hip strategy, stepping strategy; anticipatory (feed-forward) vs reactive (feedback) postural adjustments.</li>
-<li class="">Analysis: static observation (anterior, posterior, lateral), plumb line, postural grids, goniometry for fixed deviations, functional tests.</li>
+<li class="bmnemonic">Postural control — mnemonic <strong>"VVS"</strong>: <strong>V</strong>ision, <strong>V</strong>estibular, <strong>S</strong>omatosensory (<span class="term" data-note="Relating to the body's sense of position and movement." tabindex="0">proprioceptive</span>) inputs integrated by the CNS; sensorimotor strategies: ankle strategy, hip strategy, stepping strategy; anticipatory (feed-forward) vs reactive (feedback) postural adjustments.</li>
+<li class="">Analysis: static observation (anterior, posterior, lateral), plumb line, postural grids, <span class="term" data-note="Measuring joint angles with a goniometer." tabindex="0">goniometry</span> for fixed deviations, functional tests.</li>
 <li class="">Postural deformities: forward head posture, kyphosis, lordosis, scoliosis (screen with the Adams forward bend test; structural vs functional), pelvic tilt abnormalities, genu valgum/varum, pes planus/cavus.</li>
 <li class="">Distinguish structural (fixed, bony) from functional (flexible, postural/habitual) deformities — determines treatment.</li>
 <li class="">McKenzie postural syndrome: sustained end-range loading causes pain in the absence of pathology; corrected by posture and regular movement.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Expect either a short note on postural control mechanisms or an essay on postural assessment and common deformities. The plumb-line landmarks, the three sensory inputs, and the structural-versus-functional distinction are the marks. Relate posture to sitting ergonomics (Paper IV) and to gait (same paper).</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Expect either a short note on postural control mechanisms or an essay on postural assessment and common deformities. The plumb-line landmarks, the three sensory inputs, and the structural-versus-functional distinction are the marks. Relate posture to sitting ergonomics (Paper IV) and to gait (same paper).</p></div>
 </article>
 <article class="topic" id="gait-and-function-314">
 <header class="t-head"><h3>8. Gait and Function</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 1 · C 4</span></div></header>
@@ -244,44 +375,44 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Gait cycle (Rancho Los Amigos terminology): stance 60%, swing 40%. Eight phases — stance: initial contact, loading response, mid-stance, terminal stance, pre-swing; swing: initial, mid-, terminal swing.</li>
 <li class="bmnemonic">Mnemonic for the eight phases in order: <strong>"In Loading, My Terms Precede Initials Mid-Travel"</strong> (Initial contact, Loading response, Mid-stance, Terminal stance, Pre-swing, Initial swing, Mid-swing, Terminal swing).</li>
 <li class="">Six determinants of gait (Saunders, Inman, Eberhart) reduce the vertical/lateral excursion of the centre of mass: (1) pelvic rotation, (2) pelvic tilt (list), (3) knee flexion in stance, (4) foot and ankle mechanisms, (5) knee mechanisms... — learn as: pelvic rotation, pelvic tilt, knee flexion in stance, foot mechanism, ankle mechanism, pelvic lateral displacement.</li>
-<li class="">Muscle function by phase: tibialis anterior (eccentric in loading response), quadriceps (loading response, pre-swing), gluteus medius/minimus (mid-stance — pelvic control), gluteus maximus (initial contact/loading), hamstrings (decelerate swing at terminal swing), gastrocnemius-soleus (terminal stance — A2 push-off).</li>
+<li class="">Muscle function by phase: tibialis anterior (<span class="term" data-note="Muscle work while it lengthens under load (the lowering phase)." tabindex="0">eccentric</span> in loading response), quadriceps (loading response, pre-swing), gluteus medius/minimus (mid-stance — pelvic control), gluteus maximus (initial contact/loading), hamstrings (decelerate swing at terminal swing), gastrocnemius-soleus (terminal stance — A2 push-off).</li>
 <li class="">Pathological gaits (learn at least six with cause): Trendelenburg (weak hip abductors — contralateral pelvic drop); antalgic (short stance on painful limb); high-stepping/steppage (foot drop — tibialis anterior weakness); hemiplegic (circumduction, equinus); parkinsonian (festinating, stooped, reduced arm swing); ataxic (broad-based, irregular); gluteus maximus gait (thrusting trunk backwards).</li>
 <li class="">Energy expenditure: walking is most economical near 80 m/min; lower-limb amputation raises the oxygen cost per metre by roughly 40-100% depending on level and cause (classic Waters et al. data: traumatic transfemoral ~+41%, vascular transfemoral ~+102%, traumatic transtibial ~+12%).</li>
 <li class="">Kinetic and kinematic analysis of functional tasks: sit-to-stand (momentum strategy, arm use), reaching, lifting, stair ascent/descent.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This is one of the most reliable exam topics across the whole course — definitions of the gait cycle and its phases, the determinants, and named pathological gaits with their lesions. The diagram of the gait cycle with muscle activity must be practised until it can be drawn from memory. Combine your reading with the life-span biomechanics topic.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>This is one of the most reliable exam topics across the whole course — definitions of the gait cycle and its phases, the determinants, and named pathological gaits with their lesions. The diagram of the gait cycle with muscle activity must be practised until it can be drawn from memory. Combine your reading with the life-span biomechanics topic.</p></div>
 </article>
 <article class="topic topic-top" id="pain-325">
 <header class="t-head"><h3>9. Pain</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
 <ul>
 <li class="">IASP definition (2020): "An unpleasant sensory and emotional experience associated with, or resembling that associated with, actual or potential tissue damage."</li>
-<li class="bmnemonic">Four neurophysiological processes — mnemonic <strong>"TTMP"</strong>: <strong>T</strong>ransduction (nociceptor activation), <strong>T</strong>ransmission (A-delta and C fibres — spinothalamic tract), <strong>M</strong>odulation (descending inhibition — gate control, endogenous opioids), <strong>P</strong>erception (cortical limbic experience).</li>
+<li class="bmnemonic">Four neurophysiological processes — mnemonic <strong>"TTMP"</strong>: <strong>T</strong>ransduction (<span class="term" data-note="A sensory nerve ending that detects painful or tissue-damaging stimuli." tabindex="0">nociceptor</span> activation), <strong>T</strong>ransmission (A-delta and C fibres — spinothalamic tract), <strong>M</strong>odulation (descending inhibition — gate control, endogenous opioids), <strong>P</strong>erception (cortical limbic experience).</li>
 <li class="">Nociceptor fibres: A-delta (fast, sharp, well localised — neospinothalamic) and C (slow, dull, burning — paleospinothalamic).</li>
-<li class="">Theories of pain: Specificity theory (von Frey), Pattern theory (Goldscheider/Wedel... historically Wedell/Melzack), Gate Control theory (Melzack and Wall, 1965) — the theory that revolutionised pain science: substantia gelatinosa gate; large-diameter fibres close the gate, small-fibre activity opens it.</li>
-<li class="">Acute vs chronic pain: timeline (&gt;3 months), chronic pain is a disease of the nervous system — peripheral and central sensitisation (allodynia, hyperalgesia); chronic pain has lost its warning function.</li>
+<li class="">Theories of pain: <span class="term" data-note="A test's ability to correctly identify people who do not have the condition." tabindex="0">Specificity</span> theory (von Frey), Pattern theory (Goldscheider/Wedel... historically Wedell/Melzack), <span class="term" data-note="The idea that non-painful input (rubbing, TENS) can 'close a gate' in the spinal cord and reduce pain." tabindex="0">Gate Control theory</span> (Melzack and Wall, 1965) — the theory that revolutionised pain science: substantia gelatinosa gate; large-diameter fibres close the gate, small-fibre activity opens it.</li>
+<li class="">Acute vs chronic pain: timeline (&gt;3 months), chronic pain is a disease of the nervous system — peripheral and <span class="term" data-note="Increased excitability of the central nervous system that makes normal inputs feel painful." tabindex="0">central sensitisation</span> (<span class="term" data-note="Pain from a stimulus that is not normally painful." tabindex="0">allodynia</span>, <span class="term" data-note="An increased sensitivity to pain." tabindex="0">hyperalgesia</span>); chronic pain has lost its warning function.</li>
 <li class="">Assessment in different populations: VAS (0-10 cm), Numerical Rating Scale, McGill Pain Questionnaire (sensory, affective, evaluative dimensions), body pain diagram, Faces scale (children), observational tools for non-communicative patients (e.g., PAINAD for dementia).</li>
-<li class="">Specific states and syndromes: neuropathic pain (DN4 screening), radicular pain, complex regional pain syndrome, myofascial pain syndrome (trigger points) vs fibromyalgia, phantom limb pain.</li>
-<li class="">Evidence-based advances: biopsychosocial model, Pain Neuroscience Education, fear-avoidance model (Vlaeyen), central sensitisation inventory.</li>
+<li class="">Specific states and syndromes: neuropathic pain (DN4 screening), radicular pain, complex regional pain syndrome, <span class="term" data-note="Relating to muscle and its surrounding fascia." tabindex="0">myofascial</span> pain syndrome (trigger points) vs fibromyalgia, phantom limb pain.</li>
+<li class="">Evidence-based advances: <span class="term" data-note="An approach that considers biological, psychological and social factors together." tabindex="0">biopsychosocial</span> model, Pain Neuroscience Education, <span class="term" data-note="Avoiding activity because of fear of pain, which over time worsens disability." tabindex="0">fear-avoidance</span> model (Vlaeyen), central sensitisation inventory.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Pain recurs across all three MSK papers — physiology here, red-flag/referred pain screening in Paper III, and multimodal management in Paper IV — which is why it carries a maximum combined rating. Standard long-answer structure: definition, pain pathways (with a labelled diagram of the gate control theory), theories, acute-versus-chronic differences in a table, assessment tools, and a conclusion on the biopsychosocial model. The gate control theory with its clinical applications (rubbing an injury, TENS) is the single most repeated question.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Pain recurs across all three MSK papers — physiology here, red-flag/referred pain screening in Paper III, and multimodal management in Paper IV — which is why it carries a maximum combined rating. Standard long-answer structure: definition, pain pathways (with a labelled diagram of the gate control theory), theories, acute-versus-chronic differences in a table, assessment tools, and a conclusion on the biopsychosocial model. The gate control theory with its clinical applications (rubbing an injury, <span class="term" data-note="Transcutaneous Electrical Nerve Stimulation - a mild current passed through the skin to relieve pain." tabindex="0">TENS</span>) is the single most repeated question.</p></div>
 </article>
 <article class="topic topic-top" id="electro-physics-325">
 <header class="t-head"><h3>10. Electro Physics</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
 <ul>
 <li class="">Basic concepts: types of current (direct, alternating, pulsed), key parameters — frequency (Hz), intensity/amplitude (mA), pulse duration/phase (microseconds or ms), duty cycle (on:off time), waveform.</li>
 <li class="">Alterations in skeletal muscle performance: disuse atrophy; electrical stimulation of muscle (NMES) as an adjunct to voluntary exercise — strength, endurance, and torque parameters (Russian currents: 2500 Hz burst-modulated... commonly 50 bps for strengthening).</li>
-<li class="">Soft tissue repair phases: inflammation, proliferation, remodelling — each with its electro/physical modality of choice.</li>
+<li class="">Soft tissue repair phases: <span class="term" data-note="The body's protective response to injury - heat, redness, swelling and pain." tabindex="0">inflammation</span>, proliferation, remodelling — each with its electro/physical modality of choice.</li>
 <li class="bmnemonic">Biophysical effects of heat — modes of transfer, mnemonic <strong>"CCCR"</strong>: <strong>C</strong>onduction (hot pack, wax), <strong>C</strong>onvection (whirlpool, fluidotherapy), <strong>C</strong>onversion (ultrasound, diathermy — energy converted to heat in tissues), <strong>R</strong>adiation (infrared lamp).</li>
-<li class="">Physiological effects of heat: vasodilation, increased metabolism, altered nerve conduction velocity (pain relief), increased collagen extensibility (with stretch); of cold: vasoconstriction, decreased metabolism (limits secondary injury in acute inflammation... reduces swelling), decreased nerve conduction, pain relief.</li>
+<li class="">Physiological effects of heat: vasodilation, increased metabolism, altered nerve conduction velocity (pain relief), increased <span class="term" data-note="The main structural protein in tendon, ligament, skin and bone." tabindex="0">collagen</span> extensibility (with stretch); of cold: vasoconstriction, decreased metabolism (limits secondary injury in acute inflammation... reduces swelling), decreased nerve conduction, pain relief.</li>
 <li class="">Clinical decision-making in modality selection: goal (pain, healing, strength?), tissue depth, stage of healing, contraindications/precautions, patient preference, evidence.</li>
-<li class="">Alternative modalities for pain and tissue healing: low-level laser therapy (photobiomodulation), extracorporeal shockwave therapy, magnetic therapy.</li>
+<li class="">Alternative modalities for pain and tissue healing: low-level <span class="term" data-note="Red/near-infrared light therapy that stimulates cell repair (photobiomodulation)." tabindex="0">laser therapy</span> (photobiomodulation), extracorporeal shockwave therapy, magnetic therapy.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This unit secures its top rating by spanning the entire syllabus — the same physics returns in electrodiagnosis (Paper III) and electro modalities in rehabilitation (Paper IV). Exam favourites: parameter definitions, physiological effects of heat and cold, and the decision-making rationale for choosing a modality. Learn contraindications cold (pacemakers, malignancy over the area, impaired sensation, pregnancy over the abdomen/pelvis, acute recent bleeding).</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>This unit secures its top rating by spanning the entire syllabus — the same physics returns in electrodiagnosis (Paper III) and electro modalities in rehabilitation (Paper IV). Exam favourites: parameter definitions, physiological effects of heat and cold, and the decision-making rationale for choosing a modality. Learn contraindications cold (pacemakers, malignancy over the area, impaired sensation, pregnancy over the abdomen/pelvis, acute recent bleeding).</p></div>
 </article>
-<div class="sec-head" id="refs"><h2>Sources & verification</h2></div>
+<div class="sec-head" id="refs"><h2>Sources &amp; verification</h2></div>
 <div class="refs"><h3>Prepared from</h3><p>MPT syllabus (RGUHS 2020), topic-wise blueprint (2021-22 batch), Donatelli &amp; Wooden — Orthopaedic Physical Therapy; Starkey — Therapeutic Modalities; Dutton — Orthopaedic Examination, Evaluation and Intervention.</p>
 <h3 style="margin-top:16px">Verification</h3>
-<p>These notes were checked by independent verification passes and cross-verification before publication; clinical values should be cross-checked against your college&rsquo;s prescribed edition before the examination. Mnemonics flagged in the notes as &ldquo;coined study aids&rdquo; are original memory aids, not textbook eponyms.</p></div>
+<p>These notes were checked by independent verification passes and cross-verification before publication; clinical values should be cross-checked against your college’s prescribed edition before the examination. Mnemonics flagged in the notes as “coined study aids” are original memory aids, not textbook eponyms.</p></div>
 </div>
 </div>
 <script>
@@ -300,5 +431,71 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
-</body>
+<details class="glossary"><summary>Glossary of difficult terms (35)</summary><p class="gloss-hint">Dotted-underlined words also show the definition on hover or tap.</p><ul><li><strong>allodynia</strong> — Pain from a stimulus that is not normally painful.</li><li><strong>arthrokinematics</strong> — The small gliding, rolling and spinning movements between joint surfaces.</li><li><strong>atrophy</strong> — Wasting or shrinking of muscle or tissue.</li><li><strong>biomechanics</strong> — The study of the mechanical laws relating to the movement of living organisms.</li><li><strong>biopsychosocial</strong> — An approach that considers biological, psychological and social factors together.</li><li><strong>capsule</strong> — The fibrous sleeve that surrounds and stabilises a joint.</li><li><strong>central sensitisation</strong> — Increased excitability of the central nervous system that makes normal inputs feel painful.</li><li><strong>collagen</strong> — The main structural protein in tendon, ligament, skin and bone.</li><li><strong>creep</strong> — Slow progressive lengthening of tissue under a constant sustained load over time.</li><li><strong>eccentric</strong> — Muscle work while it lengthens under load (the lowering phase).</li><li><strong>fear-avoidance</strong> — Avoiding activity because of fear of pain, which over time worsens disability.</li><li><strong>gait</strong> — The manner of walking.</li><li><strong>gate control theory</strong> — The idea that non-painful input (rubbing, TENS) can 'close a gate' in the spinal cord and reduce pain.</li><li><strong>golgi tendon organ</strong> — A sensor in tendon that detects tension and helps regulate muscle force.</li><li><strong>goniometry</strong> — Measuring joint angles with a goniometer.</li><li><strong>hyperalgesia</strong> — An increased sensitivity to pain.</li><li><strong>hypertrophy</strong> — An increase in muscle or tissue size.</li><li><strong>inflammation</strong> — The body's protective response to injury - heat, redness, swelling and pain.</li><li><strong>laser therapy</strong> — Red/near-infrared light therapy that stimulates cell repair (photobiomodulation).</li><li><strong>ligament</strong> — Strong fibrous tissue that connects bone to bone and stabilises a joint.</li><li><strong>line of gravity</strong> — The imaginary vertical line through the body's centre of gravity, used to analyse posture.</li><li><strong>moment arm</strong> — The perpendicular distance from a force to the joint axis; a longer moment arm produces more torque.</li><li><strong>muscle spindle</strong> — A stretch sensor inside muscle that helps control posture and movement.</li><li><strong>myofascial</strong> — Relating to muscle and its surrounding fascia.</li><li><strong>nociceptor</strong> — A sensory nerve ending that detects painful or tissue-damaging stimuli.</li><li><strong>osteokinematics</strong> — The visible movements of bones at a joint, such as flexion and extension.</li><li><strong>posture</strong> — The position of the body and its parts relative to gravity.</li><li><strong>proprioceptive</strong> — Relating to the body's sense of position and movement.</li><li><strong>specificity</strong> — A test's ability to correctly identify people who do not have the condition.</li><li><strong>stress relaxation</strong> — The fall in tissue tension when it is held at a fixed length over time.</li><li><strong>stress-strain curve</strong> — A graph showing how much a tissue deforms (strain) as load (stress) is applied.</li><li><strong>synovial</strong> — Relating to the fluid-filled lining of a joint.</li><li><strong>tendon</strong> — Strong fibrous tissue that attaches muscle to bone.</li><li><strong>TENS</strong> — Transcutaneous Electrical Nerve Stimulation - a mild current passed through the skin to relieve pain.</li><li><strong>torque</strong> — A turning force around an axis - the product of force and its moment arm.</li></ul></details><script id="rg-tools">
+(function(){
+  var root=document.documentElement, PERSIST=true, KEY='rguhs';
+  var content=document.querySelector('#content, main, .wrap')||document.body;
+  var popup=document.getElementById('rg-popup'), pinned=null;
+
+  function syncTheme(){var d=root.classList.contains('dark');var b=document.getElementById('rgToggleTheme');
+    if(b){b.textContent=d?'Day mode':'Night mode';b.classList.toggle('active',d);}}
+  function syncFit(){var f=root.classList.contains('fit');var b=document.getElementById('rgToggleFit');
+    if(b){b.textContent=f?'Fit: on':'Fit to screen';b.classList.toggle('active',f);}}
+  syncTheme(); syncFit();
+
+  var hlKey=KEY+'-hl-'+location.pathname;
+  if(PERSIST){try{var saved=localStorage.getItem(hlKey);if(saved)content.innerHTML=saved;}catch(e){}}
+  function saveHl(){if(!PERSIST)return;try{localStorage.setItem(hlKey,content.innerHTML);}catch(e){}}
+  function selRange(){var s=window.getSelection();if(!s||s.rangeCount===0||s.isCollapsed)return null;
+    var r=s.getRangeAt(0);if(!content.contains(r.commonAncestorContainer))return null;return r;}
+  function highlight(c){var r=selRange();if(!r)return;var m=document.createElement('mark');m.className='hl '+c;
+    try{r.surroundContents(m);}catch(e){m.appendChild(r.extractContents());r.insertNode(m);}
+    window.getSelection().removeAllRanges();saveHl();}
+  function eraseSel(){var r=selRange();if(!r)return;var ch=false;
+    content.querySelectorAll('mark.hl').forEach(function(m){if(r.intersectsNode(m)){m.parentNode.replaceChild(document.createTextNode(m.textContent),m);ch=true;}});
+    window.getSelection().removeAllRanges();if(ch)saveHl();}
+
+  var tb=document.querySelector('.rg-toolbar');
+  if(tb)tb.addEventListener('mousedown',function(e){if(e.target.closest('button'))e.preventDefault();});
+  if(tb)tb.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    if(b.dataset.color){highlight(b.dataset.color);}
+    else if(b.id==='rgErase'){eraseSel();}
+    else if(b.id==='rgClearAll'){content.querySelectorAll('mark.hl').forEach(function(m){m.parentNode.replaceChild(document.createTextNode(m.textContent),m);});saveHl();}
+    else if(b.id==='rgToggleNotes'){root.classList.toggle('no-notes');b.classList.toggle('active',!root.classList.contains('no-notes'));if(root.classList.contains('no-notes')){pinned=null;if(popup)popup.style.display='none';}}
+    else if(b.id==='rgToggleTheme'){root.classList.toggle('dark');try{localStorage.setItem(KEY+'-theme',root.classList.contains('dark')?'dark':'light');}catch(x){}syncTheme();}
+    else if(b.id==='rgToggleFit'){root.classList.toggle('fit');try{localStorage.setItem(KEY+'-fit',root.classList.contains('fit')?'1':'0');}catch(x){}syncFit();}
+  });
+
+  function showPopup(el){if(!popup)return;var r=el.getBoundingClientRect();
+    popup.innerHTML='<b>'+el.textContent+'</b><br>'+el.getAttribute('data-note');
+    popup.style.display='block';var pw=popup.offsetWidth,ph=popup.offsetHeight;
+    var left=window.scrollX+r.left, top=window.scrollY+r.bottom+8, vw=document.documentElement.clientWidth;
+    if(left+pw>window.scrollX+vw-12)left=window.scrollX+vw-pw-12; if(left<window.scrollX+8)left=window.scrollX+8;
+    if(r.bottom+ph+20>window.innerHeight)top=window.scrollY+r.top-ph-8;
+    popup.style.left=left+'px';popup.style.top=top+'px';}
+  function hidePopup(){if(!pinned&&popup)popup.style.display='none';}
+  document.addEventListener('mouseover',function(e){var t=e.target.closest?e.target.closest('.term'):null;
+    if(t&&t.getAttribute('data-note')&&!root.classList.contains('no-notes'))showPopup(t);});
+  document.addEventListener('mouseout',function(e){var t=e.target.closest?e.target.closest('.term'):null;if(t&&t!==pinned)hidePopup();});
+  document.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('.term'):null;
+    if(t){if(root.classList.contains('no-notes'))return;if(pinned===t){pinned=null;if(popup)popup.style.display='none';}else{pinned=t;showPopup(t);}return;}
+    if(!e.target.closest||!e.target.closest('#rg-popup')){pinned=null;if(popup)popup.style.display='none';}});
+  window.addEventListener('scroll',function(){if(pinned)showPopup(pinned);},{passive:true});
+  document.addEventListener('keydown',function(e){
+    if((e.key==='Enter'||e.key===' ')&&document.activeElement&&document.activeElement.classList&&document.activeElement.classList.contains('term')){e.preventDefault();pinned=document.activeElement;showPopup(pinned);}
+    if(e.key==='Escape'){pinned=null;if(popup)popup.style.display='none';closeDrawer();}});
+
+  var drawer=document.getElementById('rgDrawer'),scrim=document.getElementById('rgScrim'),
+      fab=document.getElementById('rgNotesFab'),note=document.getElementById('rgPageNote');
+  function openDrawer(o){if(!drawer)return;drawer.classList.toggle('open',o);scrim.classList.toggle('open',o);if(fab)fab.setAttribute('aria-expanded',o?'true':'false');}
+  function closeDrawer(){openDrawer(false);}
+  if(fab){fab.addEventListener('click',function(){openDrawer(!drawer.classList.contains('open'));});
+    document.getElementById('rgDrawerClose').addEventListener('click',closeDrawer);
+    scrim.addEventListener('click',closeDrawer);}
+  if(note){var nk=KEY+'-note-'+location.pathname;
+    try{var v=localStorage.getItem(nk);if(v)note.value=v;}catch(e){}
+    note.addEventListener('input',function(){try{localStorage.setItem(nk,note.value);}catch(e){}});}
+})();
+</script></body>
 </html>

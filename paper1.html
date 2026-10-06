@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Paper 1 — RGUHS MPT Study Notes</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#faf8f3; --surface:#ffffff; --surface2:#f3efe6; --border:rgba(30,58,95,.12);
@@ -108,39 +109,169 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 }
 @media print{.toc,.pnav{display:none}.wrap{grid-template-columns:1fr}body{background:#fff}.topic{break-inside:avoid}}
 </style>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1e3a5f">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-</head>
-<body>
-<nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT &middot; Study Notes</a><a class="tab on" href="paper1.html">Paper 1</a><a class="tab" href="paper2.html">Paper 2</a><a class="tab" href="paper3.html">Paper 3</a><a class="tab" href="paper4.html">Paper 4</a></div></nav>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#1e3a5f" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script id="rg-boot">(function(){try{var d=document.documentElement;
+if(localStorage.getItem('rguhs-theme')==='dark')d.classList.add('dark');
+if(localStorage.getItem('rguhs-fit')==='1')d.classList.add('fit');}catch(e){}})();</script><style id="rguhs-teal-theme">
+/* ===== RGUHS teal study theme (injected layer) ===== */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#1b1f24; --muted:#5b6472;
+  --line:#e4e7eb; --line-2:#d3d8de;
+  --accent:#0f766e; --accent-ink:#0b5f59; --accent-soft:#e8f3f1;
+  --term:#4a5560; --term-dot:#9aa3ad;
+  --paper:#f6f7f9; --paper2:#eef1f4; --surface:#ffffff; --surface2:#f2f4f7;
+  --surface-2:#f2f4f7; --border:#e4e7eb; --rule:#e4e7eb; --rule-strong:#d3d8de;
+  --text:#1b1f24; --text-dim:#5b6472; --ink-dim:#5b6472;
+  --navy:#0f766e; --terra:#0b5f59; --terra-bg:#e8f3f1; --gold:#0f766e; --gold-bg:#e8f3f1;
+  --accent2:#0b5f59; --accent-dim:#99f6e4; --accent2-dim:#99f6e4;
+  --blue:#0f766e; --bar:#ffffff;
+  --ui-bg:#ffffff; --ui-ink:#1b1f24; --ui-line:rgba(20,30,50,.16); --ui-hover:rgba(20,30,50,.07); --ui-on:#e8f3f1;
+}
+html.dark, html[data-theme="dark"]{
+  --bg:#101216; --panel:#171a1f; --ink:#e7e9ed; --muted:#98a1ac;
+  --line:#262a31; --line-2:#333842;
+  --accent:#5eead4; --accent-ink:#5eead4; --accent-soft:#16292a;
+  --term:#aab2bd; --term-dot:#5a6470;
+  --paper:#101216; --paper2:#171a1f; --surface:#171a1f; --surface2:#1d2126;
+  --surface-2:#1d2126; --border:#262a31; --rule:#262a31; --rule-strong:#333842;
+  --text:#e7e9ed; --text-dim:#98a1ac; --ink-dim:#98a1ac;
+  --navy:#5eead4; --terra:#5eead4; --terra-bg:#16292a; --gold:#5eead4; --gold-bg:#16292a;
+  --accent2:#5eead4; --accent-dim:#16292a; --accent2-dim:#16292a;
+  --blue:#5eead4; --bar:#171a1f;
+  --ui-bg:#1d2126; --ui-ink:#e7e9ed; --ui-line:rgba(255,255,255,.18); --ui-hover:rgba(255,255,255,.09); --ui-on:#16292a;
+}
+html,body{background:var(--bg)!important;color:var(--ink)!important;
+  font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif!important;font-size:17px;line-height:1.68;
+  -webkit-font-smoothing:antialiased;}
+body{background-image:none!important;}
+h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif!important;color:var(--ink)!important;letter-spacing:normal!important;}
+a{color:var(--accent)!important;}
+a:hover{color:var(--accent-ink)!important;}
+::selection{background:var(--accent-soft);}
+/* top bars / nav */
+.pnav,.top,.bar,.pnav-in,.rtools{background:var(--panel)!important;border-color:var(--line)!important;color:var(--ink)!important;}
+.bar,.top{position:sticky;top:52px;z-index:70;}
+.rtools{display:none!important;}
+.pnav-in a.tab.on{border-color:var(--accent)!important;background:var(--accent-soft)!important;color:var(--accent-ink)!important;}
+.brand,.brand b{color:var(--accent-ink)!important;}
+/* cards / panels */
+.topic,.pcard,.homefoot,.sec-head,.refs,.exam-para,.tbl-wrap,.fig,.stat,.card,
+main article,main section,.crumb,.legend span{
+  background:var(--panel)!important;border-color:var(--line)!important;color:var(--ink)!important;
+  box-shadow:none!important;}
+.topic-top{border-left-color:var(--accent)!important;}
+.exam-para,.stat,.legend span,.t-meta .rbc,.rbc{background:var(--accent-soft)!important;color:var(--accent-ink)!important;border-color:var(--line)!important;}
+.bmnemonic,.bmnemonic::before{background:var(--accent-soft)!important;}
+.stars,.stars-sm,.open,.pcard .open,.ep-label,.kicker,.ptag,.pcard .ptag{color:var(--accent)!important;}
+.stars .dim,.stars-sm .dim{color:var(--line-2)!important;}
+/* tables */
+table{border-collapse:collapse;}
+th{background:var(--accent-soft)!important;color:var(--accent-ink)!important;border-color:var(--line)!important;}
+td{border-color:var(--line)!important;}
+thead th{background:var(--accent)!important;color:#fff!important;}
+html.dark thead th{color:#06231f!important;}
+/* toolbar */
+.rg-toolbar{position:sticky;top:0;z-index:900;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  padding:9px 20px;background:var(--panel);border-bottom:1px solid var(--line);font-size:13.5px;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+.rg-toolbar .lbl{color:var(--muted);font-weight:600;}
+.rg-toolbar .sw{width:22px;height:22px;border-radius:50%;border:1px solid var(--line-2);cursor:pointer;padding:0;}
+.rg-toolbar .sw.yellow{background:#ffe680;} .rg-toolbar .sw.green{background:#a8e6a3;} .rg-toolbar .sw.pink{background:#ffb3d1;}
+.rg-toolbar .btn{border:1px solid var(--line-2);background:var(--panel);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;font:inherit;font-size:13px;}
+.rg-toolbar .btn:hover{background:var(--accent-soft);border-color:var(--accent);}
+.rg-toolbar .btn.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink);font-weight:600;}
+.rg-toolbar .sep{width:1px;height:20px;background:var(--line-2);}
+.rg-toolbar .hint{margin-left:auto;color:var(--muted);font-size:12.5px;}
+html.fit .wrap,html.fit main{max-width:100%!important;}
+/* term popups */
+.term{color:var(--term);border-bottom:1px dotted var(--term-dot);cursor:help;}
+.term:hover{background:var(--accent-soft);border-bottom-color:var(--accent);}
+html.no-notes .term{border-bottom:none;color:inherit;cursor:inherit;background:none;}
+#rg-popup{position:absolute;z-index:1200;max-width:330px;display:none;padding:11px 13px;border-radius:9px;
+  background:#1c1f24;color:#f1f3f6;font-size:14px;line-height:1.5;box-shadow:0 12px 30px rgba(0,0,0,.28);font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+html.dark #rg-popup{background:#2a2f36;color:#eef1f4;border:1px solid var(--line-2);}
+#rg-popup b{color:#fff;}
+mark.hl{border-radius:3px;padding:0 1px;color:inherit;}
+mark.hl.yellow{background:rgba(255,214,0,.38);}
+mark.hl.green{background:rgba(52,199,89,.32);}
+mark.hl.pink{background:rgba(255,90,150,.30);}
+/* glossary */
+.glossary{margin:26px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 18px;}
+.glossary summary{cursor:pointer;font-weight:700;padding:12px 0;}
+.gloss-hint{margin:0 0 8px;color:var(--muted);font-size:13.5px;}
+.glossary ul{font-size:14px;columns:2;column-gap:26px;}
+@media (max-width:680px){.glossary ul{columns:1;}}
+/* notes */
+.rg-fab{position:fixed;right:20px;bottom:20px;z-index:1100;display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:999px;padding:11px 17px;
+  font:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.22);font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+html.dark .rg-fab{color:#052622;}
+.rg-drawer{position:fixed;top:0;right:0;height:100%;width:min(430px,92vw);z-index:1300;background:var(--panel);
+  border-left:1px solid var(--line);box-shadow:-12px 0 34px rgba(0,0,0,.2);transform:translateX(102%);
+  transition:transform .22s ease;display:flex;flex-direction:column;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+.rg-drawer.open{transform:none;}
+.rg-drawer .dhead{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line);}
+.rg-drawer .dhead strong{font-size:16px;}
+.rg-drawer .dclose{border:1px solid var(--line-2);background:var(--panel);color:var(--ink);border-radius:8px;padding:4px 11px;font:inherit;font-size:13px;cursor:pointer;}
+.rg-drawer .dhint{margin:10px 18px 2px;color:var(--muted);font-size:12.5px;}
+.rg-drawer .dbody{overflow:auto;padding:6px 18px 28px;}
+.rg-notes{width:100%;min-height:220px;resize:vertical;padding:10px 11px;font:inherit;font-size:14.5px;line-height:1.55;
+  color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:8px;}
+.rg-notes:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft);}
+.rg-scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1250;opacity:0;pointer-events:none;transition:opacity .22s ease;}
+.rg-scrim.open{opacity:1;pointer-events:auto;}
+@media print{.rg-toolbar,#rg-popup,.rg-fab,.rg-drawer,.rg-scrim{display:none!important;}}
+</style></head>
+<body><div aria-label="Study tools" class="rg-toolbar" role="toolbar">
+<span class="lbl">Highlight</span>
+<button aria-label="Yellow highlighter" class="sw yellow" data-color="yellow" title="Yellow highlighter"></button>
+<button aria-label="Green highlighter" class="sw green" data-color="green" title="Green highlighter"></button>
+<button aria-label="Pink highlighter" class="sw pink" data-color="pink" title="Pink highlighter"></button>
+<button class="btn" id="rgErase">Erase</button>
+<button class="btn" id="rgClearAll">Clear all</button>
+<span class="sep"></span>
+<button class="btn active" id="rgToggleNotes">Term notes</button>
+<button class="btn" id="rgToggleTheme">Night mode</button>
+<button class="btn" id="rgToggleFit">Fit to screen</button>
+<span class="hint">Select text, then pick a colour. Notes save automatically.</span>
+</div>
+<div id="rg-popup"></div>
+<button aria-expanded="false" class="rg-fab" id="rgNotesFab">✎ Study Notes</button>
+<div class="rg-scrim" id="rgScrim"></div>
+<aside aria-label="Study notes" class="rg-drawer" id="rgDrawer">
+<div class="dhead"><strong>Study Notes</strong><button class="dclose" id="rgDrawerClose">Close</button></div>
+<p class="dhint">Your notes for this page — saved automatically in this browser.</p>
+<div class="dbody"><textarea class="rg-notes" id="rgPageNote" placeholder="Write your notes for this page..."></textarea></div>
+</aside>
+<nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT · Study Notes</a><a class="tab on" href="paper1.html">Paper 1</a><a class="tab" href="paper2.html">Paper 2</a><a class="tab" href="paper3.html">Paper 3</a><a class="tab" href="paper4.html">Paper 4</a></div></nav>
 <div class="wrap">
 <nav class="toc" id="toc"><div class="toc-title">Paper 1 contents</div>
 <a href="#prio">Priority table</a>
-<a href="#principles-of-physiotherapy-practice-314" class="tsub">Principles of Physiotherapy Practice</a>
-<a href="#core-professional-values-in-physiotherap-213" class="tsub">Core Professional Values in Physiotherapy in</a>
-<a href="#research-methodology-and-biostatistics-235" class="tsub">Research Methodology and Biostatistics</a>
-<a href="#exercise-physiology-325" class="tsub">Exercise Physiology</a>
-<a href="#electrophysiology-325" class="tsub">Electrophysiology</a>
-<a href="#pedagogy-in-physiotherapy-education-101" class="tsub">Pedagogy in Physiotherapy Education</a>
-<a href="#management-entrepreneurship-and-leadersh-112" class="tsub">Management, Entrepreneurship and Leadership </a>
+<a class="tsub" href="#principles-of-physiotherapy-practice-314">Principles of Physiotherapy Practice</a>
+<a class="tsub" href="#core-professional-values-in-physiotherap-213">Core Professional Values in Physiotherapy in</a>
+<a class="tsub" href="#research-methodology-and-biostatistics-235">Research Methodology and Biostatistics</a>
+<a class="tsub" href="#exercise-physiology-325">Exercise Physiology</a>
+<a class="tsub" href="#electrophysiology-325">Electrophysiology</a>
+<a class="tsub" href="#pedagogy-in-physiotherapy-education-101">Pedagogy in Physiotherapy Education</a>
+<a class="tsub" href="#management-entrepreneurship-and-leadersh-112">Management, Entrepreneurship and Leadership </a>
 </nav>
 <div class="main">
 <div class="hero">
-  <div class="kicker">Paper 1 &middot; Common to all specialties &middot; 10 blueprint questions</div>
-  <h1>Fundamentals in Physiotherapy Practice, Pedagogy and Research</h1>
-  <p class="lead">The common paper for every MPT specialty — professional practice, ethics, research methods, exercise physiology, electrophysiology, pedagogy and management.</p>
-  <div class="stats">
-    <div class="stat"><b>7</b><span>syllabus topics</span></div>
-    <div class="stat"><b>3</b><span>five-star priorities</span></div>
-    <div class="stat"><b>10</b><span>questions in the exam</span></div>
-  </div>
+<div class="kicker">Paper 1 · Common to all specialties · 10 blueprint questions</div>
+<h1>Fundamentals in Physiotherapy Practice, Pedagogy and Research</h1>
+<p class="lead">The common paper for every MPT specialty — professional practice, ethics, research methods, exercise physiology, electrophysiology, pedagogy and management.</p>
+<div class="stats">
+<div class="stat"><b>7</b><span>syllabus topics</span></div>
+<div class="stat"><b>3</b><span>five-star priorities</span></div>
+<div class="stat"><b>10</b><span>questions in the exam</span></div>
+</div>
 </div>
 <div class="sec-head" id="prio"><h2>Priority table</h2></div>
 <div class="tbl-wrap"><table>
 <thead><tr><th>#</th><th>Topic</th><th class="c">R</th><th class="c">B</th><th class="c">C</th><th>Rating</th></tr></thead>
-<tbody><tr><td>3</td><td>Research Methodology and Biostatistics</td><td class='num'>2</td><td class='num'>3</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>4</td><td>Exercise Physiology</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>5</td><td>Electrophysiology</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>1</td><td>Principles of Physiotherapy Practice</td><td class='num'>3</td><td class='num'>1</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>2</td><td>Core Professional Values in Physiotherapy including Professional and Research Ethics</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>7</td><td>Management, Entrepreneurship and Leadership in Physiotherapy Practice</td><td class='num'>1</td><td class='num'>1</td><td class='num'><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr><tr><td>6</td><td>Pedagogy in Physiotherapy Education</td><td class='num'>1</td><td class='num'>0</td><td class='num'><strong>1</strong></td><td><span class="stars-sm">★<span class="dim">☆☆☆☆</span></span></td></tr></tbody></table></div>
+<tbody><tr><td>3</td><td>Research Methodology and Biostatistics</td><td class="num">2</td><td class="num">3</td><td class="num"><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>4</td><td>Exercise Physiology</td><td class="num">3</td><td class="num">2</td><td class="num"><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>5</td><td>Electrophysiology</td><td class="num">3</td><td class="num">2</td><td class="num"><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>1</td><td>Principles of Physiotherapy Practice</td><td class="num">3</td><td class="num">1</td><td class="num"><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>2</td><td>Core Professional Values in Physiotherapy including Professional and Research Ethics</td><td class="num">2</td><td class="num">1</td><td class="num"><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>7</td><td>Management, Entrepreneurship and Leadership in Physiotherapy Practice</td><td class="num">1</td><td class="num">1</td><td class="num"><strong>2</strong></td><td><span class="stars-sm">★★<span class="dim">☆☆☆</span></span></td></tr><tr><td>6</td><td>Pedagogy in Physiotherapy Education</td><td class="num">1</td><td class="num">0</td><td class="num"><strong>1</strong></td><td><span class="stars-sm">★<span class="dim">☆☆☆☆</span></span></td></tr></tbody></table></div>
 <div class="sec-head"><h2>Topic notes</h2></div>
 <article class="topic" id="principles-of-physiotherapy-practice-314">
 <header class="t-head"><h3>1. Principles of Physiotherapy Practice</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 1 · C 4</span></div></header>
@@ -150,10 +281,10 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">General and professional competencies: patient care, medical/clinical knowledge, practice-based learning, interpersonal and communication skills, professionalism, systems-based practice (this six-domain framework follows the ACGME graduate-medical-education model).</li>
 <li class="bmnemonic">Principles of Evidence-Based Practice (Sackett): the integration of best research evidence with clinical expertise and patient values. The 5-step process — mnemonic <strong>"the 5 A's"</strong>: <strong>A</strong>sk (build a PICO question), <strong>A</strong>cquire (search the literature), <strong>A</strong>ppraise (critical appraisal), <strong>A</strong>pply (integrate with clinical judgement and patient preference), <strong>A</strong>ssess (evaluate the outcome).</li>
 <li class="">History taking, assessment tests, patient communication, and documentation of findings; treatment planning and organisation.</li>
-<li class="">Documentation using the ICF: impairments of body function/structure, activity limitations, participation restrictions, with environmental and personal factors as modifiers.</li>
+<li class="">Documentation using the <span class="term" data-note="The International Classification of Functioning, Disability and Health." tabindex="0">ICF</span>: impairments of body function/structure, activity limitations, participation restrictions, with environmental and personal factors as modifiers.</li>
 <li class="">Standardized scales and tests in assessment; psychometric properties — reliability, validity, responsiveness (MCID, MDC) — and their interpretation in practice.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>This is the identity topic of Paper I. Long answers usually ask for the definition and scope of physiotherapy (quote the NCAHP Act 2021 for the Indian legal context), the principles of evidence-based practice with its steps, or the use of the ICF in documenting an assessment. Note that the ICF and psychometric concepts also carry direct marks in MSK Paper III — study once, score twice.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>This is the identity topic of Paper I. Long answers usually ask for the definition and scope of physiotherapy (quote the NCAHP Act 2021 for the Indian legal context), the principles of evidence-based practice with its steps, or the use of the ICF in documenting an assessment. Note that the ICF and psychometric concepts also carry direct marks in MSK Paper III — study once, score twice.</p></div>
 </article>
 <article class="topic" id="core-professional-values-in-physiotherap-213">
 <header class="t-head"><h3>2. Core Professional Values in Physiotherapy including Professional and Research Ethics</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
@@ -165,7 +296,7 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Ethical issues in physiotherapy practice: informed consent, confidentiality of records, professional boundaries, scope-of-practice violations, advertising, and dual relationships.</li>
 <li class="">Research ethics operational points: ethics committee (Institutional Review Board) approval, Declaration of Helsinki, informed consent process, vulnerable populations.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Expect either a short note on the ICMR guidelines or an essay on the four ethical principles illustrated with physiotherapy scenarios. The four principles with a clinical example each (a patient refusing a treatment plan for autonomy; over-treating beyond evidence for non-maleficence) is the standard full-marks structure.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Expect either a short note on the ICMR guidelines or an essay on the four ethical principles illustrated with physiotherapy scenarios. The four principles with a clinical example each (a patient refusing a treatment plan for autonomy; over-treating beyond evidence for non-maleficence) is the standard full-marks structure.</p></div>
 </article>
 <article class="topic topic-top" id="research-methodology-and-biostatistics-235">
 <header class="t-head"><h3>3. Research Methodology and Biostatistics</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 3 · C 5</span></div></header>
@@ -174,7 +305,7 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Literature search: databases — PubMed/MEDLINE, CINAHL, Cochrane Library, and PEDro (the physiotherapy-specific evidence database); search strategy with MeSH terms, Boolean operators (AND/OR/NOT), and inclusion/exclusion criteria.</li>
 <li class="">Observational designs: cross-sectional (prevalence at a point in time), case-control (starts with outcome, looks back — odds ratio), cohort (starts with exposure, follows forward — relative risk); enhancing causal inference (bias, confounding, stratification).</li>
 <li class="">Experimental designs: the randomised blinded (controlled) trial — the gold standard for therapy questions; alternative designs (crossover, factorial, pragmatic, N-of-1).</li>
-<li class="">Studies of diagnostic tests: sensitivity, specificity, predictive values, likelihood ratios (concepts shared with MSK Paper III).</li>
+<li class="">Studies of diagnostic tests: <span class="term" data-note="A test's ability to correctly identify people who have the condition." tabindex="0">sensitivity</span>, specificity, predictive values, likelihood ratios (concepts shared with MSK Paper III).</li>
 <li class="">Qualitative research: interviews, focus groups, thematic analysis, saturation; mixed methods.</li>
 <li class="">Systematic reviews and meta-analysis: protocol (register with PROSPERO), PRISMA flow diagram, heterogeneity (I-squared), forest plot, fixed vs random effects.</li>
 <li class="">Sampling: probability — simple random, stratified, cluster, systematic; non-probability — convenience, purposive, snowball, quota.</li>
@@ -184,7 +315,7 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Inferential: hypothesis testing (null vs alternative; p-value), parametric tests — paired/unpaired t-test, ANOVA (with post-hoc corrections); non-parametric equivalents — Mann-Whitney U, Wilcoxon signed-rank, Kruskal-Wallis; categorical data — chi-square, Fisher's exact; correlation (Pearson r, Spearman rho) vs regression; data synthesis in qualitative designs.</li>
 <li class="">Dissemination: writing a manuscript (IMRAD — Introduction, Methods, Results, And Discussion), clinical practice guidelines, research dissemination best practice.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>With three blueprint questions — the heaviest topic in any paper of the course — this unit must be mastered. The syllabus maps almost line-for-line onto Hulley's Designing Clinical Research. Classic long answers: study designs with a worked example of each; sample size and power; the hierarchy of evidence; parametric versus non-parametric tests with when-to-use logic. Pair the diagnostic-accuracy statistics with MSK Paper III revision.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>With three blueprint questions — the heaviest topic in any paper of the course — this unit must be mastered. The syllabus maps almost line-for-line onto Hulley's Designing Clinical Research. Classic long answers: study designs with a worked example of each; sample size and power; the hierarchy of evidence; parametric versus non-parametric tests with when-to-use logic. Pair the diagnostic-accuracy statistics with MSK Paper III revision.</p></div>
 </article>
 <article class="topic topic-top" id="exercise-physiology-325">
 <header class="t-head"><h3>4. Exercise Physiology</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
@@ -192,25 +323,25 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Fundamentals of human energy transfer: ATP as the energy currency; the three energy systems — phosphagen/ATP-PC (0-10 seconds), anaerobic glycolysis (to ~2 minutes), oxidative system (sustained) — with substrates and examples.</li>
 <li class="">Nutrition: macronutrients (carbohydrate 4 kcal/g, protein 4 kcal/g, fat 9 kcal/g) and micronutrients; food energy and optimum nutrition for exercise; energy expenditure at rest (BMR/RMR — largest single component of daily expenditure) versus during activity.</li>
 <li class="">Measuring energy-generating capacity: direct and indirect calorimetry, VO2max, ventilatory threshold, graded exercise testing, submaximal prediction tests.</li>
-<li class="">Responses and adaptations to exercise and training by system: pulmonary (ventilation), cardiovascular (increased stroke volume, decreased resting heart rate, improved blood pressure response), neuromuscular (recruitment, rate coding), musculoskeletal (hypertrophy, fibre transitions, bone density), endocrine (acute versus chronic hormonal responses).</li>
+<li class="">Responses and adaptations to exercise and training by system: pulmonary (ventilation), cardiovascular (increased stroke volume, decreased resting heart rate, improved blood pressure response), neuromuscular (recruitment, rate coding), musculoskeletal (<span class="term" data-note="An increase in muscle or tissue size." tabindex="0">hypertrophy</span>, fibre transitions, bone density), endocrine (acute versus chronic hormonal responses).</li>
 <li class="">Body composition and its evaluation, obesity assessment, weight control through energy balance (intake vs expenditure).</li>
 <li class="">Training the anaerobic systems (sprints, resistance — high intensity, short bouts) versus the aerobic system (continuous, interval training — FITT framework).</li>
-<li class="">Training muscles to become stronger: overload, specificity, progression; neural versus hypertrophic adaptation.</li>
+<li class="">Training muscles to become stronger: overload, <span class="term" data-note="A test's ability to correctly identify people who do not have the condition." tabindex="0">specificity</span>, progression; neural versus hypertrophic adaptation.</li>
 <li class="">Factors affecting physiological function: environment — heat, cold, altitude, pollution; special aids (ergogenic aids); influence of age and gender on exercise response and trainability.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Two blueprint questions plus direct recurrence in MSK Paper II (Physiological Basis of Human Movement) and Paper IV (endurance and functional training) make this a five-star topic. Learn the energy systems with their timelines, the kcal values, and one adaptation per system. The exam frequently asks for system-wise adaptations in a table format.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Two blueprint questions plus direct recurrence in MSK Paper II (Physiological Basis of Human Movement) and Paper IV (endurance and functional training) make this a five-star topic. Learn the energy systems with their timelines, the kcal values, and one adaptation per system. The exam frequently asks for system-wise adaptations in a table format.</p></div>
 </article>
 <article class="topic topic-top" id="electrophysiology-325">
 <header class="t-head"><h3>5. Electrophysiology</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
 <ul>
 <li class="">Anatomy and physiology of the peripheral nerve and muscle: axon, myelin sheath, saltatory conduction, node of Ranvier; neuromuscular junction events (action potential → calcium influx → acetylcholine release → end-plate potential).</li>
-<li class="">Nerve fibre classification: A-alpha (motor/proprioception), A-beta (touch), A-gamma (muscle spindle), A-delta (fast pain, temperature), B (preganglionic autonomic), C (slow pain, postganglionic) — conduction velocity falls from A to C.</li>
+<li class="">Nerve fibre classification: A-alpha (motor/<span class="term" data-note="The sense of body and joint position and movement." tabindex="0">proprioception</span>), A-beta (touch), A-gamma (<span class="term" data-note="A stretch sensor inside muscle that helps control posture and movement." tabindex="0">muscle spindle</span>), A-delta (fast pain, temperature), B (preganglionic autonomic), C (slow pain, postganglionic) — conduction velocity falls from A to C.</li>
 <li class="">Electrical properties of nerve and muscle: resting membrane potential (approximately -70 mV in nerve, -90 mV in muscle), depolarisation and the action potential, all-or-none law, refractory periods, accommodation; strength-duration curve — rheobase (minimum intensity with long duration) and chronaxie (duration at twice rheobase) — the classical clinical curve shapes (normal, denervated, partially denervated).</li>
 <li class="">Instrumentation for neuromuscular electrical stimulation: stimulator components, monophasic versus biphasic pulsed currents, key parameters — frequency (pps/Hz), pulse duration/phase, amplitude, duty cycle, ramp-up.</li>
-<li class="">Muscle plasticity in response to electrical stimulation: reversal of disuse atrophy, fibre-type shifts, maintenance of muscle mass when denervated (beware the parameter window — denervated muscle needs long pulse durations, milliseconds, not the microseconds used on innervated muscle).</li>
+<li class="">Muscle plasticity in response to electrical stimulation: reversal of disuse <span class="term" data-note="Wasting or shrinking of muscle or tissue." tabindex="0">atrophy</span>, fibre-type shifts, maintenance of muscle mass when denervated (beware the parameter window — denervated muscle needs long pulse durations, milliseconds, not the microseconds used on innervated muscle).</li>
 <li class="">Effects of electrical stimulation on body systems: muscle pump and circulation, pain modulation (gate control and opioid mechanisms), tissue healing currents.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Electrophysiology carries two blueprint questions and reappears as Electro Physics in MSK Paper II and electro modalities in Paper IV. The strength-duration curve with its normal and denervated shapes, nerve fibre classification, and NMES parameters are the exam staples. Draw the strength-duration curve with labelled rheobase and chronaxie — it is a recurring diagram question.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Electrophysiology carries two blueprint questions and reappears as Electro Physics in MSK Paper II and electro modalities in Paper IV. The strength-duration curve with its normal and denervated shapes, nerve fibre classification, and NMES parameters are the exam staples. Draw the strength-duration curve with labelled rheobase and chronaxie — it is a recurring diagram question.</p></div>
 </article>
 <article class="topic" id="pedagogy-in-physiotherapy-education-101">
 <header class="t-head"><h3>6. Pedagogy in Physiotherapy Education</h3><div class="t-meta"><span class="stars">★<span class="dim">☆☆☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 1 · B 0 · C 1</span></div></header>
@@ -225,7 +356,7 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Instructional techniques: knowledge transfer (lectures, flipped classroom), skill development (demonstration, simulation, deliberate practice), attitudes (role modelling, reflection), teaching with technology (e-learning, virtual patients).</li>
 <li class="">Academic planning and organisation: curriculum mapping, course design, feedback and evaluation.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>The blueprint allots no separate question to pedagogy, so prepare it as short-note material only — Bloom's taxonomy, Miller's pyramid, and the Dreyfus stages are the three most quotable frameworks, and they also dress up any answer about postgraduate teaching competencies. Do not spend mastery-level time here.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>The blueprint allots no separate question to pedagogy, so prepare it as short-note material only — Bloom's taxonomy, Miller's pyramid, and the Dreyfus stages are the three most quotable frameworks, and they also dress up any answer about postgraduate teaching competencies. Do not spend mastery-level time here.</p></div>
 </article>
 <article class="topic" id="management-entrepreneurship-and-leadersh-112">
 <header class="t-head"><h3>7. Management, Entrepreneurship and Leadership in Physiotherapy Practice</h3><div class="t-meta"><span class="stars">★★<span class="dim">☆☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 1 · B 1 · C 2</span></div></header>
@@ -237,12 +368,12 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Entrepreneurship in physiotherapy: need, advantages and opportunities (growing demand, niche services, home care, corporate ergonomics), challenges and barriers in the Indian context (capital, insurance ecosystem, competition, regulatory awareness).</li>
 <li class="">Leadership: need and relevance; theories — trait, behavioural, situational/contingency, transformational versus transactional; competencies and characteristics (vision, communication, emotional intelligence, team-building).</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>One blueprint question, usually a short note on the functions of management or the manager's responsibilities. Learn Fayol's functions with one physiotherapy-department example each, and be able to discuss entrepreneurship with an Indian private-practice example — evaluators reward context over textbook recitation.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>One blueprint question, usually a short note on the functions of management or the manager's responsibilities. Learn Fayol's functions with one physiotherapy-department example each, and be able to discuss entrepreneurship with an Indian private-practice example — evaluators reward context over textbook recitation.</p></div>
 </article>
-<div class="sec-head" id="refs"><h2>Sources & verification</h2></div>
+<div class="sec-head" id="refs"><h2>Sources &amp; verification</h2></div>
 <div class="refs"><h3>Prepared from</h3><p>MPT syllabus (RGUHS 2020, Paper I — common to all specialties), topic-wise blueprint (2021-22 batch), compiled departmental notes (Prof. Vinod Babu K), syllabus references: World Physiotherapy policy statements, ICMR ethical guidelines, Hulley et al. — Designing Clinical Research, Indrayan &amp; Malhotra — Medical Biostatistics, McArdle, Katch &amp; Katch — Exercise Physiology, Page — Management in Physical Therapy Practices.</p>
 <h3 style="margin-top:16px">Verification</h3>
-<p>These notes were checked by independent verification passes and cross-verification before publication; clinical values should be cross-checked against your college&rsquo;s prescribed edition before the examination. Mnemonics flagged in the notes as &ldquo;coined study aids&rdquo; are original memory aids, not textbook eponyms.</p></div>
+<p>These notes were checked by independent verification passes and cross-verification before publication; clinical values should be cross-checked against your college’s prescribed edition before the examination. Mnemonics flagged in the notes as “coined study aids” are original memory aids, not textbook eponyms.</p></div>
 </div>
 </div>
 <script>
@@ -261,5 +392,71 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
-</body>
+<details class="glossary"><summary>Glossary of difficult terms (7)</summary><p class="gloss-hint">Dotted-underlined words also show the definition on hover or tap.</p><ul><li><strong>atrophy</strong> — Wasting or shrinking of muscle or tissue.</li><li><strong>hypertrophy</strong> — An increase in muscle or tissue size.</li><li><strong>ICF</strong> — The International Classification of Functioning, Disability and Health.</li><li><strong>muscle spindle</strong> — A stretch sensor inside muscle that helps control posture and movement.</li><li><strong>proprioception</strong> — The sense of body and joint position and movement.</li><li><strong>sensitivity</strong> — A test's ability to correctly identify people who have the condition.</li><li><strong>specificity</strong> — A test's ability to correctly identify people who do not have the condition.</li></ul></details><script id="rg-tools">
+(function(){
+  var root=document.documentElement, PERSIST=true, KEY='rguhs';
+  var content=document.querySelector('#content, main, .wrap')||document.body;
+  var popup=document.getElementById('rg-popup'), pinned=null;
+
+  function syncTheme(){var d=root.classList.contains('dark');var b=document.getElementById('rgToggleTheme');
+    if(b){b.textContent=d?'Day mode':'Night mode';b.classList.toggle('active',d);}}
+  function syncFit(){var f=root.classList.contains('fit');var b=document.getElementById('rgToggleFit');
+    if(b){b.textContent=f?'Fit: on':'Fit to screen';b.classList.toggle('active',f);}}
+  syncTheme(); syncFit();
+
+  var hlKey=KEY+'-hl-'+location.pathname;
+  if(PERSIST){try{var saved=localStorage.getItem(hlKey);if(saved)content.innerHTML=saved;}catch(e){}}
+  function saveHl(){if(!PERSIST)return;try{localStorage.setItem(hlKey,content.innerHTML);}catch(e){}}
+  function selRange(){var s=window.getSelection();if(!s||s.rangeCount===0||s.isCollapsed)return null;
+    var r=s.getRangeAt(0);if(!content.contains(r.commonAncestorContainer))return null;return r;}
+  function highlight(c){var r=selRange();if(!r)return;var m=document.createElement('mark');m.className='hl '+c;
+    try{r.surroundContents(m);}catch(e){m.appendChild(r.extractContents());r.insertNode(m);}
+    window.getSelection().removeAllRanges();saveHl();}
+  function eraseSel(){var r=selRange();if(!r)return;var ch=false;
+    content.querySelectorAll('mark.hl').forEach(function(m){if(r.intersectsNode(m)){m.parentNode.replaceChild(document.createTextNode(m.textContent),m);ch=true;}});
+    window.getSelection().removeAllRanges();if(ch)saveHl();}
+
+  var tb=document.querySelector('.rg-toolbar');
+  if(tb)tb.addEventListener('mousedown',function(e){if(e.target.closest('button'))e.preventDefault();});
+  if(tb)tb.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    if(b.dataset.color){highlight(b.dataset.color);}
+    else if(b.id==='rgErase'){eraseSel();}
+    else if(b.id==='rgClearAll'){content.querySelectorAll('mark.hl').forEach(function(m){m.parentNode.replaceChild(document.createTextNode(m.textContent),m);});saveHl();}
+    else if(b.id==='rgToggleNotes'){root.classList.toggle('no-notes');b.classList.toggle('active',!root.classList.contains('no-notes'));if(root.classList.contains('no-notes')){pinned=null;if(popup)popup.style.display='none';}}
+    else if(b.id==='rgToggleTheme'){root.classList.toggle('dark');try{localStorage.setItem(KEY+'-theme',root.classList.contains('dark')?'dark':'light');}catch(x){}syncTheme();}
+    else if(b.id==='rgToggleFit'){root.classList.toggle('fit');try{localStorage.setItem(KEY+'-fit',root.classList.contains('fit')?'1':'0');}catch(x){}syncFit();}
+  });
+
+  function showPopup(el){if(!popup)return;var r=el.getBoundingClientRect();
+    popup.innerHTML='<b>'+el.textContent+'</b><br>'+el.getAttribute('data-note');
+    popup.style.display='block';var pw=popup.offsetWidth,ph=popup.offsetHeight;
+    var left=window.scrollX+r.left, top=window.scrollY+r.bottom+8, vw=document.documentElement.clientWidth;
+    if(left+pw>window.scrollX+vw-12)left=window.scrollX+vw-pw-12; if(left<window.scrollX+8)left=window.scrollX+8;
+    if(r.bottom+ph+20>window.innerHeight)top=window.scrollY+r.top-ph-8;
+    popup.style.left=left+'px';popup.style.top=top+'px';}
+  function hidePopup(){if(!pinned&&popup)popup.style.display='none';}
+  document.addEventListener('mouseover',function(e){var t=e.target.closest?e.target.closest('.term'):null;
+    if(t&&t.getAttribute('data-note')&&!root.classList.contains('no-notes'))showPopup(t);});
+  document.addEventListener('mouseout',function(e){var t=e.target.closest?e.target.closest('.term'):null;if(t&&t!==pinned)hidePopup();});
+  document.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('.term'):null;
+    if(t){if(root.classList.contains('no-notes'))return;if(pinned===t){pinned=null;if(popup)popup.style.display='none';}else{pinned=t;showPopup(t);}return;}
+    if(!e.target.closest||!e.target.closest('#rg-popup')){pinned=null;if(popup)popup.style.display='none';}});
+  window.addEventListener('scroll',function(){if(pinned)showPopup(pinned);},{passive:true});
+  document.addEventListener('keydown',function(e){
+    if((e.key==='Enter'||e.key===' ')&&document.activeElement&&document.activeElement.classList&&document.activeElement.classList.contains('term')){e.preventDefault();pinned=document.activeElement;showPopup(pinned);}
+    if(e.key==='Escape'){pinned=null;if(popup)popup.style.display='none';closeDrawer();}});
+
+  var drawer=document.getElementById('rgDrawer'),scrim=document.getElementById('rgScrim'),
+      fab=document.getElementById('rgNotesFab'),note=document.getElementById('rgPageNote');
+  function openDrawer(o){if(!drawer)return;drawer.classList.toggle('open',o);scrim.classList.toggle('open',o);if(fab)fab.setAttribute('aria-expanded',o?'true':'false');}
+  function closeDrawer(){openDrawer(false);}
+  if(fab){fab.addEventListener('click',function(){openDrawer(!drawer.classList.contains('open'));});
+    document.getElementById('rgDrawerClose').addEventListener('click',closeDrawer);
+    scrim.addEventListener('click',closeDrawer);}
+  if(note){var nk=KEY+'-note-'+location.pathname;
+    try{var v=localStorage.getItem(nk);if(v)note.value=v;}catch(e){}
+    note.addEventListener('input',function(){try{localStorage.setItem(nk,note.value);}catch(e){}});}
+})();
+</script></body>
 </html>

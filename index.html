@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>RGUHS MPT Study Notes — Home</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#faf8f3; --surface:#ffffff; --surface2:#f3efe6; --border:rgba(30,58,95,.12);
@@ -108,61 +109,257 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 }
 @media print{.toc,.pnav{display:none}.wrap{grid-template-columns:1fr}body{background:#fff}.topic{break-inside:avoid}}
 </style>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1e3a5f">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-</head>
-<body>
-<nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT &middot; Study Notes</a><a class="tab" href="paper1.html">Paper 1</a><a class="tab" href="paper2.html">Paper 2</a><a class="tab" href="paper3.html">Paper 3</a><a class="tab" href="paper4.html">Paper 4</a></div></nav>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#1e3a5f" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script id="rg-boot">(function(){try{var d=document.documentElement;
+if(localStorage.getItem('rguhs-theme')==='dark')d.classList.add('dark');
+if(localStorage.getItem('rguhs-fit')==='1')d.classList.add('fit');}catch(e){}})();</script><style id="rguhs-teal-theme">
+/* ===== RGUHS teal study theme (injected layer) ===== */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#1b1f24; --muted:#5b6472;
+  --line:#e4e7eb; --line-2:#d3d8de;
+  --accent:#0f766e; --accent-ink:#0b5f59; --accent-soft:#e8f3f1;
+  --term:#4a5560; --term-dot:#9aa3ad;
+  --paper:#f6f7f9; --paper2:#eef1f4; --surface:#ffffff; --surface2:#f2f4f7;
+  --surface-2:#f2f4f7; --border:#e4e7eb; --rule:#e4e7eb; --rule-strong:#d3d8de;
+  --text:#1b1f24; --text-dim:#5b6472; --ink-dim:#5b6472;
+  --navy:#0f766e; --terra:#0b5f59; --terra-bg:#e8f3f1; --gold:#0f766e; --gold-bg:#e8f3f1;
+  --accent2:#0b5f59; --accent-dim:#99f6e4; --accent2-dim:#99f6e4;
+  --blue:#0f766e; --bar:#ffffff;
+  --ui-bg:#ffffff; --ui-ink:#1b1f24; --ui-line:rgba(20,30,50,.16); --ui-hover:rgba(20,30,50,.07); --ui-on:#e8f3f1;
+}
+html.dark, html[data-theme="dark"]{
+  --bg:#101216; --panel:#171a1f; --ink:#e7e9ed; --muted:#98a1ac;
+  --line:#262a31; --line-2:#333842;
+  --accent:#5eead4; --accent-ink:#5eead4; --accent-soft:#16292a;
+  --term:#aab2bd; --term-dot:#5a6470;
+  --paper:#101216; --paper2:#171a1f; --surface:#171a1f; --surface2:#1d2126;
+  --surface-2:#1d2126; --border:#262a31; --rule:#262a31; --rule-strong:#333842;
+  --text:#e7e9ed; --text-dim:#98a1ac; --ink-dim:#98a1ac;
+  --navy:#5eead4; --terra:#5eead4; --terra-bg:#16292a; --gold:#5eead4; --gold-bg:#16292a;
+  --accent2:#5eead4; --accent-dim:#16292a; --accent2-dim:#16292a;
+  --blue:#5eead4; --bar:#171a1f;
+  --ui-bg:#1d2126; --ui-ink:#e7e9ed; --ui-line:rgba(255,255,255,.18); --ui-hover:rgba(255,255,255,.09); --ui-on:#16292a;
+}
+html,body{background:var(--bg)!important;color:var(--ink)!important;
+  font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif!important;font-size:17px;line-height:1.68;
+  -webkit-font-smoothing:antialiased;}
+body{background-image:none!important;}
+h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif!important;color:var(--ink)!important;letter-spacing:normal!important;}
+a{color:var(--accent)!important;}
+a:hover{color:var(--accent-ink)!important;}
+::selection{background:var(--accent-soft);}
+/* top bars / nav */
+.pnav,.top,.bar,.pnav-in,.rtools{background:var(--panel)!important;border-color:var(--line)!important;color:var(--ink)!important;}
+.bar,.top{position:sticky;top:52px;z-index:70;}
+.rtools{display:none!important;}
+.pnav-in a.tab.on{border-color:var(--accent)!important;background:var(--accent-soft)!important;color:var(--accent-ink)!important;}
+.brand,.brand b{color:var(--accent-ink)!important;}
+/* cards / panels */
+.topic,.pcard,.homefoot,.sec-head,.refs,.exam-para,.tbl-wrap,.fig,.stat,.card,
+main article,main section,.crumb,.legend span{
+  background:var(--panel)!important;border-color:var(--line)!important;color:var(--ink)!important;
+  box-shadow:none!important;}
+.topic-top{border-left-color:var(--accent)!important;}
+.exam-para,.stat,.legend span,.t-meta .rbc,.rbc{background:var(--accent-soft)!important;color:var(--accent-ink)!important;border-color:var(--line)!important;}
+.bmnemonic,.bmnemonic::before{background:var(--accent-soft)!important;}
+.stars,.stars-sm,.open,.pcard .open,.ep-label,.kicker,.ptag,.pcard .ptag{color:var(--accent)!important;}
+.stars .dim,.stars-sm .dim{color:var(--line-2)!important;}
+/* tables */
+table{border-collapse:collapse;}
+th{background:var(--accent-soft)!important;color:var(--accent-ink)!important;border-color:var(--line)!important;}
+td{border-color:var(--line)!important;}
+thead th{background:var(--accent)!important;color:#fff!important;}
+html.dark thead th{color:#06231f!important;}
+/* toolbar */
+.rg-toolbar{position:sticky;top:0;z-index:900;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  padding:9px 20px;background:var(--panel);border-bottom:1px solid var(--line);font-size:13.5px;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+.rg-toolbar .lbl{color:var(--muted);font-weight:600;}
+.rg-toolbar .sw{width:22px;height:22px;border-radius:50%;border:1px solid var(--line-2);cursor:pointer;padding:0;}
+.rg-toolbar .sw.yellow{background:#ffe680;} .rg-toolbar .sw.green{background:#a8e6a3;} .rg-toolbar .sw.pink{background:#ffb3d1;}
+.rg-toolbar .btn{border:1px solid var(--line-2);background:var(--panel);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;font:inherit;font-size:13px;}
+.rg-toolbar .btn:hover{background:var(--accent-soft);border-color:var(--accent);}
+.rg-toolbar .btn.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink);font-weight:600;}
+.rg-toolbar .sep{width:1px;height:20px;background:var(--line-2);}
+.rg-toolbar .hint{margin-left:auto;color:var(--muted);font-size:12.5px;}
+html.fit .wrap,html.fit main{max-width:100%!important;}
+/* term popups */
+.term{color:var(--term);border-bottom:1px dotted var(--term-dot);cursor:help;}
+.term:hover{background:var(--accent-soft);border-bottom-color:var(--accent);}
+html.no-notes .term{border-bottom:none;color:inherit;cursor:inherit;background:none;}
+#rg-popup{position:absolute;z-index:1200;max-width:330px;display:none;padding:11px 13px;border-radius:9px;
+  background:#1c1f24;color:#f1f3f6;font-size:14px;line-height:1.5;box-shadow:0 12px 30px rgba(0,0,0,.28);font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+html.dark #rg-popup{background:#2a2f36;color:#eef1f4;border:1px solid var(--line-2);}
+#rg-popup b{color:#fff;}
+mark.hl{border-radius:3px;padding:0 1px;color:inherit;}
+mark.hl.yellow{background:rgba(255,214,0,.38);}
+mark.hl.green{background:rgba(52,199,89,.32);}
+mark.hl.pink{background:rgba(255,90,150,.30);}
+/* glossary */
+.glossary{margin:26px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 18px;}
+.glossary summary{cursor:pointer;font-weight:700;padding:12px 0;}
+.gloss-hint{margin:0 0 8px;color:var(--muted);font-size:13.5px;}
+.glossary ul{font-size:14px;columns:2;column-gap:26px;}
+@media (max-width:680px){.glossary ul{columns:1;}}
+/* notes */
+.rg-fab{position:fixed;right:20px;bottom:20px;z-index:1100;display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:999px;padding:11px 17px;
+  font:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.22);font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+html.dark .rg-fab{color:#052622;}
+.rg-drawer{position:fixed;top:0;right:0;height:100%;width:min(430px,92vw);z-index:1300;background:var(--panel);
+  border-left:1px solid var(--line);box-shadow:-12px 0 34px rgba(0,0,0,.2);transform:translateX(102%);
+  transition:transform .22s ease;display:flex;flex-direction:column;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+.rg-drawer.open{transform:none;}
+.rg-drawer .dhead{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line);}
+.rg-drawer .dhead strong{font-size:16px;}
+.rg-drawer .dclose{border:1px solid var(--line-2);background:var(--panel);color:var(--ink);border-radius:8px;padding:4px 11px;font:inherit;font-size:13px;cursor:pointer;}
+.rg-drawer .dhint{margin:10px 18px 2px;color:var(--muted);font-size:12.5px;}
+.rg-drawer .dbody{overflow:auto;padding:6px 18px 28px;}
+.rg-notes{width:100%;min-height:220px;resize:vertical;padding:10px 11px;font:inherit;font-size:14.5px;line-height:1.55;
+  color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:8px;}
+.rg-notes:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft);}
+.rg-scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1250;opacity:0;pointer-events:none;transition:opacity .22s ease;}
+.rg-scrim.open{opacity:1;pointer-events:auto;}
+@media print{.rg-toolbar,#rg-popup,.rg-fab,.rg-drawer,.rg-scrim{display:none!important;}}
+</style></head>
+<body><div aria-label="Study tools" class="rg-toolbar" role="toolbar">
+<span class="lbl">Highlight</span>
+<button aria-label="Yellow highlighter" class="sw yellow" data-color="yellow" title="Yellow highlighter"></button>
+<button aria-label="Green highlighter" class="sw green" data-color="green" title="Green highlighter"></button>
+<button aria-label="Pink highlighter" class="sw pink" data-color="pink" title="Pink highlighter"></button>
+<button class="btn" id="rgErase">Erase</button>
+<button class="btn" id="rgClearAll">Clear all</button>
+<span class="sep"></span>
+<button class="btn active" id="rgToggleNotes">Term notes</button>
+<button class="btn" id="rgToggleTheme">Night mode</button>
+<button class="btn" id="rgToggleFit">Fit to screen</button>
+<span class="hint">Select text, then pick a colour. Notes save automatically.</span>
+</div>
+<div id="rg-popup"></div>
+<button aria-expanded="false" class="rg-fab" id="rgNotesFab">✎ Study Notes</button>
+<div class="rg-scrim" id="rgScrim"></div>
+<aside aria-label="Study notes" class="rg-drawer" id="rgDrawer">
+<div class="dhead"><strong>Study Notes</strong><button class="dclose" id="rgDrawerClose">Close</button></div>
+<p class="dhint">Your notes for this page — saved automatically in this browser.</p>
+<div class="dbody"><textarea class="rg-notes" id="rgPageNote" placeholder="Write your notes for this page..."></textarea></div>
+</aside>
+<nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT · Study Notes</a><a class="tab" href="paper1.html">Paper 1</a><a class="tab" href="paper2.html">Paper 2</a><a class="tab" href="paper3.html">Paper 3</a><a class="tab" href="paper4.html">Paper 4</a></div></nav>
 <div class="home">
-  <div class="kicker">RGUHS &middot; Master of Physiotherapy &middot; Final University Theory Examination</div>
-  <h1>Prioritised Study Notes</h1>
-  <p class="lead">Every topic of the four theory papers — the common Paper I and the three Musculoskeletal specialty papers — rated one to five stars by syllabus repetition and blueprint weightage, then written up as exam-ready notes with mnemonics.</p>
-  <div class="legend">
-    <span><span class="stars-sm">★★★★★<span class="dim"></span></span> master first</span>
-    <span><span class="stars-sm">★★★★<span class="dim">☆</span></span> high priority</span>
-    <span><span class="stars-sm">★★★<span class="dim">☆☆</span></span> read carefully</span>
-    <span><span class="stars-sm">★★<span class="dim">☆☆☆</span></span> short-note level</span>
-    <span><span class="stars-sm">★<span class="dim">☆☆☆☆</span></span> skim only</span>
-  </div>
-  <div class="paper-grid">
+<div class="kicker">RGUHS · Master of Physiotherapy · Final University Theory Examination</div>
+<h1>Prioritised Study Notes</h1>
+<p class="lead">Every topic of the four theory papers — the common Paper I and the three Musculoskeletal specialty papers — rated one to five stars by syllabus repetition and blueprint weightage, then written up as exam-ready notes with mnemonics.</p>
+<div class="legend">
+<span><span class="stars-sm">★★★★★<span class="dim"></span></span> master first</span>
+<span><span class="stars-sm">★★★★<span class="dim">☆</span></span> high priority</span>
+<span><span class="stars-sm">★★★<span class="dim">☆☆</span></span> read carefully</span>
+<span><span class="stars-sm">★★<span class="dim">☆☆☆</span></span> short-note level</span>
+<span><span class="stars-sm">★<span class="dim">☆☆☆☆</span></span> skim only</span>
+</div>
+<div class="paper-grid">
 <a class="pcard" href="paper1.html">
-  <div class="ptag">Paper 1 &middot; Common to all specialties</div>
-  <h2>Fundamentals in Physiotherapy Practice, Pedagogy and Research</h2>
-  <p>The common paper for every MPT specialty — professional practice, ethics, research methods, exercise physiology, electrophysiology, pedagogy and management.</p>
-  <div class="pstats"><span><b>7</b> topics</span><span><b>10</b> questions</span><span><b>3</b> five-star</span><span><b>1</b> four-star</span></div>
-  <div class="tops"><div class="row"><span>Research Methodology and Biostatistics</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Exercise Physiology</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Electrophysiology</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div></div>
-  <span class="open">Open paper &rarr;</span>
+<div class="ptag">Paper 1 · Common to all specialties</div>
+<h2>Fundamentals in Physiotherapy Practice, Pedagogy and Research</h2>
+<p>The common paper for every MPT specialty — professional practice, ethics, research methods, exercise physiology, electrophysiology, pedagogy and management.</p>
+<div class="pstats"><span><b>7</b> topics</span><span><b>10</b> questions</span><span><b>3</b> five-star</span><span><b>1</b> four-star</span></div>
+<div class="tops"><div class="row"><span>Research Methodology and Biostatistics</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Exercise Physiology</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Electrophysiology</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div></div>
+<span class="open">Open paper →</span>
 </a><a class="pcard" href="paper2.html">
-  <div class="ptag">Paper 2 &middot; MPT Musculoskeletal</div>
-  <h2>Fundamental Principles of Musculoskeletal Physiotherapy</h2>
-  <p>The science base of the specialty — biomechanics, joint mechanics, posture, gait, pain and electro-physics.</p>
-  <div class="pstats"><span><b>10</b> topics</span><span><b>10</b> questions</span><span><b>4</b> five-star</span><span><b>1</b> four-star</span></div>
-  <div class="tops"><div class="row"><span>Basic Concepts of Biomechanics</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Mechanics and Pathomechanics of Joints</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Pain</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div></div>
-  <span class="open">Open paper &rarr;</span>
+<div class="ptag">Paper 2 · MPT Musculoskeletal</div>
+<h2>Fundamental Principles of Musculoskeletal Physiotherapy</h2>
+<p>The science base of the specialty — <span class="term" data-note="The study of the mechanical laws relating to the movement of living organisms." tabindex="0">biomechanics</span>, joint mechanics, <span class="term" data-note="The position of the body and its parts relative to gravity." tabindex="0">posture</span>, <span class="term" data-note="The manner of walking." tabindex="0">gait</span>, pain and electro-physics.</p>
+<div class="pstats"><span><b>10</b> topics</span><span><b>10</b> questions</span><span><b>4</b> five-star</span><span><b>1</b> four-star</span></div>
+<div class="tops"><div class="row"><span>Basic Concepts of Biomechanics</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Mechanics and Pathomechanics of Joints</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Pain</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div></div>
+<span class="open">Open paper →</span>
 </a><a class="pcard" href="paper3.html">
-  <div class="ptag">Paper 3 &middot; MPT Musculoskeletal</div>
-  <h2>Physical and Functional Diagnosis in Musculoskeletal Disorders</h2>
-  <p>Assessment, screening, special tests, imaging, and the assessment of fractures, hands, amputations and paediatric conditions.</p>
-  <div class="pstats"><span><b>6</b> topics</span><span><b>10</b> questions</span><span><b>2</b> five-star</span><span><b>3</b> four-star</span></div>
-  <div class="tops"><div class="row"><span>Physiotherapy Diagnosis, Special Tests, Medical Screenin…</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Functional Assessment, Outcome Measures, Ergonomic Risk …</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Introduction to Assessment, Basic Assessment Methods, Ph…</span><span class="stars-sm">★★★★<span class="dim">☆</span></span></div></div>
-  <span class="open">Open paper &rarr;</span>
+<div class="ptag">Paper 3 · MPT Musculoskeletal</div>
+<h2>Physical and Functional Diagnosis in Musculoskeletal Disorders</h2>
+<p>Assessment, screening, special tests, imaging, and the assessment of fractures, hands, amputations and paediatric conditions.</p>
+<div class="pstats"><span><b>6</b> topics</span><span><b>10</b> questions</span><span><b>2</b> five-star</span><span><b>3</b> four-star</span></div>
+<div class="tops"><div class="row"><span>Physiotherapy Diagnosis, Special Tests, Medical Screenin…</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Functional Assessment, Outcome Measures, Ergonomic Risk …</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Introduction to Assessment, Basic Assessment Methods, Ph…</span><span class="stars-sm">★★★★<span class="dim">☆</span></span></div></div>
+<span class="open">Open paper →</span>
 </a><a class="pcard" href="paper4.html">
-  <div class="ptag">Paper 4 &middot; MPT Musculoskeletal</div>
-  <h2>Physiotherapy Interventions in Musculoskeletal Disorders</h2>
-  <p>Treatment — exercise and impairment management, pain management, manual therapy, electro modalities, ergonomics and trauma rehabilitation.</p>
-  <div class="pstats"><span><b>7</b> topics</span><span><b>10</b> questions</span><span><b>1</b> five-star</span><span><b>4</b> four-star</span></div>
-  <div class="tops"><div class="row"><span>Methods of Musculoskeletal Rehabilitation</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Management of Pain</span><span class="stars-sm">★★★★<span class="dim">☆</span></span></div><div class="row"><span>Advanced Techniques in Musculoskeletal Rehabilitation</span><span class="stars-sm">★★★★<span class="dim">☆</span></span></div></div>
-  <span class="open">Open paper &rarr;</span>
+<div class="ptag">Paper 4 · MPT Musculoskeletal</div>
+<h2>Physiotherapy Interventions in Musculoskeletal Disorders</h2>
+<p>Treatment — exercise and impairment management, pain management, manual therapy, electro modalities, ergonomics and trauma rehabilitation.</p>
+<div class="pstats"><span><b>7</b> topics</span><span><b>10</b> questions</span><span><b>1</b> five-star</span><span><b>4</b> four-star</span></div>
+<div class="tops"><div class="row"><span>Methods of Musculoskeletal Rehabilitation</span><span class="stars-sm">★★★★★<span class="dim"></span></span></div><div class="row"><span>Management of Pain</span><span class="stars-sm">★★★★<span class="dim">☆</span></span></div><div class="row"><span>Advanced Techniques in Musculoskeletal Rehabilitation</span><span class="stars-sm">★★★★<span class="dim">☆</span></span></div></div>
+<span class="open">Open paper →</span>
 </a>
-  </div>
-  <div class="homefoot">
-    <h3>How the ratings work</h3>
-    <p>Repetition score <strong>R</strong> counts how many syllabus units a topic appears in across the papers (1&ndash;4). Blueprint score <strong>B</strong> is the number of questions the university topic-wise weightage allots it (each paper carries 10 questions). Combined <strong>C&nbsp;=&nbsp;R&nbsp;+&nbsp;B</strong> converts to stars: C&ge;5 &rarr; five stars, C=4 &rarr; four, C=3 &rarr; three, C=2 &rarr; two. Every paper page carries its own priority table. All notes were verified by independent review passes before publication; sources and verification notes appear at the end of each paper page.</p>
-    <p style="margin-top:10px">30 topics &middot; 10 five-star priorities &middot; 4 papers &middot; 10 questions per paper</p>
-  </div>
+</div>
+<div class="homefoot">
+<h3>How the ratings work</h3>
+<p>Repetition score <strong>R</strong> counts how many syllabus units a topic appears in across the papers (1–4). Blueprint score <strong>B</strong> is the number of questions the university topic-wise weightage allots it (each paper carries 10 questions). Combined <strong>C = R + B</strong> converts to stars: C≥5 → five stars, C=4 → four, C=3 → three, C=2 → two. Every paper page carries its own priority table. All notes were verified by independent review passes before publication; sources and verification notes appear at the end of each paper page.</p>
+<p style="margin-top:10px">30 topics · 10 five-star priorities · 4 papers · 10 questions per paper</p>
+</div>
 </div>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
-</body>
+<details class="glossary"><summary>Glossary of difficult terms (3)</summary><p class="gloss-hint">Dotted-underlined words also show the definition on hover or tap.</p><ul><li><strong>biomechanics</strong> — The study of the mechanical laws relating to the movement of living organisms.</li><li><strong>gait</strong> — The manner of walking.</li><li><strong>posture</strong> — The position of the body and its parts relative to gravity.</li></ul></details><script id="rg-tools">
+(function(){
+  var root=document.documentElement, PERSIST=true, KEY='rguhs';
+  var content=document.querySelector('#content, main, .wrap')||document.body;
+  var popup=document.getElementById('rg-popup'), pinned=null;
+
+  function syncTheme(){var d=root.classList.contains('dark');var b=document.getElementById('rgToggleTheme');
+    if(b){b.textContent=d?'Day mode':'Night mode';b.classList.toggle('active',d);}}
+  function syncFit(){var f=root.classList.contains('fit');var b=document.getElementById('rgToggleFit');
+    if(b){b.textContent=f?'Fit: on':'Fit to screen';b.classList.toggle('active',f);}}
+  syncTheme(); syncFit();
+
+  var hlKey=KEY+'-hl-'+location.pathname;
+  if(PERSIST){try{var saved=localStorage.getItem(hlKey);if(saved)content.innerHTML=saved;}catch(e){}}
+  function saveHl(){if(!PERSIST)return;try{localStorage.setItem(hlKey,content.innerHTML);}catch(e){}}
+  function selRange(){var s=window.getSelection();if(!s||s.rangeCount===0||s.isCollapsed)return null;
+    var r=s.getRangeAt(0);if(!content.contains(r.commonAncestorContainer))return null;return r;}
+  function highlight(c){var r=selRange();if(!r)return;var m=document.createElement('mark');m.className='hl '+c;
+    try{r.surroundContents(m);}catch(e){m.appendChild(r.extractContents());r.insertNode(m);}
+    window.getSelection().removeAllRanges();saveHl();}
+  function eraseSel(){var r=selRange();if(!r)return;var ch=false;
+    content.querySelectorAll('mark.hl').forEach(function(m){if(r.intersectsNode(m)){m.parentNode.replaceChild(document.createTextNode(m.textContent),m);ch=true;}});
+    window.getSelection().removeAllRanges();if(ch)saveHl();}
+
+  var tb=document.querySelector('.rg-toolbar');
+  if(tb)tb.addEventListener('mousedown',function(e){if(e.target.closest('button'))e.preventDefault();});
+  if(tb)tb.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    if(b.dataset.color){highlight(b.dataset.color);}
+    else if(b.id==='rgErase'){eraseSel();}
+    else if(b.id==='rgClearAll'){content.querySelectorAll('mark.hl').forEach(function(m){m.parentNode.replaceChild(document.createTextNode(m.textContent),m);});saveHl();}
+    else if(b.id==='rgToggleNotes'){root.classList.toggle('no-notes');b.classList.toggle('active',!root.classList.contains('no-notes'));if(root.classList.contains('no-notes')){pinned=null;if(popup)popup.style.display='none';}}
+    else if(b.id==='rgToggleTheme'){root.classList.toggle('dark');try{localStorage.setItem(KEY+'-theme',root.classList.contains('dark')?'dark':'light');}catch(x){}syncTheme();}
+    else if(b.id==='rgToggleFit'){root.classList.toggle('fit');try{localStorage.setItem(KEY+'-fit',root.classList.contains('fit')?'1':'0');}catch(x){}syncFit();}
+  });
+
+  function showPopup(el){if(!popup)return;var r=el.getBoundingClientRect();
+    popup.innerHTML='<b>'+el.textContent+'</b><br>'+el.getAttribute('data-note');
+    popup.style.display='block';var pw=popup.offsetWidth,ph=popup.offsetHeight;
+    var left=window.scrollX+r.left, top=window.scrollY+r.bottom+8, vw=document.documentElement.clientWidth;
+    if(left+pw>window.scrollX+vw-12)left=window.scrollX+vw-pw-12; if(left<window.scrollX+8)left=window.scrollX+8;
+    if(r.bottom+ph+20>window.innerHeight)top=window.scrollY+r.top-ph-8;
+    popup.style.left=left+'px';popup.style.top=top+'px';}
+  function hidePopup(){if(!pinned&&popup)popup.style.display='none';}
+  document.addEventListener('mouseover',function(e){var t=e.target.closest?e.target.closest('.term'):null;
+    if(t&&t.getAttribute('data-note')&&!root.classList.contains('no-notes'))showPopup(t);});
+  document.addEventListener('mouseout',function(e){var t=e.target.closest?e.target.closest('.term'):null;if(t&&t!==pinned)hidePopup();});
+  document.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('.term'):null;
+    if(t){if(root.classList.contains('no-notes'))return;if(pinned===t){pinned=null;if(popup)popup.style.display='none';}else{pinned=t;showPopup(t);}return;}
+    if(!e.target.closest||!e.target.closest('#rg-popup')){pinned=null;if(popup)popup.style.display='none';}});
+  window.addEventListener('scroll',function(){if(pinned)showPopup(pinned);},{passive:true});
+  document.addEventListener('keydown',function(e){
+    if((e.key==='Enter'||e.key===' ')&&document.activeElement&&document.activeElement.classList&&document.activeElement.classList.contains('term')){e.preventDefault();pinned=document.activeElement;showPopup(pinned);}
+    if(e.key==='Escape'){pinned=null;if(popup)popup.style.display='none';closeDrawer();}});
+
+  var drawer=document.getElementById('rgDrawer'),scrim=document.getElementById('rgScrim'),
+      fab=document.getElementById('rgNotesFab'),note=document.getElementById('rgPageNote');
+  function openDrawer(o){if(!drawer)return;drawer.classList.toggle('open',o);scrim.classList.toggle('open',o);if(fab)fab.setAttribute('aria-expanded',o?'true':'false');}
+  function closeDrawer(){openDrawer(false);}
+  if(fab){fab.addEventListener('click',function(){openDrawer(!drawer.classList.contains('open'));});
+    document.getElementById('rgDrawerClose').addEventListener('click',closeDrawer);
+    scrim.addEventListener('click',closeDrawer);}
+  if(note){var nk=KEY+'-note-'+location.pathname;
+    try{var v=localStorage.getItem(nk);if(v)note.value=v;}catch(e){}
+    note.addEventListener('input',function(){try{localStorage.setItem(nk,note.value);}catch(e){}});}
+})();
+</script></body>
 </html>

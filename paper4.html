@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Paper 4 — RGUHS MPT Study Notes</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=IBM+Plex+Sans:wght@400;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#faf8f3; --surface:#ffffff; --surface2:#f3efe6; --border:rgba(30,58,95,.12);
@@ -108,100 +109,230 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 }
 @media print{.toc,.pnav{display:none}.wrap{grid-template-columns:1fr}body{background:#fff}.topic{break-inside:avoid}}
 </style>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1e3a5f">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-</head>
-<body>
-<nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT &middot; Study Notes</a><a class="tab" href="paper1.html">Paper 1</a><a class="tab" href="paper2.html">Paper 2</a><a class="tab" href="paper3.html">Paper 3</a><a class="tab on" href="paper4.html">Paper 4</a></div></nav>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#1e3a5f" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<script id="rg-boot">(function(){try{var d=document.documentElement;
+if(localStorage.getItem('rguhs-theme')==='dark')d.classList.add('dark');
+if(localStorage.getItem('rguhs-fit')==='1')d.classList.add('fit');}catch(e){}})();</script><style id="rguhs-teal-theme">
+/* ===== RGUHS teal study theme (injected layer) ===== */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#1b1f24; --muted:#5b6472;
+  --line:#e4e7eb; --line-2:#d3d8de;
+  --accent:#0f766e; --accent-ink:#0b5f59; --accent-soft:#e8f3f1;
+  --term:#4a5560; --term-dot:#9aa3ad;
+  --paper:#f6f7f9; --paper2:#eef1f4; --surface:#ffffff; --surface2:#f2f4f7;
+  --surface-2:#f2f4f7; --border:#e4e7eb; --rule:#e4e7eb; --rule-strong:#d3d8de;
+  --text:#1b1f24; --text-dim:#5b6472; --ink-dim:#5b6472;
+  --navy:#0f766e; --terra:#0b5f59; --terra-bg:#e8f3f1; --gold:#0f766e; --gold-bg:#e8f3f1;
+  --accent2:#0b5f59; --accent-dim:#99f6e4; --accent2-dim:#99f6e4;
+  --blue:#0f766e; --bar:#ffffff;
+  --ui-bg:#ffffff; --ui-ink:#1b1f24; --ui-line:rgba(20,30,50,.16); --ui-hover:rgba(20,30,50,.07); --ui-on:#e8f3f1;
+}
+html.dark, html[data-theme="dark"]{
+  --bg:#101216; --panel:#171a1f; --ink:#e7e9ed; --muted:#98a1ac;
+  --line:#262a31; --line-2:#333842;
+  --accent:#5eead4; --accent-ink:#5eead4; --accent-soft:#16292a;
+  --term:#aab2bd; --term-dot:#5a6470;
+  --paper:#101216; --paper2:#171a1f; --surface:#171a1f; --surface2:#1d2126;
+  --surface-2:#1d2126; --border:#262a31; --rule:#262a31; --rule-strong:#333842;
+  --text:#e7e9ed; --text-dim:#98a1ac; --ink-dim:#98a1ac;
+  --navy:#5eead4; --terra:#5eead4; --terra-bg:#16292a; --gold:#5eead4; --gold-bg:#16292a;
+  --accent2:#5eead4; --accent-dim:#16292a; --accent2-dim:#16292a;
+  --blue:#5eead4; --bar:#171a1f;
+  --ui-bg:#1d2126; --ui-ink:#e7e9ed; --ui-line:rgba(255,255,255,.18); --ui-hover:rgba(255,255,255,.09); --ui-on:#16292a;
+}
+html,body{background:var(--bg)!important;color:var(--ink)!important;
+  font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif!important;font-size:17px;line-height:1.68;
+  -webkit-font-smoothing:antialiased;}
+body{background-image:none!important;}
+h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif!important;color:var(--ink)!important;letter-spacing:normal!important;}
+a{color:var(--accent)!important;}
+a:hover{color:var(--accent-ink)!important;}
+::selection{background:var(--accent-soft);}
+/* top bars / nav */
+.pnav,.top,.bar,.pnav-in,.rtools{background:var(--panel)!important;border-color:var(--line)!important;color:var(--ink)!important;}
+.bar,.top{position:sticky;top:52px;z-index:70;}
+.rtools{display:none!important;}
+.pnav-in a.tab.on{border-color:var(--accent)!important;background:var(--accent-soft)!important;color:var(--accent-ink)!important;}
+.brand,.brand b{color:var(--accent-ink)!important;}
+/* cards / panels */
+.topic,.pcard,.homefoot,.sec-head,.refs,.exam-para,.tbl-wrap,.fig,.stat,.card,
+main article,main section,.crumb,.legend span{
+  background:var(--panel)!important;border-color:var(--line)!important;color:var(--ink)!important;
+  box-shadow:none!important;}
+.topic-top{border-left-color:var(--accent)!important;}
+.exam-para,.stat,.legend span,.t-meta .rbc,.rbc{background:var(--accent-soft)!important;color:var(--accent-ink)!important;border-color:var(--line)!important;}
+.bmnemonic,.bmnemonic::before{background:var(--accent-soft)!important;}
+.stars,.stars-sm,.open,.pcard .open,.ep-label,.kicker,.ptag,.pcard .ptag{color:var(--accent)!important;}
+.stars .dim,.stars-sm .dim{color:var(--line-2)!important;}
+/* tables */
+table{border-collapse:collapse;}
+th{background:var(--accent-soft)!important;color:var(--accent-ink)!important;border-color:var(--line)!important;}
+td{border-color:var(--line)!important;}
+thead th{background:var(--accent)!important;color:#fff!important;}
+html.dark thead th{color:#06231f!important;}
+/* toolbar */
+.rg-toolbar{position:sticky;top:0;z-index:900;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  padding:9px 20px;background:var(--panel);border-bottom:1px solid var(--line);font-size:13.5px;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+.rg-toolbar .lbl{color:var(--muted);font-weight:600;}
+.rg-toolbar .sw{width:22px;height:22px;border-radius:50%;border:1px solid var(--line-2);cursor:pointer;padding:0;}
+.rg-toolbar .sw.yellow{background:#ffe680;} .rg-toolbar .sw.green{background:#a8e6a3;} .rg-toolbar .sw.pink{background:#ffb3d1;}
+.rg-toolbar .btn{border:1px solid var(--line-2);background:var(--panel);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;font:inherit;font-size:13px;}
+.rg-toolbar .btn:hover{background:var(--accent-soft);border-color:var(--accent);}
+.rg-toolbar .btn.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink);font-weight:600;}
+.rg-toolbar .sep{width:1px;height:20px;background:var(--line-2);}
+.rg-toolbar .hint{margin-left:auto;color:var(--muted);font-size:12.5px;}
+html.fit .wrap,html.fit main{max-width:100%!important;}
+/* term popups */
+.term{color:var(--term);border-bottom:1px dotted var(--term-dot);cursor:help;}
+.term:hover{background:var(--accent-soft);border-bottom-color:var(--accent);}
+html.no-notes .term{border-bottom:none;color:inherit;cursor:inherit;background:none;}
+#rg-popup{position:absolute;z-index:1200;max-width:330px;display:none;padding:11px 13px;border-radius:9px;
+  background:#1c1f24;color:#f1f3f6;font-size:14px;line-height:1.5;box-shadow:0 12px 30px rgba(0,0,0,.28);font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+html.dark #rg-popup{background:#2a2f36;color:#eef1f4;border:1px solid var(--line-2);}
+#rg-popup b{color:#fff;}
+mark.hl{border-radius:3px;padding:0 1px;color:inherit;}
+mark.hl.yellow{background:rgba(255,214,0,.38);}
+mark.hl.green{background:rgba(52,199,89,.32);}
+mark.hl.pink{background:rgba(255,90,150,.30);}
+/* glossary */
+.glossary{margin:26px 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 18px;}
+.glossary summary{cursor:pointer;font-weight:700;padding:12px 0;}
+.gloss-hint{margin:0 0 8px;color:var(--muted);font-size:13.5px;}
+.glossary ul{font-size:14px;columns:2;column-gap:26px;}
+@media (max-width:680px){.glossary ul{columns:1;}}
+/* notes */
+.rg-fab{position:fixed;right:20px;bottom:20px;z-index:1100;display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:999px;padding:11px 17px;
+  font:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.22);font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+html.dark .rg-fab{color:#052622;}
+.rg-drawer{position:fixed;top:0;right:0;height:100%;width:min(430px,92vw);z-index:1300;background:var(--panel);
+  border-left:1px solid var(--line);box-shadow:-12px 0 34px rgba(0,0,0,.2);transform:translateX(102%);
+  transition:transform .22s ease;display:flex;flex-direction:column;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+.rg-drawer.open{transform:none;}
+.rg-drawer .dhead{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line);}
+.rg-drawer .dhead strong{font-size:16px;}
+.rg-drawer .dclose{border:1px solid var(--line-2);background:var(--panel);color:var(--ink);border-radius:8px;padding:4px 11px;font:inherit;font-size:13px;cursor:pointer;}
+.rg-drawer .dhint{margin:10px 18px 2px;color:var(--muted);font-size:12.5px;}
+.rg-drawer .dbody{overflow:auto;padding:6px 18px 28px;}
+.rg-notes{width:100%;min-height:220px;resize:vertical;padding:10px 11px;font:inherit;font-size:14.5px;line-height:1.55;
+  color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:8px;}
+.rg-notes:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft);}
+.rg-scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1250;opacity:0;pointer-events:none;transition:opacity .22s ease;}
+.rg-scrim.open{opacity:1;pointer-events:auto;}
+@media print{.rg-toolbar,#rg-popup,.rg-fab,.rg-drawer,.rg-scrim{display:none!important;}}
+</style></head>
+<body><div aria-label="Study tools" class="rg-toolbar" role="toolbar">
+<span class="lbl">Highlight</span>
+<button aria-label="Yellow highlighter" class="sw yellow" data-color="yellow" title="Yellow highlighter"></button>
+<button aria-label="Green highlighter" class="sw green" data-color="green" title="Green highlighter"></button>
+<button aria-label="Pink highlighter" class="sw pink" data-color="pink" title="Pink highlighter"></button>
+<button class="btn" id="rgErase">Erase</button>
+<button class="btn" id="rgClearAll">Clear all</button>
+<span class="sep"></span>
+<button class="btn active" id="rgToggleNotes">Term notes</button>
+<button class="btn" id="rgToggleTheme">Night mode</button>
+<button class="btn" id="rgToggleFit">Fit to screen</button>
+<span class="hint">Select text, then pick a colour. Notes save automatically.</span>
+</div>
+<div id="rg-popup"></div>
+<button aria-expanded="false" class="rg-fab" id="rgNotesFab">✎ Study Notes</button>
+<div class="rg-scrim" id="rgScrim"></div>
+<aside aria-label="Study notes" class="rg-drawer" id="rgDrawer">
+<div class="dhead"><strong>Study Notes</strong><button class="dclose" id="rgDrawerClose">Close</button></div>
+<p class="dhint">Your notes for this page — saved automatically in this browser.</p>
+<div class="dbody"><textarea class="rg-notes" id="rgPageNote" placeholder="Write your notes for this page..."></textarea></div>
+</aside>
+<nav class="pnav"><div class="pnav-in"><a class="brand" href="index.html">RGUHS MPT · Study Notes</a><a class="tab" href="paper1.html">Paper 1</a><a class="tab" href="paper2.html">Paper 2</a><a class="tab" href="paper3.html">Paper 3</a><a class="tab on" href="paper4.html">Paper 4</a></div></nav>
 <div class="wrap">
 <nav class="toc" id="toc"><div class="toc-title">Paper 4 contents</div>
 <a href="#prio">Priority table</a>
-<a href="#interventions-for-physiologic-impairment-213" class="tsub">Interventions for Physiologic Impairments du</a>
-<a href="#management-of-pain-314" class="tsub">Management of Pain</a>
-<a href="#methods-of-musculoskeletal-rehabilitatio-325" class="tsub">Methods of Musculoskeletal Rehabilitation</a>
-<a href="#advanced-techniques-in-musculoskeletal-r-224" class="tsub">Advanced Techniques in Musculoskeletal Rehab</a>
-<a href="#electro-modalities-in-musculoskeletal-re-314" class="tsub">Electro Modalities in Musculoskeletal Rehabi</a>
-<a href="#ergonomics-213" class="tsub">Ergonomics</a>
-<a href="#trauma-rehabilitation-224" class="tsub">Trauma Rehabilitation</a>
+<a class="tsub" href="#interventions-for-physiologic-impairment-213">Interventions for Physiologic Impairments du</a>
+<a class="tsub" href="#management-of-pain-314">Management of Pain</a>
+<a class="tsub" href="#methods-of-musculoskeletal-rehabilitatio-325">Methods of Musculoskeletal Rehabilitation</a>
+<a class="tsub" href="#advanced-techniques-in-musculoskeletal-r-224">Advanced Techniques in Musculoskeletal Rehab</a>
+<a class="tsub" href="#electro-modalities-in-musculoskeletal-re-314">Electro Modalities in Musculoskeletal Rehabi</a>
+<a class="tsub" href="#ergonomics-213">Ergonomics</a>
+<a class="tsub" href="#trauma-rehabilitation-224">Trauma Rehabilitation</a>
 </nav>
 <div class="main">
 <div class="hero">
-  <div class="kicker">Paper 4 &middot; MPT Musculoskeletal &middot; 10 blueprint questions</div>
-  <h1>Physiotherapy Interventions in Musculoskeletal Disorders</h1>
-  <p class="lead">Treatment — exercise and impairment management, pain management, manual therapy, electro modalities, ergonomics and trauma rehabilitation.</p>
-  <div class="stats">
-    <div class="stat"><b>7</b><span>syllabus topics</span></div>
-    <div class="stat"><b>1</b><span>five-star priorities</span></div>
-    <div class="stat"><b>10</b><span>questions in the exam</span></div>
-  </div>
+<div class="kicker">Paper 4 · MPT Musculoskeletal · 10 blueprint questions</div>
+<h1>Physiotherapy Interventions in Musculoskeletal Disorders</h1>
+<p class="lead">Treatment — exercise and impairment management, pain management, manual therapy, electro modalities, ergonomics and trauma rehabilitation.</p>
+<div class="stats">
+<div class="stat"><b>7</b><span>syllabus topics</span></div>
+<div class="stat"><b>1</b><span>five-star priorities</span></div>
+<div class="stat"><b>10</b><span>questions in the exam</span></div>
+</div>
 </div>
 <div class="sec-head" id="prio"><h2>Priority table</h2></div>
 <div class="tbl-wrap"><table>
 <thead><tr><th>#</th><th>Topic</th><th class="c">R</th><th class="c">B</th><th class="c">C</th><th>Rating</th></tr></thead>
-<tbody><tr><td>3</td><td>Methods of Musculoskeletal Rehabilitation</td><td class='num'>3</td><td class='num'>2</td><td class='num'><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>2</td><td>Management of Pain</td><td class='num'>3</td><td class='num'>1</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>4</td><td>Advanced Techniques in Musculoskeletal Rehabilitation</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>5</td><td>Electro Modalities in Musculoskeletal Rehabilitation</td><td class='num'>3</td><td class='num'>1</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>7</td><td>Trauma Rehabilitation</td><td class='num'>2</td><td class='num'>2</td><td class='num'><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>1</td><td>Interventions for Physiologic Impairments during Rehabilitation</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>6</td><td>Ergonomics</td><td class='num'>2</td><td class='num'>1</td><td class='num'><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr></tbody></table></div>
+<tbody><tr><td>3</td><td>Methods of Musculoskeletal Rehabilitation</td><td class="num">3</td><td class="num">2</td><td class="num"><strong>5</strong></td><td><span class="stars-sm">★★★★★<span class="dim"></span></span></td></tr><tr><td>2</td><td>Management of Pain</td><td class="num">3</td><td class="num">1</td><td class="num"><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>4</td><td>Advanced Techniques in Musculoskeletal Rehabilitation</td><td class="num">2</td><td class="num">2</td><td class="num"><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>5</td><td>Electro Modalities in Musculoskeletal Rehabilitation</td><td class="num">3</td><td class="num">1</td><td class="num"><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>7</td><td>Trauma Rehabilitation</td><td class="num">2</td><td class="num">2</td><td class="num"><strong>4</strong></td><td><span class="stars-sm">★★★★<span class="dim">☆</span></span></td></tr><tr><td>1</td><td>Interventions for Physiologic Impairments during Rehabilitation</td><td class="num">2</td><td class="num">1</td><td class="num"><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr><tr><td>6</td><td>Ergonomics</td><td class="num">2</td><td class="num">1</td><td class="num"><strong>3</strong></td><td><span class="stars-sm">★★★<span class="dim">☆☆</span></span></td></tr></tbody></table></div>
 <div class="sec-head"><h2>Topic notes</h2></div>
 <article class="topic" id="interventions-for-physiologic-impairment-213">
 <header class="t-head"><h3>1. Interventions for Physiologic Impairments during Rehabilitation</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
 <ul>
-<li class="bmnemonic">Impaired muscle performance (strength, power, endurance): progressive resistance exercise; principles — mnemonic <strong>"OVER"</strong> (a coined study aid): <strong>O</strong>verload, <strong>V</strong>ariety, <strong>E</strong>xercise specificity, <strong>R</strong>eversibility (detraining); plus FITT (Frequency, Intensity, Time, Type) for prescription.</li>
-<li class="">Strength gains early in training are neural (motor unit recruitment, rate coding) before hypertrophy (visible after ~6-8 weeks).</li>
-<li class="">Impaired endurance: aerobic reconditioning with FITT; deconditioning and disuse atrophy in MSK patients; peripheral vs central fatigue.</li>
-<li class="">Impaired mobility: stretching types (static, dynamic, ballistic, PNF contract-relax); stretch-induced gains combine elastic (transient) and plastic (long-term, with sustained low-load) changes; contracture management.</li>
-<li class="">Impaired neuromuscular control: proprioceptive training, perturbation training, balance progressions, PNF, task-specific repetition.</li>
+<li class="bmnemonic">Impaired muscle performance (strength, power, endurance): progressive resistance exercise; principles — mnemonic <strong>"OVER"</strong> (a coined study aid): <strong>O</strong>verload, <strong>V</strong>ariety, <strong>E</strong>xercise <span class="term" data-note="A test's ability to correctly identify people who do not have the condition." tabindex="0">specificity</span>, <strong>R</strong>eversibility (detraining); plus FITT (Frequency, Intensity, Time, Type) for prescription.</li>
+<li class="">Strength gains early in training are neural (motor unit recruitment, rate coding) before <span class="term" data-note="An increase in muscle or tissue size." tabindex="0">hypertrophy</span> (visible after ~6-8 weeks).</li>
+<li class="">Impaired endurance: aerobic reconditioning with FITT; deconditioning and disuse <span class="term" data-note="Wasting or shrinking of muscle or tissue." tabindex="0">atrophy</span> in MSK patients; peripheral vs central fatigue.</li>
+<li class="">Impaired mobility: stretching types (static, dynamic, ballistic, PNF contract-relax); stretch-induced gains combine elastic (transient) and plastic (long-term, with sustained low-load) changes; <span class="term" data-note="A permanent tightening or shortening of tissue that restricts movement." tabindex="0">contracture</span> management.</li>
+<li class="">Impaired neuromuscular control: <span class="term" data-note="Relating to the body's sense of position and movement." tabindex="0">proprioceptive</span> training, perturbation training, balance progressions, PNF, task-specific repetition.</li>
 <li class="">Training dosage: repetition maximum zones (e.g., high-load low-repetition for strength vs low-load high-repetition for endurance).</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>One blueprint question, but its physiology links back to Paper II and vivas. The examiner's favourite comparison is strength versus endurance training adaptations, and static versus PNF stretching. Structure answers: impairment → physiological basis → intervention → progression parameter.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>One blueprint question, but its physiology links back to Paper II and vivas. The examiner's favourite comparison is strength versus endurance training adaptations, and static versus PNF stretching. Structure answers: impairment → physiological basis → intervention → progression parameter.</p></div>
 </article>
 <article class="topic" id="management-of-pain-314">
 <header class="t-head"><h3>2. Management of Pain</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 1 · C 4</span></div></header>
 <ul>
 <li class="">Pharmacological management: non-opioids — paracetamol; NSAIDs (COX inhibition — gastrointestinal and renal adverse effects); opioids for acute severe pain, short term; adjuvants — antidepressants (TCAs, duloxetine for neuropathic and fibromyalgia pain), anticonvulsants (pregabalin, gabapentin for neuropathic pain), muscle relaxants; local anaesthetics (blocks, topical).</li>
 <li class="">WHO analgesic ladder principle: "by the mouth, by the clock, by the ladder" — non-opioid → weak opioid → strong opioid, with adjuvants at every step. (Updating footnote: WHO's 2018 cancer-pain guidance treats the classic ladder only as a general guide and no longer mandates the weak-opioid step — but the classic ladder remains the expected exam answer.)</li>
-<li class="">Electrotherapy in pain: TENS — conventional/high-frequency low-intensity (gate control — acute pain) vs acupuncture-like/low-frequency high-intensity (opioid-mediated — chronic pain); IFT; shortwave diathermy for deep heating; dosage placement and timing.</li>
-<li class="">Educational and behavioural strategies: Pain Neuroscience Education (explain pain — reduces threat value), graded activity and graded exposure (fear-avoidance model of Vlaeyen), cognitive behavioural therapy, self-management and pacing.</li>
-<li class="">Adjuvant therapies: dry needling, acupuncture, heat/cryotherapy, relaxation, sleep hygiene.</li>
+<li class=""><span class="term" data-note="Treatment using electrical currents or electromagnetic energy." tabindex="0">Electrotherapy</span> in pain: TENS — conventional/high-frequency low-intensity (gate control — acute pain) vs acupuncture-like/low-frequency high-intensity (opioid-mediated — chronic pain); IFT; shortwave diathermy for deep heating; dosage placement and timing.</li>
+<li class="">Educational and behavioural strategies: Pain Neuroscience Education (explain pain — reduces threat value), graded activity and graded exposure (<span class="term" data-note="Avoiding activity because of fear of pain, which over time worsens disability." tabindex="0">fear-avoidance</span> model of Vlaeyen), cognitive behavioural therapy, self-management and pacing.</li>
+<li class="">Adjuvant therapies: dry needling, acupuncture, heat/<span class="term" data-note="Treatment using cold." tabindex="0">cryotherapy</span>, relaxation, sleep hygiene.</li>
 <li class="bmnemonic">Mnemonic for the multimodal plan — <strong>"E-E-P"</strong>: <strong>E</strong>ducation first, <strong>E</strong>xercise/graded activity, <strong>P</strong>hysical agents as adjuncts.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Pain management recovers its exam weight across papers, and this unit pairs with the Pain topic of Paper II for a full-marks long answer: pharmacology classes with examples, electrotherapy parameter logic, and behavioural strategies with the biopsychosocial model as the conclusion. TENS parameters for acute versus chronic pain is the single most repeated question.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Pain management recovers its exam weight across papers, and this unit pairs with the Pain topic of Paper II for a full-marks long answer: pharmacology classes with examples, electrotherapy parameter logic, and behavioural strategies with the <span class="term" data-note="An approach that considers biological, psychological and social factors together." tabindex="0">biopsychosocial</span> model as the conclusion. TENS parameters for acute versus chronic pain is the single most repeated question.</p></div>
 </article>
 <article class="topic topic-top" id="methods-of-musculoskeletal-rehabilitatio-325">
 <header class="t-head"><h3>3. Methods of Musculoskeletal Rehabilitation</h3><div class="t-meta"><span class="stars">★★★★★<span class="dim"></span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 2 · C 5</span></div></header>
 <ul>
-<li class="">Biomechanical concepts of intervention: open versus closed kinetic chain (OKC vs CKC — CKC = distal segment fixed, axial loading, co-contraction, more functional; e.g., leg press vs knee extension after ACL reconstruction), lever and pulley applications, external loading.</li>
+<li class="">Biomechanical concepts of intervention: open versus <span class="term" data-note="Exercises performed with the foot or hand fixed while the body moves over it." tabindex="0">closed kinetic chain</span> (OKC vs CKC — CKC = distal segment fixed, axial loading, co-contraction, more functional; e.g., leg press vs knee extension after ACL reconstruction), lever and pulley applications, external loading.</li>
 <li class="">Functional concepts: task-specific and context-specific training; transfer of training; motor relearning.</li>
 <li class="">Postural stability and balance: static/dynamic balance systems (vision, vestibular, somatosensory); progressions — stable to unstable surface, bipedal to unipedal, eyes-open to eyes-closed, dual-task; balance training reduces falls risk in the elderly.</li>
 <li class="bmnemonic">Core stability: the deep cylinder — mnemonic <strong>"TMDP: Train My Deep Power"</strong> (a coined study aid): <strong>T</strong>ransversus abdominis, <strong>M</strong>ultifidus, <strong>D</strong>iaphragm, <strong>P</strong>elvic floor; evidence supports motor-control (activation) training for low back pain, with outcomes broadly comparable to well-designed general exercise (at most a modest short-term pain advantage) — the practical value lies in the graded progression: activation → endurance → strength → functional integration.</li>
 <li class="">Functional training and physical activity promotion: WHO guideline of 150-300 minutes of moderate aerobic activity per week plus muscle-strengthening on 2+ days; "exercise is medicine".</li>
 <li class="">Education and behavioural methods: adherence strategies, goal-setting (SMART), self-efficacy building, motivational interviewing.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Carrying two blueprint questions and connecting to posture, gait and impairment interventions, this is the heart of Paper IV. Long answers revolve around core stability (definition, muscles, evidence, progressions), CKC versus OKC rehabilitation, and balance retraining. Use clinical examples (ACL rehabilitation, chronic low back pain) to demonstrate application, which is what separates a distinction answer from a pass.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Carrying two blueprint questions and connecting to <span class="term" data-note="The position of the body and its parts relative to gravity." tabindex="0">posture</span>, <span class="term" data-note="The manner of walking." tabindex="0">gait</span> and impairment interventions, this is the heart of Paper IV. Long answers revolve around core stability (definition, muscles, evidence, progressions), CKC versus OKC rehabilitation, and balance retraining. Use clinical examples (ACL rehabilitation, chronic low back pain) to demonstrate application, which is what separates a distinction answer from a pass.</p></div>
 </article>
 <article class="topic" id="advanced-techniques-in-musculoskeletal-r-224">
 <header class="t-head"><h3>4. Advanced Techniques in Musculoskeletal Rehabilitation</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 2 · C 4</span></div></header>
 <ul>
-<li class="bmnemonic">Manual therapy schools of thought — the classic comparison table: <strong>Maitland</strong> (graded oscillations I-IV, plus Grade V — a small-amplitude high-velocity thrust at end range, i.e., manipulation; mnemonic "<strong>I-II for pain, III-IV for stiffness</strong>"), <strong>Kaltenborn</strong> (sustained translatory glides I-III; Grade III distraction), <strong>Mulligan</strong> (Mobilisation With Movement — a sustained manual glide applied during pain-free active movement, with the required response summarised by the acronyms <strong>PILL</strong> — Pain-free, Instant result, Long-Lasting — and <strong>CROCKS</strong> for technique parameters; theoretical basis is the concept of positional faults), <strong>Cyriax</strong> (end-range capsular assessment, deep transverse friction massage, manipulation), <strong>McKenzie</strong> (Mechanical Diagnosis and Therapy — centralisation/directional preference; syndromes: postural, dysfunction, derangement, OTHER).</li>
+<li class="bmnemonic">Manual therapy schools of thought — the classic comparison table: <strong>Maitland</strong> (graded oscillations I-IV, plus Grade V — a small-amplitude high-velocity thrust at end range, i.e., <span class="term" data-note="A quick, small thrust applied to a joint by a clinician." tabindex="0">manipulation</span>; mnemonic "<strong>I-II for pain, III-IV for stiffness</strong>"), <strong>Kaltenborn</strong> (sustained translatory glides I-III; Grade III distraction), <strong>Mulligan</strong> (<span class="term" data-note="A Mulligan technique: the therapist applies a sustained accessory glide while the patient performs the painful movement." tabindex="0">Mobilisation With Movement</span> — a sustained manual glide applied during pain-free active movement, with the required response summarised by the acronyms <strong>PILL</strong> — Pain-free, Instant result, Long-Lasting — and <strong>CROCKS</strong> for technique parameters; theoretical basis is the concept of positional faults), <strong>Cyriax</strong> (end-range capsular assessment, deep transverse friction massage, manipulation), <strong>McKenzie</strong> (Mechanical Diagnosis and Therapy — centralisation/directional preference; syndromes: postural, dysfunction, derangement, OTHER).</li>
 <li class="">Grading logic: low-amplitude grades (I-II) work within the pain-free zone for pain relief; high-amplitude grades (III-IV) stretch the capsular resistance for mobility.</li>
-<li class="">Myofascial concepts: myofascial trigger points (taut band, local twitch response, referred pain pattern), myofascial release, muscle energy techniques (post-isometric relaxation, reciprocal inhibition).</li>
+<li class=""><span class="term" data-note="Relating to muscle and its surrounding fascia." tabindex="0">Myofascial</span> concepts: myofascial trigger points (taut band, local twitch response, referred pain pattern), myofascial release, muscle energy techniques (post-<span class="term" data-note="A muscle contraction with no change in length (no joint movement)." tabindex="0">isometric</span> relaxation, reciprocal inhibition).</li>
 <li class="">Neurological concepts applied in MSK: PNF patterns and techniques in orthopaedic rehabilitation, motor control retraining, neuromobilisation.</li>
-<li class="">External applications: taping — rigid/McConnell (corrective) vs elastic/Kinesio (facilitate/inhibit/lymphatic); orthoses and braces; traction.</li>
+<li class="">External applications: taping — rigid/McConnell (corrective) vs elastic/Kinesio (facilitate/inhibit/lymphatic); orthoses and braces; <span class="term" data-note="A gentle pulling force applied to a joint or the spine to relieve pressure." tabindex="0">traction</span>.</li>
 <li class="">Cognitive behavioural methods: activity pacing, fear-avoidance management, cognitive restructuring, behavioural goal-setting, relaxation.</li>
-<li class="">Adjuvant physical methods: dry needling, cupping, instrument-assisted soft tissue mobilisation (these are passive hands-on interventions, not behavioural methods).</li>
+<li class="">Adjuvant physical methods: dry needling, cupping, instrument-assisted <span class="term" data-note="Hands-on techniques that stretch and mobilise muscle and fascia." tabindex="0">soft tissue mobilisation</span> (these are passive hands-on interventions, not behavioural methods).</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Two questions come from this unit, and "compare the different schools of manual therapy" is a perennial essay. Learn each school on four parameters — assessment philosophy, technique, dosage, and indication — and know the McKenzie syndromes with centralisation, since those terms define a viva's depth. Keep the evidence caveat ready: effects of manual therapy are largely neurophysiological (pain modulation) with modest structural claims.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Two questions come from this unit, and "compare the different schools of manual therapy" is a perennial essay. Learn each school on four parameters — assessment philosophy, technique, dosage, and indication — and know the McKenzie syndromes with centralisation, since those terms define a viva's depth. Keep the evidence caveat ready: effects of manual therapy are largely neurophysiological (pain modulation) with modest structural claims.</p></div>
 </article>
 <article class="topic" id="electro-modalities-in-musculoskeletal-re-314">
 <header class="t-head"><h3>5. Electro Modalities in Musculoskeletal Rehabilitation</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 3 · B 1 · C 4</span></div></header>
 <ul>
 <li class="">Physical agents: superficial heat (hot packs, paraffin wax — hands; infrared) and deep heat (therapeutic ultrasound 1 vs 3 MHz, shortwave diathermy — continuous vs pulsed); cold (ice massage, cryotherapy bags, cold immersion).</li>
-<li class="">Electric currents for tissue healing and muscle: NMES for muscle performance, FES for functional tasks, Russian current (2500 Hz burst modulated at 50 bps) for strengthening, high-voltage pulsed current for acute pain/oedema, microcurrent (microamperage) proposed for tissue repair, IFT for pain and oedema with vector effects.</li>
+<li class="">Electric currents for tissue healing and muscle: NMES for muscle performance, FES for functional tasks, Russian current (2500 Hz burst modulated at 50 bps) for strengthening, high-voltage pulsed current for acute pain/<span class="term" data-note="Swelling caused by fluid trapped in the tissues." tabindex="0">oedema</span>, microcurrent (microamperage) proposed for tissue repair, IFT for pain and oedema with vector effects.</li>
 <li class="">Dosage logic: acute conditions prefer low intensity, short duration, frequent sessions; chronic soft tissue responds to deeper or higher-dose energy; ultrasound dosing by tissue depth and stage of healing (non-thermal at low intensity for proliferation; higher thermal doses with stretch for chronic extensibility).</li>
-<li class="">Electromagnetic agents: low-level laser therapy (photobiomodulation — wavelength in nm, energy density in J/cm²), extracorporeal shockwave therapy (radial vs focused) for tendinopathies and calcific deposits, magnetotherapy.</li>
-<li class="">Evidence-based electrotherapy: use modalities as adjuncts to active rehabilitation, not stand-alone treatments; document measurable goals; discontinue when the modality no longer changes the target impairment. Current evidence is genuinely supportive for shockwave in tendinopathy (notably calcific tendinopathy of the shoulder and plantar fasciopathy) and NMES as an adjunct to strength training; the evidence for TENS in chronic pain is rated very low quality by Cochrane overviews — frame it as an option to trial with individual response assessment, not an established cure.</li>
-<li class="">Contraindications/precautions (learn as a list): pacemakers/implanted electronics, malignancy over the region, impaired sensation/circulation, active bleeding, pregnancy over abdomen/pelvis, eyes and gonads for electromagnetic agents. Precautions: avoid heat over acute inflammation or recent haemarthrosis; avoid ultrasound over the epiphyses of immature bone and over altered tissue (e.g., cement areas with implants).</li>
+<li class="">Electromagnetic agents: low-level <span class="term" data-note="Red/near-infrared light therapy that stimulates cell repair (photobiomodulation)." tabindex="0">laser therapy</span> (photobiomodulation — wavelength in nm, energy density in J/cm²), extracorporeal shockwave therapy (radial vs focused) for tendinopathies and calcific deposits, magnetotherapy.</li>
+<li class="">Evidence-based electrotherapy: use modalities as adjuncts to active rehabilitation, not stand-alone treatments; document measurable goals; discontinue when the modality no longer changes the target impairment. Current evidence is genuinely supportive for shockwave in <span class="term" data-note="A tendon disorder causing pain and reduced function." tabindex="0">tendinopathy</span> (notably calcific tendinopathy of the shoulder and plantar fasciopathy) and NMES as an adjunct to strength training; the evidence for TENS in chronic pain is rated very low quality by Cochrane overviews — frame it as an option to trial with individual response assessment, not an established cure.</li>
+<li class="">Contraindications/precautions (learn as a list): pacemakers/implanted electronics, malignancy over the region, impaired sensation/circulation, active bleeding, pregnancy over abdomen/pelvis, eyes and gonads for electromagnetic agents. Precautions: avoid heat over acute <span class="term" data-note="The body's protective response to injury - heat, redness, swelling and pain." tabindex="0">inflammation</span> or recent haemarthrosis; avoid ultrasound over the epiphyses of immature bone and over altered tissue (e.g., cement areas with implants).</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>The same physics learned in Paper II returns as clinical application here, so revise both together — that pairing is why the topic keeps its four stars. Exam favourites: selecting a current for a given goal with parameters, heat versus cold by healing stage, and contraindications. Quote the evidence position honestly: shockwave has good support in tendinopathy and NMES works as an adjunct to strength training, while the chronic-pain TENS evidence is of very low quality — a candid answer here earns more credit than an exaggerated one.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>The same physics learned in Paper II returns as clinical application here, so revise both together — that pairing is why the topic keeps its four stars. Exam favourites: selecting a current for a given goal with parameters, heat versus cold by healing stage, and contraindications. Quote the evidence position honestly: shockwave has good support in tendinopathy and NMES works as an adjunct to strength training, while the chronic-pain <span class="term" data-note="Transcutaneous Electrical Nerve Stimulation - a mild current passed through the skin to relieve pain." tabindex="0">TENS</span> evidence is of very low quality — a candid answer here earns more credit than an exaggerated one.</p></div>
 </article>
 <article class="topic" id="ergonomics-213">
 <header class="t-head"><h3>6. Ergonomics</h3><div class="t-meta"><span class="stars">★★★<span class="dim">☆☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 1 · C 3</span></div></header>
@@ -212,7 +343,7 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Role of assistive devices in the workplace and current designs in assistive technology (ergonomic keyboards, lifts, seating, tele-workstation setups).</li>
 <li class="">Assessment linkage: RULA/REBA/NIOSh from Paper III identify the risk; this unit supplies the intervention.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>One blueprint question, usually a short note. The marks are in the risk-factor list and the work-conditioning-versus-work-hardening distinction. Add the post-COVID home-workstation angle for a contemporary conclusion — evaluators reward applied relevance.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>One blueprint question, usually a short note. The marks are in the risk-factor list and the work-conditioning-versus-work-hardening distinction. Add the post-COVID home-workstation angle for a contemporary conclusion — evaluators reward applied relevance.</p></div>
 </article>
 <article class="topic" id="trauma-rehabilitation-224">
 <header class="t-head"><h3>7. Trauma Rehabilitation</h3><div class="t-meta"><span class="stars">★★★★<span class="dim">☆</span></span><span class="rbc" title="Repetition score, Blueprint questions, Combined score">R 2 · B 2 · C 4</span></div></header>
@@ -220,17 +351,17 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 <li class="">Trauma rehabilitation spans fracture rehabilitation, soft tissue injury management and post-traumatic reconstruction.</li>
 <li class="">Fracture rehabilitation staging follows healing (see Paper III assessment): phase 1 — control oedema and pain, maintain uninvolved-joint mobility, isometrics within immobilisation; phase 2 — gentle protected mobilisation of adjacent joints as healing permits; phase 3 — progressive strengthening, mobility and functional reloading; phase 4 — return to work/sport.</li>
 <li class="">Weight-bearing status vocabulary: non, toe-touch, partial, weight-bearing-as-tolerated, full — dictated by fixation stability and the surgeon's protocol.</li>
-<li class="bmnemonic">Classic protocol examples: distal radius (Colles') fracture — oedema control, tendon gliding, early finger/shoulder mobility; hip fracture and post-hip-arthroplasty — precautions by approach: mnemonic <strong>"HIP"</strong> (posterior approach): no Hip flexion beyond 90°, no Internal rotation, no crossing/adduction Past midline; tibial plateau/shaft — graded axial loading, bone-healing considerations; spinal fractures — extension-based log-rolling and mobilisation.</li>
-<li class="">Soft tissue injuries: ligament sprains graded I (stretch), II (partial), III (complete); management by grade — protected functional rehabilitation rather than prolonged immobilisation for most grade I-II.</li>
+<li class="bmnemonic">Classic protocol examples: distal radius (Colles') fracture — oedema control, <span class="term" data-note="Strong fibrous tissue that attaches muscle to bone." tabindex="0">tendon</span> gliding, early finger/shoulder mobility; hip fracture and post-hip-arthroplasty — precautions by approach: mnemonic <strong>"HIP"</strong> (posterior approach): no Hip flexion beyond 90°, no Internal rotation, no crossing/adduction Past midline; tibial plateau/shaft — graded axial loading, bone-healing considerations; spinal fractures — extension-based log-rolling and mobilisation.</li>
+<li class="">Soft tissue injuries: <span class="term" data-note="Strong fibrous tissue that connects bone to bone and stabilises a joint." tabindex="0">ligament</span> sprains graded I (stretch), II (partial), III (complete); management by grade — protected functional rehabilitation rather than prolonged immobilisation for most grade I-II.</li>
 <li class="">Complications to screen and manage: stiffness/arthrofibrosis, complex regional pain syndrome (early recognition — disproportionate pain, trophic changes), disuse atrophy, DVT (early mobilisation, ankle pumps, prophylaxis awareness), malunion/nonunion.</li>
 <li class="">Post-traumatic deconditioning requires the endurance and strength progression from the impairments unit.</li>
 </ul>
-<div class="exam-para"><span class="ep-label">Examiner&rsquo;s view</span><p>Two blueprint questions come from trauma rehabilitation, and it is the paper's most clinically loaded unit. Long answers should be staged by healing phase with named protocol examples; the Colles' fracture and post-arthroplasty precautions are the two most repeated questions. Always mention red flags like CRPS and DVT — safety awareness earns marks.</p></div>
+<div class="exam-para"><span class="ep-label">Examiner’s view</span><p>Two blueprint questions come from trauma rehabilitation, and it is the paper's most clinically loaded unit. Long answers should be staged by healing phase with named protocol examples; the Colles' fracture and post-arthroplasty precautions are the two most repeated questions. Always mention red flags like CRPS and DVT — safety awareness earns marks.</p></div>
 </article>
-<div class="sec-head" id="refs"><h2>Sources & verification</h2></div>
+<div class="sec-head" id="refs"><h2>Sources &amp; verification</h2></div>
 <div class="refs"><h3>Prepared from</h3><p>MPT syllabus (RGUHS 2020), topic-wise blueprint (2021-22 batch), Giangarra &amp; Manske — Clinical Orthopaedic Rehabilitation; Hoppenfeld — Treatment and Rehabilitation of Fractures (syllabus reference); Starkey — Therapeutic Modalities.</p>
 <h3 style="margin-top:16px">Verification</h3>
-<p>These notes were checked by independent verification passes and cross-verification before publication; clinical values should be cross-checked against your college&rsquo;s prescribed edition before the examination. Mnemonics flagged in the notes as &ldquo;coined study aids&rdquo; are original memory aids, not textbook eponyms.</p></div>
+<p>These notes were checked by independent verification passes and cross-verification before publication; clinical values should be cross-checked against your college’s prescribed edition before the examination. Mnemonics flagged in the notes as “coined study aids” are original memory aids, not textbook eponyms.</p></div>
 </div>
 </div>
 <script>
@@ -249,5 +380,71 @@ td.num{text-align:center;font-family:var(--mono);white-space:nowrap}
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script>
-</body>
+<details class="glossary"><summary>Glossary of difficult terms (25)</summary><p class="gloss-hint">Dotted-underlined words also show the definition on hover or tap.</p><ul><li><strong>atrophy</strong> — Wasting or shrinking of muscle or tissue.</li><li><strong>biopsychosocial</strong> — An approach that considers biological, psychological and social factors together.</li><li><strong>closed kinetic chain</strong> — Exercises performed with the foot or hand fixed while the body moves over it.</li><li><strong>contracture</strong> — A permanent tightening or shortening of tissue that restricts movement.</li><li><strong>cryotherapy</strong> — Treatment using cold.</li><li><strong>electrotherapy</strong> — Treatment using electrical currents or electromagnetic energy.</li><li><strong>fear-avoidance</strong> — Avoiding activity because of fear of pain, which over time worsens disability.</li><li><strong>gait</strong> — The manner of walking.</li><li><strong>hypertrophy</strong> — An increase in muscle or tissue size.</li><li><strong>inflammation</strong> — The body's protective response to injury - heat, redness, swelling and pain.</li><li><strong>isometric</strong> — A muscle contraction with no change in length (no joint movement).</li><li><strong>laser therapy</strong> — Red/near-infrared light therapy that stimulates cell repair (photobiomodulation).</li><li><strong>ligament</strong> — Strong fibrous tissue that connects bone to bone and stabilises a joint.</li><li><strong>manipulation</strong> — A quick, small thrust applied to a joint by a clinician.</li><li><strong>mobilisation with movement</strong> — A Mulligan technique: the therapist applies a sustained accessory glide while the patient performs the painful movement.</li><li><strong>myofascial</strong> — Relating to muscle and its surrounding fascia.</li><li><strong>oedema</strong> — Swelling caused by fluid trapped in the tissues.</li><li><strong>posture</strong> — The position of the body and its parts relative to gravity.</li><li><strong>proprioceptive</strong> — Relating to the body's sense of position and movement.</li><li><strong>soft tissue mobilisation</strong> — Hands-on techniques that stretch and mobilise muscle and fascia.</li><li><strong>specificity</strong> — A test's ability to correctly identify people who do not have the condition.</li><li><strong>tendinopathy</strong> — A tendon disorder causing pain and reduced function.</li><li><strong>tendon</strong> — Strong fibrous tissue that attaches muscle to bone.</li><li><strong>TENS</strong> — Transcutaneous Electrical Nerve Stimulation - a mild current passed through the skin to relieve pain.</li><li><strong>traction</strong> — A gentle pulling force applied to a joint or the spine to relieve pressure.</li></ul></details><script id="rg-tools">
+(function(){
+  var root=document.documentElement, PERSIST=true, KEY='rguhs';
+  var content=document.querySelector('#content, main, .wrap')||document.body;
+  var popup=document.getElementById('rg-popup'), pinned=null;
+
+  function syncTheme(){var d=root.classList.contains('dark');var b=document.getElementById('rgToggleTheme');
+    if(b){b.textContent=d?'Day mode':'Night mode';b.classList.toggle('active',d);}}
+  function syncFit(){var f=root.classList.contains('fit');var b=document.getElementById('rgToggleFit');
+    if(b){b.textContent=f?'Fit: on':'Fit to screen';b.classList.toggle('active',f);}}
+  syncTheme(); syncFit();
+
+  var hlKey=KEY+'-hl-'+location.pathname;
+  if(PERSIST){try{var saved=localStorage.getItem(hlKey);if(saved)content.innerHTML=saved;}catch(e){}}
+  function saveHl(){if(!PERSIST)return;try{localStorage.setItem(hlKey,content.innerHTML);}catch(e){}}
+  function selRange(){var s=window.getSelection();if(!s||s.rangeCount===0||s.isCollapsed)return null;
+    var r=s.getRangeAt(0);if(!content.contains(r.commonAncestorContainer))return null;return r;}
+  function highlight(c){var r=selRange();if(!r)return;var m=document.createElement('mark');m.className='hl '+c;
+    try{r.surroundContents(m);}catch(e){m.appendChild(r.extractContents());r.insertNode(m);}
+    window.getSelection().removeAllRanges();saveHl();}
+  function eraseSel(){var r=selRange();if(!r)return;var ch=false;
+    content.querySelectorAll('mark.hl').forEach(function(m){if(r.intersectsNode(m)){m.parentNode.replaceChild(document.createTextNode(m.textContent),m);ch=true;}});
+    window.getSelection().removeAllRanges();if(ch)saveHl();}
+
+  var tb=document.querySelector('.rg-toolbar');
+  if(tb)tb.addEventListener('mousedown',function(e){if(e.target.closest('button'))e.preventDefault();});
+  if(tb)tb.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    if(b.dataset.color){highlight(b.dataset.color);}
+    else if(b.id==='rgErase'){eraseSel();}
+    else if(b.id==='rgClearAll'){content.querySelectorAll('mark.hl').forEach(function(m){m.parentNode.replaceChild(document.createTextNode(m.textContent),m);});saveHl();}
+    else if(b.id==='rgToggleNotes'){root.classList.toggle('no-notes');b.classList.toggle('active',!root.classList.contains('no-notes'));if(root.classList.contains('no-notes')){pinned=null;if(popup)popup.style.display='none';}}
+    else if(b.id==='rgToggleTheme'){root.classList.toggle('dark');try{localStorage.setItem(KEY+'-theme',root.classList.contains('dark')?'dark':'light');}catch(x){}syncTheme();}
+    else if(b.id==='rgToggleFit'){root.classList.toggle('fit');try{localStorage.setItem(KEY+'-fit',root.classList.contains('fit')?'1':'0');}catch(x){}syncFit();}
+  });
+
+  function showPopup(el){if(!popup)return;var r=el.getBoundingClientRect();
+    popup.innerHTML='<b>'+el.textContent+'</b><br>'+el.getAttribute('data-note');
+    popup.style.display='block';var pw=popup.offsetWidth,ph=popup.offsetHeight;
+    var left=window.scrollX+r.left, top=window.scrollY+r.bottom+8, vw=document.documentElement.clientWidth;
+    if(left+pw>window.scrollX+vw-12)left=window.scrollX+vw-pw-12; if(left<window.scrollX+8)left=window.scrollX+8;
+    if(r.bottom+ph+20>window.innerHeight)top=window.scrollY+r.top-ph-8;
+    popup.style.left=left+'px';popup.style.top=top+'px';}
+  function hidePopup(){if(!pinned&&popup)popup.style.display='none';}
+  document.addEventListener('mouseover',function(e){var t=e.target.closest?e.target.closest('.term'):null;
+    if(t&&t.getAttribute('data-note')&&!root.classList.contains('no-notes'))showPopup(t);});
+  document.addEventListener('mouseout',function(e){var t=e.target.closest?e.target.closest('.term'):null;if(t&&t!==pinned)hidePopup();});
+  document.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('.term'):null;
+    if(t){if(root.classList.contains('no-notes'))return;if(pinned===t){pinned=null;if(popup)popup.style.display='none';}else{pinned=t;showPopup(t);}return;}
+    if(!e.target.closest||!e.target.closest('#rg-popup')){pinned=null;if(popup)popup.style.display='none';}});
+  window.addEventListener('scroll',function(){if(pinned)showPopup(pinned);},{passive:true});
+  document.addEventListener('keydown',function(e){
+    if((e.key==='Enter'||e.key===' ')&&document.activeElement&&document.activeElement.classList&&document.activeElement.classList.contains('term')){e.preventDefault();pinned=document.activeElement;showPopup(pinned);}
+    if(e.key==='Escape'){pinned=null;if(popup)popup.style.display='none';closeDrawer();}});
+
+  var drawer=document.getElementById('rgDrawer'),scrim=document.getElementById('rgScrim'),
+      fab=document.getElementById('rgNotesFab'),note=document.getElementById('rgPageNote');
+  function openDrawer(o){if(!drawer)return;drawer.classList.toggle('open',o);scrim.classList.toggle('open',o);if(fab)fab.setAttribute('aria-expanded',o?'true':'false');}
+  function closeDrawer(){openDrawer(false);}
+  if(fab){fab.addEventListener('click',function(){openDrawer(!drawer.classList.contains('open'));});
+    document.getElementById('rgDrawerClose').addEventListener('click',closeDrawer);
+    scrim.addEventListener('click',closeDrawer);}
+  if(note){var nk=KEY+'-note-'+location.pathname;
+    try{var v=localStorage.getItem(nk);if(v)note.value=v;}catch(e){}
+    note.addEventListener('input',function(){try{localStorage.setItem(nk,note.value);}catch(e){}});}
+})();
+</script></body>
 </html>
